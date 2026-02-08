@@ -6,13 +6,12 @@
     <title>Bali Honeymoon App</title>
     <style>
         :root {
-            /* 색상 변경: 금색 제거 -> 트래블 블루 & 네이비 적용 */
-            --primary: #2c3e50;      /* 다크 네이비 (메인) */
-            --accent: #3498db;       /* 밝은 블루 (포인트) */
+            --primary: #2c3e50;      /* 다크 네이비 */
+            --accent: #3498db;       /* 밝은 블루 */
             --bg-gray: #f4f6f8;
             --white: #ffffff;
             --text-main: #333333;
-            --text-sub: #999999;     /* 주소용 연한 회색 */
+            --text-sub: #999999;
             --shadow: 0 4px 15px rgba(0,0,0,0.05);
             --safe-area-bottom: env(safe-area-inset-bottom);
         }
@@ -23,15 +22,40 @@
         /* --- Header --- */
         header {
             background-color: var(--white);
-            padding: 20px 20px 10px 20px;
+            padding: 15px 20px 10px 20px;
             position: sticky;
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 10px rgba(0,0,0,0.03);
         }
+        
+        .header-top { display: flex; justify-content: space-between; align-items: flex-start; }
         .app-title { font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 5px; }
         .trip-title { font-size: 22px; font-weight: 800; color: var(--primary); margin: 0; }
         .trip-date { font-size: 13px; color: #666; margin-top: 5px; }
+
+        /* --- Hamburger Menu Icon --- */
+        .hamburger-btn {
+            font-size: 24px; color: var(--primary); cursor: pointer; padding: 5px;
+            margin-top: 5px;
+        }
+
+        /* --- Mobile Menu Dropdown --- */
+        .mobile-menu {
+            display: none; position: absolute; top: 100%; left: 0; right: 0;
+            background: var(--white); box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            padding: 10px 0; z-index: 99; border-top: 1px solid #eee;
+        }
+        .mobile-menu.show { display: block; animation: slideDown 0.3s ease; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .menu-item {
+            padding: 15px 20px; font-size: 16px; font-weight: 600; color: var(--primary);
+            border-bottom: 1px solid #f5f5f5; display: flex; align-items: center; cursor: pointer;
+        }
+        .menu-item:last-child { border-bottom: none; }
+        .menu-item:active { background-color: #f9f9f9; }
+        .menu-icon { margin-right: 10px; font-size: 18px; width: 25px; text-align: center; }
 
         /* --- Day Selector --- */
         .day-scroll-wrapper {
@@ -44,20 +68,13 @@
         .day-scroll-wrapper::-webkit-scrollbar { display: none; }
         
         .day-chip {
-            display: inline-block;
-            padding: 8px 16px;
-            margin-right: 8px;
-            background: #eef2f5;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #7f8c8d;
-            cursor: pointer;
-            transition: all 0.2s;
+            display: inline-block; padding: 8px 16px; margin-right: 8px;
+            background: #eef2f5; border-radius: 20px;
+            font-size: 13px; font-weight: 600; color: #7f8c8d;
+            cursor: pointer; transition: all 0.2s;
         }
         .day-chip.active {
-            background-color: var(--primary); /* 네이비 */
-            color: white;
+            background-color: var(--primary); color: white;
             box-shadow: 0 4px 10px rgba(44, 62, 80, 0.3);
         }
 
@@ -66,7 +83,7 @@
         .content-area.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- Timeline Card --- */
+        /* --- Timeline & Cards --- */
         .timeline-item { display: flex; margin-bottom: 25px; position: relative; }
         .timeline-item::before {
             content: ''; position: absolute; left: 18px; top: 30px; bottom: -35px;
@@ -76,7 +93,7 @@
 
         .time-box { min-width: 40px; text-align: center; padding-top: 5px; position: relative; z-index: 1; }
         .dot {
-            width: 12px; height: 12px; background: var(--accent); /* 블루 */
+            width: 12px; height: 12px; background: var(--accent);
             border-radius: 50%; border: 3px solid var(--white);
             box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin: 0 auto;
         }
@@ -87,7 +104,6 @@
             margin-left: 15px; flex: 1; box-shadow: var(--shadow); position: relative;
         }
         
-        /* Category Badges */
         .cat-badge {
             display: inline-block; font-size: 10px; font-weight: 700; color: var(--white);
             padding: 2px 6px; border-radius: 4px; margin-left: 6px; vertical-align: middle; transform: translateY(-2px);
@@ -102,13 +118,8 @@
         .event-title { font-size: 16px; font-weight: 700; color: var(--primary); margin: 0 0 5px 0; }
         .event-desc { font-size: 14px; color: #555; line-height: 1.4; margin: 0; }
         
-        /* 주소 링크 스타일 (요청하신 부분) */
         .address-link {
-            display: block;
-            font-size: 12px;
-            color: #b2bec3; /* 아주 연한 회색 */
-            text-decoration: none;
-            margin-top: 6px;
+            display: block; font-size: 12px; color: #b2bec3; text-decoration: none; margin-top: 6px;
             background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="%23b2bec3"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>') no-repeat left center;
             padding-left: 16px;
         }
@@ -160,14 +171,48 @@
         .nav-item.active { color: var(--primary); }
         .nav-icon { font-size: 22px; display: block; margin-bottom: 3px; }
         .nav-label { font-size: 10px; font-weight: 600; }
+
+        /* --- Top Button (New) --- */
+        #scrollTopBtn {
+            display: none; /* Hidden by default */
+            position: fixed;
+            bottom: 95px; /* Above bottom nav */
+            left: 20px;   /* Left side */
+            z-index: 999;
+            width: 45px;
+            height: 45px;
+            border: none;
+            outline: none;
+            background-color: rgba(44, 62, 80, 0.7); /* Primary with opacity */
+            color: white;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 18px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: opacity 0.3s;
+        }
+        #scrollTopBtn:hover { background-color: rgba(44, 62, 80, 0.9); }
+
     </style>
 </head>
 <body>
 
     <header id="main-header">
-        <div class="app-title">Wedding Plan</div>
-        <h1 class="trip-title">Bali Honeymoon 💍</h1>
-        <div class="trip-date">2026.10.19 - 10.24 (5박 6일)</div>
+        <div class="header-top">
+            <div>
+                <div class="app-title">Wedding Plan</div>
+                <h1 class="trip-title">Bali Honeymoon 💍</h1>
+                <div class="trip-date">2026.10.19 - 10.24 (5박 6일)</div>
+            </div>
+            <div class="hamburger-btn" onclick="toggleMenu()">☰</div>
+        </div>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="menu-item" onclick="switchTab('schedule'); toggleMenu();"><span class="menu-icon">📅</span> 일정표</div>
+            <div class="menu-item" onclick="switchTab('hotels'); toggleMenu();"><span class="menu-icon">🏨</span> 숙소</div>
+            <div class="menu-item" onclick="switchTab('info'); toggleMenu();"><span class="menu-icon">ℹ️</span> 정보 & 예산</div>
+        </div>
+
         <div class="day-scroll-wrapper" id="day-selector">
             <div class="day-chip active" onclick="showDay(1)">Day 1</div>
             <div class="day-chip" onclick="showDay(2)">Day 2</div>
@@ -178,6 +223,8 @@
         </div>
     </header>
 
+    <button onclick="scrollToTop()" id="scrollTopBtn" title="Go to top">⬆</button>
+
     <main id="view-schedule">
         
         <div id="day-1" class="content-area active">
@@ -186,7 +233,7 @@
                 <div class="event-card">
                     <h3 class="event-title">발리 공항 도착 <span class="cat-badge cat-move">이동</span></h3>
                     <p class="event-desc">짐 찾고 가이드 미팅 후 차량 탑승</p>
-                    <a href="https://goo.gl/maps/b5z9q8P9z9z" target="_blank" class="address-link">Ngurah Rai International Airport</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Ngurah+Rai+International+Airport" target="_blank" class="address-link">Ngurah Rai International Airport</a>
                 </div>
             </div>
             <div class="timeline-item">
@@ -194,7 +241,7 @@
                 <div class="event-card">
                     <h3 class="event-title">Alila Villas Uluwatu <span class="cat-badge cat-hotel">숙소</span></h3>
                     <p class="event-desc">웰컴 드링크 & 체크인. 피곤하니까 바로 휴식 😴</p>
-                    <a href="https://goo.gl/maps/UluwatuAlilaLink" target="_blank" class="address-link">Jl. Belimbing Sari Tambiyak, Pecatu</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Alila+Villas+Uluwatu" target="_blank" class="address-link">Jl. Belimbing Sari Tambiyak, Pecatu</a>
                     <div class="tip-box">💡 Tip: 배고프면 룸서비스(나시고랭) or 도착 전 메일로 식사 요청!</div>
                 </div>
             </div>
@@ -206,7 +253,7 @@
                 <div class="event-card">
                     <h3 class="event-title">알릴라 조식 <span class="cat-badge cat-food">식당</span></h3>
                     <p class="event-desc">메뉴판 보고 무제한 주문 (퀄리티 최상)</p>
-                    <a href="https://goo.gl/maps/UluwatuAlilaLink" target="_blank" class="address-link">Alila Villas Uluwatu (CIRE Restaurant)</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Alila+Villas+Uluwatu+CIRE" target="_blank" class="address-link">Alila Villas Uluwatu (CIRE Restaurant)</a>
                 </div>
             </div>
             <div class="timeline-item">
@@ -214,7 +261,7 @@
                 <div class="event-card">
                     <h3 class="event-title">빠당빠당 비치 <span class="cat-badge cat-tour">관광</span></h3>
                     <p class="event-desc">줄리아 로버츠 '먹고 기도하고 사랑하라' 촬영지</p>
-                    <a href="https://goo.gl/maps/PadangPadang" target="_blank" class="address-link">Jl. Labuansait, Pecatu, Bali</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Padang+Padang+Beach+Bali" target="_blank" class="address-link">Jl. Labuansait, Pecatu, Bali</a>
                 </div>
             </div>
             <div class="timeline-item">
@@ -222,7 +269,7 @@
                 <div class="event-card">
                     <h3 class="event-title">Mason Uluwatu <span class="cat-badge cat-food">식당</span></h3>
                     <p class="event-desc">★ 장작구이(Wood Fire) 맛집. 스테이크, 생선 등</p>
-                    <a href="https://goo.gl/maps/MasonUluwatu" target="_blank" class="address-link">Jl. Labuansait No.10, Pecatu</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Mason+Uluwatu" target="_blank" class="address-link">Jl. Labuansait No.10, Pecatu</a>
                 </div>
             </div>
             <div class="timeline-item">
@@ -230,7 +277,7 @@
                 <div class="event-card">
                     <h3 class="event-title">Bamboo Blonde <span class="cat-badge cat-shop">쇼핑</span></h3>
                     <p class="event-desc">메이슨 바로 옆! 신혼여행 룩 여기서 해결 👗</p>
-                    <a href="https://goo.gl/maps/BambooBlondeUlu" target="_blank" class="address-link">Jl. Labuansait No.10 (Next to Mason)</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Bamboo+Blonde+Uluwatu" target="_blank" class="address-link">Jl. Labuansait No.10 (Next to Mason)</a>
                     <div class="tip-box">💡 식당 바로 옆이라 동선 낭비 0%</div>
                 </div>
             </div>
@@ -239,7 +286,7 @@
                 <div class="event-card">
                     <h3 class="event-title">Sundays Beach Club <span class="cat-badge cat-relax">휴식</span></h3>
                     <p class="event-desc">카약/스노클링 무료. 예쁜 옷 입고 인생샷 남기기 📸</p>
-                    <a href="https://goo.gl/maps/SundaysBeach" target="_blank" class="address-link">Jl. Pantai Selatan Gau, Ungasan</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Sundays+Beach+Club+Bali" target="_blank" class="address-link">Jl. Pantai Selatan Gau, Ungasan</a>
                 </div>
             </div>
             <div class="timeline-item">
@@ -247,7 +294,7 @@
                 <div class="event-card">
                     <h3 class="event-title">Wahaha Pork Ribs <span class="cat-badge cat-food">식당</span></h3>
                     <p class="event-desc">짐바란 폭립 맛집. 호불호 없는 달달한 소스!</p>
-                    <a href="https://goo.gl/maps/WahahaJimbaran" target="_blank" class="address-link">Jl. Wanagiri, Jimbaran</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Wahaha+Pork+Ribs+Jimbaran" target="_blank" class="address-link">Jl. Wanagiri, Jimbaran</a>
                 </div>
             </div>
         </div>
@@ -258,7 +305,7 @@
                 <div class="event-card">
                     <h3 class="event-title">개인 풀빌라 휴식 <span class="cat-badge cat-relax">휴식</span></h3>
                     <p class="event-desc">아무것도 안 할 자유. 메인 풀 새장 카바나 즐기기.</p>
-                    <a href="https://goo.gl/maps/UluwatuAlilaLink" target="_blank" class="address-link">Alila Villas Uluwatu</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Alila+Villas+Uluwatu" target="_blank" class="address-link">Alila Villas Uluwatu</a>
                 </div>
             </div>
             <div class="timeline-item">
@@ -266,7 +313,7 @@
                 <div class="event-card">
                     <h3 class="event-title">The Warung (더 와룽) <span class="cat-badge cat-food">식당</span></h3>
                     <p class="event-desc">★ 리조트 내 맛집. 바비 굴링(통돼지) 필수! 🐷</p>
-                    <a href="https://goo.gl/maps/TheWarungAlila" target="_blank" class="address-link">Inside Alila Villas Uluwatu</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=The+Warung+Alila+Uluwatu" target="_blank" class="address-link">Inside Alila Villas Uluwatu</a>
                     <div class="tip-box">💡 가장 깔끔하고 고급스러운 바비 굴링을 맛볼 기회.</div>
                 </div>
             </div>
@@ -275,15 +322,15 @@
                 <div class="event-card">
                     <h3 class="event-title">Pepito Market <span class="cat-badge cat-shop">쇼핑</span></h3>
                     <p class="event-desc">숙소 5분 거리. 망고스틴, 빈땅 맥주, 과자 장보기.</p>
-                    <a href="https://goo.gl/maps/PepitoUluwatu" target="_blank" class="address-link">Jl. Raya Uluwatu Pecatu</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Pepito+Market+Uluwatu" target="_blank" class="address-link">Jl. Raya Uluwatu Pecatu</a>
                 </div>
             </div>
             <div class="timeline-item">
                 <div class="time-box"><div class="dot"></div><span class="time-text">16:00</span></div>
                 <div class="event-card">
                     <h3 class="event-title">Uluwatu Temple <span class="cat-badge cat-tour">관광</span></h3>
-                    <p class="event-desc">★ 울루와뚜 사원. 절벽 위 절경과 원숭이 조심! 🐒</p>
-                    <a href="https://goo.gl/maps/UluwatuTemple" target="_blank" class="address-link">Pecatu, South Kuta</a>
+                    <p class="event-desc">★ 울루와뚜 사원. 절벽 위 절경과 원숭이 구경 🐒</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Uluwatu+Temple" target="_blank" class="address-link">Pecatu, South Kuta</a>
                     <div class="tip-box">💡 사원 구경 후 바로 근처 슬루반 비치로 이동!</div>
                 </div>
             </div>
@@ -292,7 +339,7 @@
                 <div class="event-card">
                     <h3 class="event-title">Suluban Beach <span class="cat-badge cat-tour">관광</span></h3>
                     <p class="event-desc">신비로운 해식동굴 뷰 (원숭이 없음!)</p>
-                    <a href="https://goo.gl/maps/SulubanBeach" target="_blank" class="address-link">Jl. Pantai Suluban, Pecatu</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Suluban+Beach" target="_blank" class="address-link">Jl. Pantai Suluban, Pecatu</a>
                 </div>
             </div>
             <div class="timeline-item">
@@ -300,7 +347,7 @@
                 <div class="event-card">
                     <h3 class="event-title">YUKI Uluwatu <span class="cat-badge cat-food">식당</span></h3>
                     <p class="event-desc">슬루반 바로 옆! 힙한 <b>모던 이자카야</b>. 스시롤 🍣</p>
-                    <a href="https://goo.gl/maps/YUKIUluwatu" target="_blank" class="address-link">Uluwatu, Pecatu (Next to Suluban)</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=YUKI+Uluwatu" target="_blank" class="address-link">Uluwatu, Pecatu (Next to Suluban)</a>
                     <div class="tip-box">💡 슬루반 비치에서 차로 3분 거리.</div>
                 </div>
             </div>
@@ -312,7 +359,7 @@
                 <div class="event-card">
                     <h3 class="event-title">체크아웃 & 이동 <span class="cat-badge cat-move">이동</span></h3>
                     <p class="event-desc">알릴라 안녕 👋 사파리로 출발 (약 1시간 40분)</p>
-                    <a href="https://goo.gl/maps/BaliSafari" target="_blank" class="address-link">Bali Safari Marine Park</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Bali+Safari+and+Marine+Park" target="_blank" class="address-link">Bali Safari Marine Park</a>
                 </div>
             </div>
             <div class="timeline-item">
@@ -320,7 +367,7 @@
                 <div class="event-card">
                     <h3 class="event-title">발리 사파리 투어 <span class="cat-badge cat-tour">관광</span></h3>
                     <p class="event-desc">프라이빗 투어 & 호랑이 식당(Tsavo Lion) 점심</p>
-                    <a href="https://goo.gl/maps/BaliSafari" target="_blank" class="address-link">Jl. Prof. Dr. Ida Bagus Mantra</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Tsavo+Lion+Restaurant" target="_blank" class="address-link">Jl. Prof. Dr. Ida Bagus Mantra</a>
                 </div>
             </div>
             <div class="timeline-item">
@@ -328,7 +375,7 @@
                 <div class="event-card">
                     <h3 class="event-title">The Mulia (Suite) <span class="cat-badge cat-hotel">숙소</span></h3>
                     <p class="event-desc">누사두아 입성. 스위트룸 체크인.</p>
-                    <a href="https://goo.gl/maps/TheMuliaBali" target="_blank" class="address-link">Jl. Raya Nusa Dua Selatan</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=The+Mulia+Nusa+Dua" target="_blank" class="address-link">Jl. Raya Nusa Dua Selatan</a>
                 </div>
             </div>
             <div class="timeline-item">
@@ -336,7 +383,7 @@
                 <div class="event-card">
                     <h3 class="event-title">무제한 칵테일 아워 <span class="cat-badge cat-food">식당</span></h3>
                     <p class="event-desc">더 라운지에서 술과 타파스 무제한 즐기기 🥂</p>
-                    <a href="https://goo.gl/maps/TheMuliaBali" target="_blank" class="address-link">The Lounge at The Mulia</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=The+Lounge+at+The+Mulia" target="_blank" class="address-link">The Lounge at The Mulia</a>
                 </div>
             </div>
             <div class="timeline-item">
@@ -344,7 +391,7 @@
                 <div class="event-card">
                     <h3 class="event-title">Soleil (솔레일) <span class="cat-badge cat-food">식당</span></h3>
                     <p class="event-desc">★ 호텔 내 위치. 스테이크 & 해산물 파인 다이닝.</p>
-                    <a href="https://goo.gl/maps/SoleilMulia" target="_blank" class="address-link">Inside The Mulia Resort (Beachfront)</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Soleil+at+The+Mulia" target="_blank" class="address-link">Inside The Mulia Resort (Beachfront)</a>
                     <div class="tip-box">💡 Tip: 체크인 시 <b>'Outdoor Table'</b>로 예약 요청하세요!</div>
                 </div>
             </div>
@@ -356,7 +403,7 @@
                 <div class="event-card">
                     <h3 class="event-title">라운지 조식 <span class="cat-badge cat-food">식당</span></h3>
                     <p class="event-desc">한우 스테이크가 나오는 조식 클라스 🥩</p>
-                    <a href="https://goo.gl/maps/TheMuliaBali" target="_blank" class="address-link">The Lounge</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=The+Lounge+at+The+Mulia" target="_blank" class="address-link">The Lounge</a>
                 </div>
             </div>
             <div class="timeline-item">
@@ -364,7 +411,7 @@
                 <div class="event-card">
                     <h3 class="event-title">오션 프론트 풀 <span class="cat-badge cat-relax">휴식</span></h3>
                     <p class="event-desc">더 물리아 전용 풀장에서 황제 호캉스</p>
-                    <a href="https://goo.gl/maps/TheMuliaBali" target="_blank" class="address-link">The Mulia Oceanfront Pool</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=The+Mulia+Oceanfront+Pool" target="_blank" class="address-link">The Mulia Oceanfront Pool</a>
                 </div>
             </div>
             <div class="timeline-item">
@@ -372,7 +419,7 @@
                 <div class="event-card">
                     <h3 class="event-title">Krisna Bypass <span class="cat-badge cat-shop">쇼핑</span></h3>
                     <p class="event-desc">★ 도마(Teak), 기념품, 과자 여기서 싹쓸이!</p>
-                    <a href="https://goo.gl/maps/KrisnaBypass" target="_blank" class="address-link">Jl. Raya Gusti Ngurah Rai, Kuta</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Krisna+Oleh+Oleh+Bypass" target="_blank" class="address-link">Jl. Raya Gusti Ngurah Rai, Kuta</a>
                     <div class="tip-box">💡 Tip: <b>2층/3층 티크 우드 코너</b>가 진짜입니다.</div>
                 </div>
             </div>
@@ -381,7 +428,7 @@
                 <div class="event-card">
                     <h3 class="event-title">애프터눈 티 <span class="cat-badge cat-food">식당</span></h3>
                     <p class="event-desc">라운지에서 무료 제공. 당 충전.</p>
-                    <a href="https://goo.gl/maps/TheMuliaBali" target="_blank" class="address-link">The Lounge</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=The+Lounge+at+The+Mulia" target="_blank" class="address-link">The Lounge</a>
                 </div>
             </div>
             <div class="timeline-item">
@@ -389,7 +436,7 @@
                 <div class="event-card">
                     <h3 class="event-title">물리아 럭셔리 스파 <span class="cat-badge cat-relax">마사지</span></h3>
                     <p class="event-desc">여행 피로 풀기</p>
-                    <a href="https://goo.gl/maps/MuliaSpa" target="_blank" class="address-link">Mulia Spa</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Mulia+Spa+Bali" target="_blank" class="address-link">Mulia Spa</a>
                 </div>
             </div>
             <div class="timeline-item">
@@ -397,7 +444,7 @@
                 <div class="event-card">
                     <h3 class="event-title">The Cafe 뷔페 <span class="cat-badge cat-food">식당</span></h3>
                     <p class="event-desc">랍스터 & 사시미 배 터질 때까지! 🔥</p>
-                    <a href="https://goo.gl/maps/TheCafeMulia" target="_blank" class="address-link">The Cafe at The Mulia</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=The+Cafe+Mulia" target="_blank" class="address-link">The Cafe at The Mulia</a>
                 </div>
             </div>
         </div>
@@ -408,7 +455,7 @@
                 <div class="event-card">
                     <h3 class="event-title">체크아웃 & 공항 이동 <span class="cat-badge cat-move">이동</span></h3>
                     <p class="event-desc">즐거웠던 발리 안녕 👋</p>
-                    <a href="https://goo.gl/maps/b5z9q8P9z9z" target="_blank" class="address-link">Ngurah Rai International Airport</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Ngurah+Rai+International+Airport" target="_blank" class="address-link">Ngurah Rai International Airport</a>
                 </div>
             </div>
             <div class="timeline-item">
@@ -483,6 +530,13 @@
     </nav>
 
     <script>
+        // Toggle Hamburger Menu
+        function toggleMenu() {
+            var menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('show');
+        }
+
+        // Tab Switching Logic
         function switchTab(tabName) {
             document.getElementById('view-schedule').style.display = 'none';
             document.getElementById('view-hotels').classList.remove('active');
@@ -503,11 +557,29 @@
             }
         }
 
+        // Day Switching Logic
         function showDay(dayNum) {
             document.querySelectorAll('.content-area').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.day-chip').forEach(el => el.classList.remove('active'));
             document.getElementById('day-' + dayNum).classList.add('active');
             document.querySelectorAll('.day-chip')[dayNum - 1].classList.add('active');
+        }
+
+        // Scroll to Top Logic
+        var topBtn = document.getElementById("scrollTopBtn");
+
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                topBtn.style.display = "block";
+            } else {
+                topBtn.style.display = "none";
+            }
+        }
+
+        function scrollToTop() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
     </script>
 </body>
