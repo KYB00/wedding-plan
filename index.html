@@ -20,8 +20,8 @@
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background-color: var(--bg-gray); color: var(--text-main); padding-bottom: 100px; }
 
-        /* --- Header --- */
-        header { background-color: var(--white); padding: 15px 20px 5px 20px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        /* --- Header & Hamburger --- */
+        header { background-color: var(--white); padding: 15px 20px 10px 20px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
         .header-row { display: flex; justify-content: space-between; align-items: flex-start; }
         .trip-title { font-size: 20px; font-weight: 800; color: var(--primary); margin: 0; }
         .trip-date { font-size: 12px; color: #888; margin-top: 2px; }
@@ -84,7 +84,7 @@
         .tag { display: inline-block; font-size: 10px; padding: 2px 6px; border-radius: 4px; background: #eee; color: #555; margin-left: 5px; vertical-align: middle; }
         .link-btn { display: inline-flex; align-items: center; font-size: 12px; color: #555; text-decoration: none; background: #f1f3f5; padding: 5px 10px; border-radius: 6px; margin-top: 5px; border: 1px solid #e9ecef; }
 
-        /* --- Route Map Button (New) --- */
+        /* --- Route Map Button (Fixed) --- */
         .route-btn {
             display: flex; align-items: center; justify-content: center;
             width: 100%; padding: 14px; background-color: #e8f0fe; color: #1967d2;
@@ -94,7 +94,7 @@
         .route-btn:active { background-color: #d2e3fc; }
         .route-btn::before { content: '🗺️'; margin-right: 8px; }
 
-        /* --- Budget Accordion --- */
+        /* --- Budget Accordion (In Schedule) --- */
         .budget-accordion { border: 1px solid #e1e4e8; border-radius: 10px; overflow: hidden; margin-top: 15px; background: white; }
         .ba-header { background: #fafafa; padding: 12px 15px; font-size: 13px; font-weight: 600; color: var(--primary); display: flex; justify-content: space-between; cursor: pointer; }
         .ba-content { display: none; padding: 15px; border-top: 1px solid #eee; }
@@ -216,7 +216,6 @@
                     <div class="event-content">
                         <div class="event-title">발리 공항 도착 <span class="tag">이동</span></div>
                         <div class="event-desc">짐 찾기 & 가이드 미팅 (약 1시간 소요)</div>
-                        <a href="https://www.google.com/maps/search/Ngurah+Rai+International+Airport" target="_blank" class="link-btn">공항 지도</a>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -227,10 +226,558 @@
                             <span style="color:#e74c3c; font-weight:700;">Check-in 15:00</span><br>
                             웰컴 드링크 & 룸서비스(나시고랭 추천)
                         </div>
-                        <a href="https://www.google.com/maps/search/Alila+Villas+Uluwatu" target="_blank" class="link-btn">알릴라 지도</a>
                     </div>
                 </div>
             </div>
-            <a href="https://www.google.com/maps/dir/?api=1&destination=Alila+Villas+Uluwatu&origin=Ngurah+Rai+International+Airport&travelmode=driving" target="_blank" class="route-btn">
-                🗺️ Day 1 전체 이동경로 지도 보기 (네비게이션)
+            <a href="https://www.google.com/maps/dir/Ngurah+Rai+International+Airport/Alila+Villas+Uluwatu" target="_blank" class="route-btn">
+                Day 1 전체 이동경로 지도 보기 (네비게이션)
             </a>
+            <div class="budget-accordion">
+                <div class="ba-header" onclick="toggleBudget(1)">💸 Day 1 지출 내역 <span id="total-1">0 원</span></div>
+                <div class="ba-content" id="ba-1">
+                    <div id="budget-list-1"></div>
+                    <button class="add-btn" onclick="addBudgetRow(1)">+ 내역 추가</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="day-2" class="day-content" style="display:none;">
+            <div class="card">
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">07:00<br>~11:00</span></div>
+                    <div class="event-content">
+                        <div class="event-title">알릴라 조식 <span class="tag">식당</span></div>
+                        <div class="event-desc">
+                            <b>CIRE 레스토랑</b><br>
+                            무제한 주문식 (Last Order 10:30)
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">12:30</span></div>
+                    <div class="event-content">
+                        <div class="event-title">Mason Uluwatu <span class="tag">식당</span></div>
+                        <div class="event-desc">장작구이 스테이크 & 바라문디</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">15:00</span></div>
+                    <div class="event-content">
+                        <div class="event-title">Sundays Beach Club <span class="tag">휴식</span></div>
+                        <div class="event-desc">스노클링, 카약, 빈백 휴식</div>
+                    </div>
+                </div>
+            </div>
+            <a href="https://www.google.com/maps/dir/Alila+Villas+Uluwatu/Mason+Uluwatu/Sundays+Beach+Club/Alila+Villas+Uluwatu" target="_blank" class="route-btn">
+                Day 2 전체 이동경로 지도 보기 (네비게이션)
+            </a>
+            <div class="budget-accordion">
+                <div class="ba-header" onclick="toggleBudget(2)">💸 Day 2 지출 내역 <span id="total-2">0 원</span></div>
+                <div class="ba-content" id="ba-2">
+                    <div id="budget-list-2"></div>
+                    <button class="add-btn" onclick="addBudgetRow(2)">+ 내역 추가</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="day-3" class="day-content" style="display:none;">
+            <div class="card">
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">09:00</span></div>
+                    <div class="event-content">
+                        <div class="event-title">풀빌라 휴식 <span class="tag">휴식</span></div>
+                        <div class="event-desc">메인 풀 & 선셋 카바나 인생샷</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">13:00</span></div>
+                    <div class="event-content">
+                        <div class="event-title">The Warung (더 와룽) <span class="tag">식당</span></div>
+                        <div class="event-desc">호텔 내 위치. 바비 굴링 & 메기붕 세트</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">16:30</span></div>
+                    <div class="event-content">
+                        <div class="event-title">울루와뚜 사원 <span class="tag">관광</span></div>
+                        <div class="event-desc">절벽 사원 뷰 & 원숭이 조심</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">18:00</span></div>
+                    <div class="event-content">
+                        <div class="event-title">YUKI Uluwatu <span class="tag">식당</span></div>
+                        <div class="event-desc">일몰 보며 스시롤 & 칵테일</div>
+                    </div>
+                </div>
+            </div>
+            <a href="https://www.google.com/maps/dir/Alila+Villas+Uluwatu/Uluwatu+Temple/YUKI+Uluwatu/Alila+Villas+Uluwatu" target="_blank" class="route-btn">
+                Day 3 전체 이동경로 지도 보기 (네비게이션)
+            </a>
+            <div class="budget-accordion">
+                <div class="ba-header" onclick="toggleBudget(3)">💸 Day 3 지출 내역 <span id="total-3">0 원</span></div>
+                <div class="ba-content" id="ba-3">
+                    <div id="budget-list-3"></div>
+                    <button class="add-btn" onclick="addBudgetRow(3)">+ 내역 추가</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="day-4" class="day-content" style="display:none;">
+            <div class="card">
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">09:30</span></div>
+                    <div class="event-content">
+                        <div class="event-title">체크아웃 & 이동 <span class="tag">이동</span></div>
+                        <div class="event-desc">
+                            <span style="color:#e74c3c;">Check-out 12:00</span><br>
+                            알릴라 출발 (약 1시간 40분 소요)
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">11:15</span></div>
+                    <div class="event-content">
+                        <div class="event-title">Safari Journey <span class="tag">관광</span></div>
+                        <div class="event-desc">전용 차량 탑승, 동물 구경</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">12:30</span></div>
+                    <div class="event-content">
+                        <div class="event-title">Tsavo Lion Restaurant <span class="tag">식당</span></div>
+                        <div class="event-desc">사파리 내 호랑이 보며 점심 식사</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">13:30</span></div>
+                    <div class="event-content">
+                        <div class="event-title">동물 쇼 / 아궁 쇼 <span class="tag">관광</span></div>
+                        <div class="event-desc">공연 관람 후 15:00 이동 시작</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">16:30</span></div>
+                    <div class="event-content">
+                        <div class="event-title">Mulia Resort 체크인 <span class="tag">숙소</span></div>
+                        <div class="event-desc">
+                            <span style="color:#e74c3c;">Check-in 15:00</span><br>
+                            시그니처 라군룸 (수영장 연결)
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">17:00</span></div>
+                    <div class="event-content">
+                        <div class="event-title">칵테일 타임 (유료) <span class="tag">휴식</span></div>
+                        <div class="event-desc">
+                            ZJ's Bar 또는 풀 사이드 바<br>
+                            <span style="font-size:11px; color:#888;">*라군룸은 무료 아님</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">19:00</span></div>
+                    <div class="event-content">
+                        <div class="event-title">Soleil (솔레일) <span class="tag">식당</span></div>
+                        <div class="event-desc">야외 테이블 디너 (스테이크 & 와인)</div>
+                    </div>
+                </div>
+            </div>
+            <a href="https://www.google.com/maps/dir/Alila+Villas+Uluwatu/Bali+Safari+and+Marine+Park/Mulia+Resort/Soleil+Bali" target="_blank" class="route-btn">
+                Day 4 전체 이동경로 지도 보기 (네비게이션)
+            </a>
+            <div class="budget-accordion">
+                <div class="ba-header" onclick="toggleBudget(4)">💸 Day 4 지출 내역 <span id="total-4">0 원</span></div>
+                <div class="ba-content" id="ba-4">
+                    <div id="budget-list-4"></div>
+                    <button class="add-btn" onclick="addBudgetRow(4)">+ 내역 추가</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="day-5" class="day-content" style="display:none;">
+            <div class="card">
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">07:00<br>~11:00</span></div>
+                    <div class="event-content">
+                        <div class="event-title">The Cafe 조식 <span class="tag">식당</span></div>
+                        <div class="event-desc">
+                            <b>The Cafe (뷔페)</b><br>
+                            발리 최고의 뷔페식 조식 (한식 포함)
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">13:30</span></div>
+                    <div class="event-content">
+                        <div class="event-title">Krisna 쇼핑 <span class="tag">쇼핑</span></div>
+                        <div class="event-desc">티크 도마(2층), 기념품 구매</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">16:00<br>~18:00</span></div>
+                    <div class="event-content">
+                        <div class="event-title">수영장 휴식 <span class="tag">휴식</span></div>
+                        <div class="event-desc">오션 풀 또는 객실 라군 풀 이용</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">18:00</span></div>
+                    <div class="event-content">
+                        <div class="event-title">The Cafe 뷔페 <span class="tag">식당</span></div>
+                        <div class="event-desc">랍스터 & 사시미 디너</div>
+                    </div>
+                </div>
+            </div>
+            <a href="https://www.google.com/maps/dir/Mulia+Resort/Krisna+Oleh+-+Oleh+Bali+Bypass/Mulia+Resort" target="_blank" class="route-btn">
+                Day 5 전체 이동경로 지도 보기 (네비게이션)
+            </a>
+            <div class="budget-accordion">
+                <div class="ba-header" onclick="toggleBudget(5)">💸 Day 5 지출 내역 <span id="total-5">0 원</span></div>
+                <div class="ba-content" id="ba-5">
+                    <div id="budget-list-5"></div>
+                    <button class="add-btn" onclick="addBudgetRow(5)">+ 내역 추가</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="day-6" class="day-content" style="display:none;">
+            <div class="card">
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">12:00</span></div>
+                    <div class="event-content">
+                        <div class="event-title">체크아웃 <span class="tag">숙소</span></div>
+                        <div class="event-desc">
+                            <span style="color:#e74c3c;">Check-out 12:00</span><br>
+                            짐 맡기고 수영장 이용 가능
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">21:30</span></div>
+                    <div class="event-content">
+                        <div class="event-title">공항으로 출발 <span class="tag">이동</span></div>
+                        <div class="event-desc">
+                            호텔 로비 차량 탑승 (비행기 3.5시간 전)<br>
+                            이동 시간: 약 30~40분 (유료 도로 이용)
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">01:10</span></div>
+                    <div class="event-content">
+                        <div class="event-title">인천행 출발 ✈️ <span class="tag">이동</span></div>
+                        <div class="event-desc">Day 7 (일) 09:25 인천 도착</div>
+                    </div>
+                </div>
+            </div>
+            <a href="https://www.google.com/maps/dir/Mulia+Resort/Ngurah+Rai+International+Airport" target="_blank" class="route-btn">
+                Day 6 전체 이동경로 지도 보기 (네비게이션)
+            </a>
+            <div class="budget-accordion">
+                <div class="ba-header" onclick="toggleBudget(6)">💸 Day 6 지출 내역 <span id="total-6">0 원</span></div>
+                <div class="ba-content" id="ba-6">
+                    <div id="budget-list-6"></div>
+                    <button class="add-btn" onclick="addBudgetRow(6)">+ 내역 추가</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="tab-hotels">
+        <div class="card" style="padding:0; overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" class="hotel-img" alt="Alila">
+            <div style="padding:20px;">
+                <div class="section-title">Alila Villas Uluwatu</div>
+                <div class="info-row"><span class="info-val">10/19 - 10/22 (3박)</span></div>
+                <div class="info-row"><span class="info-val">1 Bedroom Pool Villa</span></div>
+                <div class="info-row"><span class="info-val">IN 15:00 / OUT 12:00</span></div>
+                
+                <div class="box-ui facility-box">
+                    <strong>🏰 주요 부대시설</strong>
+                    <div class="facility-list">
+                        <div class="facility-tag">
+                            <b>CIRE</b><span class="facility-desc">조식/양식 (07-23)</span>
+                        </div>
+                        <div class="facility-tag">
+                            <b>The Warung</b><span class="facility-desc">인도네시아식 (11-23)</span>
+                        </div>
+                        <div class="facility-tag">
+                            <b>Main Pool</b><span class="facility-desc">공용 풀장 (24H)</span>
+                        </div>
+                        <div class="facility-tag">
+                            <b>Spa Alila</b><span class="facility-desc">스파/마사지 (09-21)</span>
+                        </div>
+                        <div class="facility-tag">
+                            <b>Gym & Yoga</b><span class="facility-desc">피트니스 (24H)</span>
+                        </div>
+                        <div class="facility-tag">
+                            <b>Library</b><span class="facility-desc">독서/휴식 (24H)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box-ui tip-box">
+                    <strong>💡 Honey Tip & Tipping</strong>
+                    • <b>버기 호출:</b> 객실 전화 '0'번 ➡ "Buggy please"<br>
+                    • <b>원숭이:</b> 발코니 문은 항상 잠궈두세요. (음식 노출 X)<br>
+                    • <b>팁 문화 (21% 포함됨):</b> 의무는 아니나, 벨보이(20~50k), 하우스키핑(20k), 마사지(50k) 정도가 매너 팁입니다.
+                </div>
+
+                <div class="box-ui res-box">
+                    <strong>📅 Must Do / 예약</strong>
+                    ☑️ Sunset Cabana 사진 촬영 (오후 5시 추천)<br>
+                    ☑️ Spa Alila 사전 예약 필수<br>
+                    ☑️ The Warung에서 '바비 굴링' 먹기
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="padding:0; overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" class="hotel-img" alt="The Mulia">
+            <div style="padding:20px;">
+                <div class="section-title">Mulia Resort (Lagoon)</div>
+                <div class="info-row"><span class="info-val">10/22 - 10/24 (2박)</span></div>
+                <div class="info-row"><span class="info-val">Signature Lagoon Access</span></div>
+                <div class="info-row"><span class="info-val">IN 15:00 / OUT 12:00</span></div>
+
+                <div class="box-ui facility-box">
+                    <strong>🏰 주요 부대시설</strong>
+                    <div class="facility-list">
+                        <div class="facility-tag">
+                            <b>Ocean Pool</b><span class="facility-desc">메인 비치 풀장 (07-19)</span>
+                        </div>
+                        <div class="facility-tag">
+                            <b>Lagoon Pool</b><span class="facility-desc">객실 바로 연결</span>
+                        </div>
+                        <div class="facility-tag">
+                            <b>The Cafe</b><span class="facility-desc">조식 뷔페 (07-11)</span>
+                        </div>
+                        <div class="facility-tag">
+                            <b>Mulia Spa</b><span class="facility-desc">럭셔리 스파 (09-21)</span>
+                        </div>
+                        <div class="facility-tag">
+                            <b>Fitness</b><span class="facility-desc">피트니스 센터 (06-22)</span>
+                        </div>
+                        <div class="facility-tag">
+                            <b>Tennis</b><span class="facility-desc">테니스 코트</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box-ui tip-box">
+                    <strong>💡 Honey Tip & Tipping</strong>
+                    • <b>라군 룸 특징:</b> 베란다 문을 열면 바로 수영장과 연결됩니다. 튜브를 미리 챙기면 좋습니다.<br>
+                    • <b>주의사항:</b> 1층이고 물가라 모기가 있을 수 있으니 방충망을 꼭 닫으세요.<br>
+                    • <b>조식:</b> 'The Cafe' 뷔페가 종류가 엄청 많고 퀄리티가 좋습니다. 한식 코너도 있습니다.<br>
+                    • <b>팁:</b> 룸 클리닝 시 베개 위에 20k 루피아 정도 두시면 좋습니다.
+                </div>
+
+                <div class="box-ui res-box">
+                    <strong>📅 Must Do / 예약</strong>
+                    ☑️ Soleil 디너 (야외석) 예약 필수<br>
+                    ☑️ 오션 풀 인생샷 (거대 조각상 앞)
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="tab-info">
+        <a href="https://maps.app.goo.gl/HrswfBCkdcDLJeAq9" target="_blank" class="google-map-btn">🗺️ 구글 맵 즐겨찾기 전체 보기</a>
+
+        <div class="card">
+            <div class="section-title">💸 예산 추천안 (Total 800)</div>
+            
+            <div class="budget-bar-row"><span>숙박비 (350만)</span><span>44%</span></div>
+            <div class="budget-progress"><div class="budget-fill bg-2" style="width:44%"></div></div>
+
+            <div class="budget-bar-row"><span>항공권 (240만)</span><span>30%</span></div>
+            <div class="budget-progress"><div class="budget-fill bg-1" style="width:30%"></div></div>
+
+            <div class="budget-bar-row"><span>식비/경비 (100만)</span><span>12%</span></div>
+            <div class="budget-progress"><div class="budget-fill bg-3" style="width:12%"></div></div>
+
+            <div class="budget-bar-row"><span>쇼핑/기타 (110만)</span><span>14%</span></div>
+            <div class="budget-progress"><div class="budget-fill bg-4" style="width:14%"></div></div>
+        </div>
+
+        <div class="card">
+            <div class="section-title">📊 실제 지출 요약 (입력값)</div>
+            <table class="pretty-table">
+                <thead>
+                    <tr><th>일자</th><th style="text-align:right">예상 지출</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Day 1</td><td class="price-col" id="sum-day-1">0</td></tr>
+                    <tr><td>Day 2</td><td class="price-col" id="sum-day-2">0</td></tr>
+                    <tr><td>Day 3</td><td class="price-col" id="sum-day-3">0</td></tr>
+                    <tr><td>Day 4</td><td class="price-col" id="sum-day-4">0</td></tr>
+                    <tr><td>Day 5</td><td class="price-col" id="sum-day-5">0</td></tr>
+                    <tr><td>Day 6</td><td class="price-col" id="sum-day-6">0</td></tr>
+                    <tr class="total-row">
+                        <td>현지 지출 합계</td>
+                        <td class="price-col" id="local-total-display">0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <div class="section-title">💱 환율 계산기 (x 0.087)</div>
+            <input type="number" id="calcInput" style="width:100%; padding:10px; border:1px solid #ddd; border-radius:6px; font-size:16px; margin-bottom:10px;" placeholder="루피아 입력" oninput="calculateSimple()">
+            <div id="calcResult" style="text-align:center; font-size:18px; font-weight:800; color:var(--primary);">0 원</div>
+        </div>
+    </main>
+
+    <nav class="bottom-nav">
+        <div class="nav-item active" onclick="switchMainTab('schedule')">
+            <span class="nav-icon">📅</span>
+            <span class="nav-label">일정표</span>
+        </div>
+        <div class="nav-item" onclick="switchMainTab('hotels')">
+            <span class="nav-icon">🏨</span>
+            <span class="nav-label">숙소</span>
+        </div>
+        <div class="nav-item" onclick="switchMainTab('info')">
+            <span class="nav-icon">💰</span>
+            <span class="nav-label">정보 & 예산</span>
+        </div>
+    </nav>
+
+    <script>
+        // --- Core Logic ---
+        let budgetData = { 1: [], 2: [], 3: [], 4: [], 5: [], 6: [] };
+
+        function init() {
+            loadData();
+            renderAllBudgets();
+            calculateTotals();
+        }
+
+        function addBudgetRow(day) {
+            budgetData[day].push({ cat: '식비', desc: '', cost: 0 });
+            saveData();
+            renderBudget(day);
+            calculateTotals();
+        }
+
+        function removeBudgetRow(day, index) {
+            budgetData[day].splice(index, 1);
+            saveData();
+            renderBudget(day);
+            calculateTotals();
+        }
+
+        function updateBudgetRow(day, index, field, value) {
+            budgetData[day][index][field] = value;
+            saveData();
+            if (field === 'cost') {
+                renderBudget(day); // Re-render to update day total
+                calculateTotals();
+            }
+        }
+
+        function renderBudget(day) {
+            const container = document.getElementById(`budget-list-${day}`);
+            container.innerHTML = '';
+            let daySum = 0;
+
+            budgetData[day].forEach((item, index) => {
+                const cost = parseInt(item.cost) || 0;
+                daySum += cost;
+
+                const div = document.createElement('div');
+                div.className = 'budget-list-item';
+                div.innerHTML = `
+                    <select class="budget-select" onchange="updateBudgetRow(${day}, ${index}, 'cat', this.value)">
+                        <option value="식비" ${item.cat === '식비' ? 'selected' : ''}>식비</option>
+                        <option value="투어" ${item.cat === '투어' ? 'selected' : ''}>투어</option>
+                        <option value="이동" ${item.cat === '이동' ? 'selected' : ''}>이동</option>
+                        <option value="쇼핑" ${item.cat === '쇼핑' ? 'selected' : ''}>쇼핑</option>
+                        <option value="팁" ${item.cat === '팁' ? 'selected' : ''}>팁</option>
+                        <option value="기타" ${item.cat === '기타' ? 'selected' : ''}>기타</option>
+                    </select>
+                    <input type="text" class="budget-input" placeholder="내용" value="${item.desc}" oninput="updateBudgetRow(${day}, ${index}, 'desc', this.value)">
+                    <input type="number" class="budget-num" placeholder="금액" value="${cost === 0 ? '' : cost}" onchange="updateBudgetRow(${day}, ${index}, 'cost', this.value)">
+                    <button class="del-btn" onclick="removeBudgetRow(${day}, ${index})">X</button>
+                `;
+                container.appendChild(div);
+            });
+            document.getElementById(`total-${day}`).innerText = formatNum(daySum) + " 원";
+        }
+
+        function renderAllBudgets() { for(let i=1; i<=6; i++) renderBudget(i); }
+
+        function calculateTotals() {
+            let localTotal = 0;
+            for (let i = 1; i <= 6; i++) {
+                let daySum = budgetData[i].reduce((sum, item) => sum + (parseInt(item.cost) || 0), 0);
+                document.getElementById(`sum-day-${i}`).innerText = formatNum(daySum);
+                localTotal += daySum;
+            }
+            document.getElementById('local-total-display').innerText = formatNum(localTotal) + " 원";
+        }
+
+        function saveData() { localStorage.setItem('baliBudgetV3', JSON.stringify(budgetData)); }
+        function loadData() {
+            const saved = localStorage.getItem('baliBudgetV3');
+            if (saved) budgetData = JSON.parse(saved);
+        }
+
+        function formatNum(n) { return parseInt(n).toLocaleString(); }
+        
+        // --- UI Navigation ---
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('show');
+        }
+
+        function switchMainTab(tabName) {
+            document.querySelectorAll('main').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            const daySelector = document.getElementById('day-selector');
+
+            if (tabName === 'schedule') {
+                document.getElementById('tab-schedule').classList.add('active');
+                daySelector.style.display = 'flex';
+                document.querySelectorAll('.nav-item')[0].classList.add('active');
+            } else if (tabName === 'hotels') {
+                document.getElementById('tab-hotels').classList.add('active');
+                daySelector.style.display = 'none';
+                document.querySelectorAll('.nav-item')[1].classList.add('active');
+            } else if (tabName === 'info') {
+                document.getElementById('tab-info').classList.add('active');
+                daySelector.style.display = 'none';
+                document.querySelectorAll('.nav-item')[2].classList.add('active');
+                calculateTotals(); // Refresh
+            }
+        }
+
+        function showDay(dayNum) {
+            document.querySelectorAll('.day-content').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.day-chip').forEach(el => el.classList.remove('active'));
+            document.getElementById('day-' + dayNum).style.display = 'block';
+            document.querySelectorAll('.day-chip')[dayNum - 1].classList.add('active');
+        }
+
+        function toggleAccordion(id) {
+            document.getElementById(id).classList.toggle('open');
+            const arrow = document.getElementById('arrow-' + id);
+            if(arrow) arrow.classList.toggle('open');
+        }
+
+        function toggleBudget(day) {
+            document.getElementById('ba-' + day).classList.toggle('show');
+        }
+
+        function calculateSimple() {
+            const val = document.getElementById('calcInput').value;
+            document.getElementById('calcResult').innerText = formatNum(Math.round(val * 0.087)) + " 원";
+        }
+
+        // Init
+        init();
+        showDay(1);
+    </script>
+</body>
+</html>
