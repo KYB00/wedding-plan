@@ -11,7 +11,7 @@
             --bg-gray: #f4f6f8;
             --white: #ffffff;
             --text-main: #333333;
-            --text-sub: #999999;
+            --text-sub: #7f8c8d;
             --shadow: 0 4px 15px rgba(0,0,0,0.05);
             --safe-area-bottom: env(safe-area-inset-bottom);
         }
@@ -23,24 +23,16 @@
         header {
             background-color: var(--white);
             padding: 15px 20px 10px 20px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            position: sticky; top: 0; z-index: 100;
             box-shadow: 0 2px 10px rgba(0,0,0,0.03);
         }
-        
         .header-top { display: flex; justify-content: space-between; align-items: flex-start; }
         .app-title { font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 5px; }
         .trip-title { font-size: 22px; font-weight: 800; color: var(--primary); margin: 0; }
         .trip-date { font-size: 13px; color: #666; margin-top: 5px; }
+        .hamburger-btn { font-size: 24px; color: var(--primary); cursor: pointer; padding: 5px; margin-top: 5px; }
 
-        /* --- Hamburger Menu Icon --- */
-        .hamburger-btn {
-            font-size: 24px; color: var(--primary); cursor: pointer; padding: 5px;
-            margin-top: 5px;
-        }
-
-        /* --- Mobile Menu Dropdown --- */
+        /* --- Mobile Menu --- */
         .mobile-menu {
             display: none; position: absolute; top: 100%; left: 0; right: 0;
             background: var(--white); box-shadow: 0 10px 20px rgba(0,0,0,0.1);
@@ -48,49 +40,35 @@
         }
         .mobile-menu.show { display: block; animation: slideDown 0.3s ease; }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-        
         .menu-item {
             padding: 15px 20px; font-size: 16px; font-weight: 600; color: var(--primary);
             border-bottom: 1px solid #f5f5f5; display: flex; align-items: center; cursor: pointer;
         }
         .menu-item:last-child { border-bottom: none; }
-        .menu-item:active { background-color: #f9f9f9; }
         .menu-icon { margin-right: 10px; font-size: 18px; width: 25px; text-align: center; }
 
         /* --- Day Selector --- */
-        .day-scroll-wrapper {
-            margin-top: 15px;
-            overflow-x: auto;
-            white-space: nowrap;
-            padding-bottom: 5px;
-            -ms-overflow-style: none; scrollbar-width: none;
-        }
+        .day-scroll-wrapper { margin-top: 15px; overflow-x: auto; white-space: nowrap; padding-bottom: 5px; -ms-overflow-style: none; scrollbar-width: none; }
         .day-scroll-wrapper::-webkit-scrollbar { display: none; }
-        
         .day-chip {
             display: inline-block; padding: 8px 16px; margin-right: 8px;
             background: #eef2f5; border-radius: 20px;
-            font-size: 13px; font-weight: 600; color: #7f8c8d;
-            cursor: pointer; transition: all 0.2s;
+            font-size: 13px; font-weight: 600; color: #7f8c8d; cursor: pointer; transition: all 0.2s;
         }
-        .day-chip.active {
-            background-color: var(--primary); color: white;
-            box-shadow: 0 4px 10px rgba(44, 62, 80, 0.3);
-        }
+        .day-chip.active { background-color: var(--primary); color: white; box-shadow: 0 4px 10px rgba(44, 62, 80, 0.3); }
 
-        /* --- Content Container --- */
+        /* --- Content Areas --- */
         .content-area { padding: 20px; display: none; animation: fadeIn 0.3s ease; }
         .content-area.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- Timeline & Cards --- */
+        /* --- Timeline Styles --- */
         .timeline-item { display: flex; margin-bottom: 25px; position: relative; }
         .timeline-item::before {
             content: ''; position: absolute; left: 18px; top: 30px; bottom: -35px;
             width: 2px; background: #e0e0e0; z-index: 0;
         }
         .timeline-item:last-child::before { display: none; }
-
         .time-box { min-width: 40px; text-align: center; padding-top: 5px; position: relative; z-index: 1; }
         .dot {
             width: 12px; height: 12px; background: var(--accent);
@@ -98,66 +76,70 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin: 0 auto;
         }
         .time-text { font-size: 12px; font-weight: 700; color: var(--primary); margin-top: 5px; display: block; }
-
         .event-card {
             background: var(--white); border-radius: 16px; padding: 15px;
             margin-left: 15px; flex: 1; box-shadow: var(--shadow); position: relative;
         }
-        
-        .cat-badge {
-            display: inline-block; font-size: 10px; font-weight: 700; color: var(--white);
-            padding: 2px 6px; border-radius: 4px; margin-left: 6px; vertical-align: middle; transform: translateY(-2px);
-        }
-        .cat-food { background-color: #e17055; }
-        .cat-tour { background-color: #0984e3; }
-        .cat-shop { background-color: #fdcb6e; }
-        .cat-relax { background-color: #00b894; }
-        .cat-move { background-color: #636e72; }
-        .cat-hotel { background-color: #2d3436; }
-        
         .event-title { font-size: 16px; font-weight: 700; color: var(--primary); margin: 0 0 5px 0; }
         .event-desc { font-size: 14px; color: #555; line-height: 1.4; margin: 0; }
         
+        .cat-badge { display: inline-block; font-size: 10px; font-weight: 700; color: var(--white); padding: 2px 6px; border-radius: 4px; margin-left: 6px; vertical-align: middle; transform: translateY(-2px); }
+        .cat-food { background-color: #e17055; } .cat-tour { background-color: #0984e3; }
+        .cat-shop { background-color: #fdcb6e; } .cat-relax { background-color: #00b894; }
+        .cat-move { background-color: #636e72; } .cat-hotel { background-color: #2d3436; }
+
         .address-link {
             display: block; font-size: 12px; color: #b2bec3; text-decoration: none; margin-top: 6px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="%23b2bec3"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>') no-repeat left center;
-            padding-left: 16px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="%23b2bec3"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>') no-repeat left center; padding-left: 16px;
         }
+        .tip-box { background: #f1f9ff; border: 1px solid #dbe9f5; border-radius: 8px; padding: 10px; margin-top: 10px; font-size: 12px; color: #2980b9; display: flex; gap: 6px; align-items: flex-start; }
 
-        .tip-box {
-            background: #f1f9ff; border: 1px solid #dbe9f5;
-            border-radius: 8px; padding: 10px; margin-top: 10px;
-            font-size: 12px; color: #2980b9; display: flex; gap: 6px; align-items: flex-start;
-        }
-
-        /* --- Info View --- */
+        /* --- Info View Styles --- */
         .info-view { display: none; padding: 20px; animation: fadeIn 0.3s; }
         .info-view.active { display: block; }
         
-        .hotel-card {
-            background: var(--primary); color: #fff; border-radius: 16px; overflow: hidden;
-            margin-bottom: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-        }
-        .hotel-img-placeholder {
-            height: 120px; background: linear-gradient(45deg, #34495e, #2c3e50);
-            display: flex; align-items: center; justify-content: center; font-size: 30px;
-        }
+        .hotel-card { background: var(--primary); color: #fff; border-radius: 16px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+        .hotel-img-placeholder { height: 120px; background: linear-gradient(45deg, #34495e, #2c3e50); display: flex; align-items: center; justify-content: center; font-size: 30px; }
         .hotel-body { padding: 20px; }
         .hotel-name { font-size: 18px; font-weight: 700; color: var(--accent); margin-bottom: 5px; }
         
+        /* Flight Ticket Card */
+        .flight-card {
+            background: white; border-radius: 12px; padding: 20px;
+            box-shadow: var(--shadow); margin-bottom: 20px;
+            border-left: 5px solid var(--accent);
+        }
+        .flight-route { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .route-code { font-size: 24px; font-weight: 800; color: var(--primary); }
+        .flight-time { font-size: 14px; font-weight: 600; color: #333; }
+        .flight-detail { font-size: 13px; color: #666; margin-top: 5px; line-height: 1.5; }
+        .flight-seat { background: #eef2f5; padding: 4px 8px; border-radius: 4px; font-weight: 700; font-size: 12px; color: var(--primary); display: inline-block; margin-top: 5px; }
+
+        /* Budget Table */
+        .budget-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 10px; }
+        .budget-table th { background: #f0f0f0; padding: 8px; text-align: left; font-weight: 600; color: #555; }
+        .budget-table td { border-bottom: 1px solid #eee; padding: 8px 4px; vertical-align: middle; }
+        .input-mini { width: 100%; border: 1px solid #ddd; padding: 6px; border-radius: 4px; font-size: 13px; }
+        .krw-display { font-size: 12px; color: var(--accent); font-weight: 600; display: block; margin-top: 2px; }
+        .select-mini { width: 100%; border: 1px solid #ddd; padding: 6px; border-radius: 4px; font-size: 12px; }
+
+        /* Currency Tools */
+        .currency-box { background: white; padding: 15px; border-radius: 12px; box-shadow: var(--shadow); margin-top: 20px; }
+        .currency-table { width: 100%; font-size: 12px; text-align: center; border-collapse: collapse; margin-top: 10px; }
+        .currency-table th, .currency-table td { border: 1px solid #eee; padding: 6px; }
+        .currency-table th { background: #f9f9f9; color: #555; }
+        
+        .calc-input { width: 100%; padding: 12px; border: 2px solid var(--accent); border-radius: 8px; font-size: 16px; margin-top: 10px; text-align: center; }
+        .calc-result { text-align: center; font-size: 18px; font-weight: 800; color: var(--primary); margin-top: 10px; }
+
         .google-map-btn {
             display: flex; align-items: center; justify-content: center;
             background-color: var(--accent); color: white;
             width: 100%; padding: 16px; border-radius: 14px;
             text-decoration: none; font-weight: 700; font-size: 15px;
-            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
-            margin-bottom: 25px; transition: transform 0.1s;
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3); margin-bottom: 25px;
         }
-        .google-map-btn:active { transform: scale(0.98); }
-
         .section-title { font-size: 18px; font-weight: 800; margin-bottom: 15px; color: var(--primary); border-left: 4px solid var(--accent); padding-left: 10px; }
-        .flight-input { width: 100%; padding: 14px; margin-bottom: 12px; border: 1px solid #ddd; border-radius: 10px; font-size: 14px; background: #fff; }
-        .save-btn { width: 100%; background: var(--primary); color: white; border: none; padding: 15px; border-radius: 12px; font-weight: 700; font-size: 16px; margin-top: 5px; }
 
         /* --- Bottom Nav --- */
         .bottom-nav {
@@ -172,27 +154,13 @@
         .nav-icon { font-size: 22px; display: block; margin-bottom: 3px; }
         .nav-label { font-size: 10px; font-weight: 600; }
 
-        /* --- Top Button (New) --- */
+        /* --- Top Button --- */
         #scrollTopBtn {
-            display: none; /* Hidden by default */
-            position: fixed;
-            bottom: 95px; /* Above bottom nav */
-            left: 20px;   /* Left side */
-            z-index: 999;
-            width: 45px;
-            height: 45px;
-            border: none;
-            outline: none;
-            background-color: rgba(44, 62, 80, 0.7); /* Primary with opacity */
-            color: white;
-            cursor: pointer;
-            border-radius: 50%;
-            font-size: 18px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            transition: opacity 0.3s;
+            display: none; position: fixed; bottom: 95px; left: 20px; z-index: 999;
+            width: 45px; height: 45px; border: none; outline: none;
+            background-color: rgba(44, 62, 80, 0.7); color: white; cursor: pointer;
+            border-radius: 50%; font-size: 18px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: opacity 0.3s;
         }
-        #scrollTopBtn:hover { background-color: rgba(44, 62, 80, 0.9); }
-
     </style>
 </head>
 <body>
@@ -206,13 +174,11 @@
             </div>
             <div class="hamburger-btn" onclick="toggleMenu()">☰</div>
         </div>
-
         <div class="mobile-menu" id="mobileMenu">
             <div class="menu-item" onclick="switchTab('schedule'); toggleMenu();"><span class="menu-icon">📅</span> 일정표</div>
             <div class="menu-item" onclick="switchTab('hotels'); toggleMenu();"><span class="menu-icon">🏨</span> 숙소</div>
             <div class="menu-item" onclick="switchTab('info'); toggleMenu();"><span class="menu-icon">ℹ️</span> 정보 & 예산</div>
         </div>
-
         <div class="day-scroll-wrapper" id="day-selector">
             <div class="day-chip active" onclick="showDay(1)">Day 1</div>
             <div class="day-chip" onclick="showDay(2)">Day 2</div>
@@ -226,7 +192,6 @@
     <button onclick="scrollToTop()" id="scrollTopBtn" title="Go to top">⬆</button>
 
     <main id="view-schedule">
-        
         <div id="day-1" class="content-area active">
             <div class="timeline-item">
                 <div class="time-box"><div class="dot"></div><span class="time-text">22:10</span></div>
@@ -253,7 +218,7 @@
                 <div class="event-card">
                     <h3 class="event-title">알릴라 조식 <span class="cat-badge cat-food">식당</span></h3>
                     <p class="event-desc">메뉴판 보고 무제한 주문 (퀄리티 최상)</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Alila+Villas+Uluwatu+CIRE" target="_blank" class="address-link">Alila Villas Uluwatu (CIRE Restaurant)</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Alila+Villas+Uluwatu" target="_blank" class="address-link">Alila Villas Uluwatu (CIRE Restaurant)</a>
                 </div>
             </div>
             <div class="timeline-item">
@@ -261,7 +226,7 @@
                 <div class="event-card">
                     <h3 class="event-title">빠당빠당 비치 <span class="cat-badge cat-tour">관광</span></h3>
                     <p class="event-desc">줄리아 로버츠 '먹고 기도하고 사랑하라' 촬영지</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Padang+Padang+Beach+Bali" target="_blank" class="address-link">Jl. Labuansait, Pecatu, Bali</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Padang+Padang+Beach" target="_blank" class="address-link">Jl. Labuansait, Pecatu, Bali</a>
                 </div>
             </div>
             <div class="timeline-item">
@@ -286,7 +251,7 @@
                 <div class="event-card">
                     <h3 class="event-title">Sundays Beach Club <span class="cat-badge cat-relax">휴식</span></h3>
                     <p class="event-desc">카약/스노클링 무료. 예쁜 옷 입고 인생샷 남기기 📸</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Sundays+Beach+Club+Bali" target="_blank" class="address-link">Jl. Pantai Selatan Gau, Ungasan</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Sundays+Beach+Club" target="_blank" class="address-link">Jl. Pantai Selatan Gau, Ungasan</a>
                 </div>
             </div>
             <div class="timeline-item">
@@ -367,7 +332,7 @@
                 <div class="event-card">
                     <h3 class="event-title">발리 사파리 투어 <span class="cat-badge cat-tour">관광</span></h3>
                     <p class="event-desc">프라이빗 투어 & 호랑이 식당(Tsavo Lion) 점심</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Tsavo+Lion+Restaurant" target="_blank" class="address-link">Jl. Prof. Dr. Ida Bagus Mantra</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Bali+Safari+and+Marine+Park" target="_blank" class="address-link">Jl. Prof. Dr. Ida Bagus Mantra</a>
                 </div>
             </div>
             <div class="timeline-item">
@@ -375,7 +340,7 @@
                 <div class="event-card">
                     <h3 class="event-title">The Mulia (Suite) <span class="cat-badge cat-hotel">숙소</span></h3>
                     <p class="event-desc">누사두아 입성. 스위트룸 체크인.</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=The+Mulia+Nusa+Dua" target="_blank" class="address-link">Jl. Raya Nusa Dua Selatan</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=The+Mulia+Bali" target="_blank" class="address-link">Jl. Raya Nusa Dua Selatan</a>
                 </div>
             </div>
             <div class="timeline-item">
@@ -383,7 +348,7 @@
                 <div class="event-card">
                     <h3 class="event-title">무제한 칵테일 아워 <span class="cat-badge cat-food">식당</span></h3>
                     <p class="event-desc">더 라운지에서 술과 타파스 무제한 즐기기 🥂</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=The+Lounge+at+The+Mulia" target="_blank" class="address-link">The Lounge at The Mulia</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=The+Mulia+Bali" target="_blank" class="address-link">The Lounge at The Mulia</a>
                 </div>
             </div>
             <div class="timeline-item">
@@ -391,7 +356,7 @@
                 <div class="event-card">
                     <h3 class="event-title">Soleil (솔레일) <span class="cat-badge cat-food">식당</span></h3>
                     <p class="event-desc">★ 호텔 내 위치. 스테이크 & 해산물 파인 다이닝.</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Soleil+at+The+Mulia" target="_blank" class="address-link">Inside The Mulia Resort (Beachfront)</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Soleil+Bali" target="_blank" class="address-link">Inside The Mulia Resort (Beachfront)</a>
                     <div class="tip-box">💡 Tip: 체크인 시 <b>'Outdoor Table'</b>로 예약 요청하세요!</div>
                 </div>
             </div>
@@ -403,7 +368,7 @@
                 <div class="event-card">
                     <h3 class="event-title">라운지 조식 <span class="cat-badge cat-food">식당</span></h3>
                     <p class="event-desc">한우 스테이크가 나오는 조식 클라스 🥩</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=The+Lounge+at+The+Mulia" target="_blank" class="address-link">The Lounge</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=The+Mulia+Bali" target="_blank" class="address-link">The Lounge</a>
                 </div>
             </div>
             <div class="timeline-item">
@@ -411,7 +376,7 @@
                 <div class="event-card">
                     <h3 class="event-title">오션 프론트 풀 <span class="cat-badge cat-relax">휴식</span></h3>
                     <p class="event-desc">더 물리아 전용 풀장에서 황제 호캉스</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=The+Mulia+Oceanfront+Pool" target="_blank" class="address-link">The Mulia Oceanfront Pool</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=The+Mulia+Bali" target="_blank" class="address-link">The Mulia Oceanfront Pool</a>
                 </div>
             </div>
             <div class="timeline-item">
@@ -428,7 +393,7 @@
                 <div class="event-card">
                     <h3 class="event-title">애프터눈 티 <span class="cat-badge cat-food">식당</span></h3>
                     <p class="event-desc">라운지에서 무료 제공. 당 충전.</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=The+Lounge+at+The+Mulia" target="_blank" class="address-link">The Lounge</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=The+Mulia+Bali" target="_blank" class="address-link">The Lounge</a>
                 </div>
             </div>
             <div class="timeline-item">
@@ -436,7 +401,7 @@
                 <div class="event-card">
                     <h3 class="event-title">물리아 럭셔리 스파 <span class="cat-badge cat-relax">마사지</span></h3>
                     <p class="event-desc">여행 피로 풀기</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Mulia+Spa+Bali" target="_blank" class="address-link">Mulia Spa</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Mulia+Spa" target="_blank" class="address-link">Mulia Spa</a>
                 </div>
             </div>
             <div class="timeline-item">
@@ -496,21 +461,63 @@
             <span>🗺️ 구글 맵 즐겨찾기 전체 보기</span>
         </a>
 
-        <div style="background:white; padding:20px; border-radius:16px; box-shadow:var(--shadow); margin-top:20px;">
-            <div class="section-title">항공권 정보</div>
-            <p style="font-weight:bold; margin-bottom:8px; font-size:14px; color:#555;">출국편 (Incheon ➡ Bali)</p>
-            <input type="text" class="flight-input" placeholder="날짜 및 시간 입력 (10/19)">
-            <input type="text" class="flight-input" placeholder="편명 입력 (예: KE629)">
+        <div class="flight-card">
+            <div class="section-title" style="border:none; padding:0; margin-bottom:10px; font-size:16px;">✈️ 대한항공 (Korean Air)</div>
             
-            <p style="font-weight:bold; margin-bottom:8px; margin-top:20px; font-size:14px; color:#555;">귀국편 (Bali ➡ Incheon)</p>
-            <input type="text" class="flight-input" placeholder="날짜 및 시간 입력 (10/24)">
-            <input type="text" class="flight-input" placeholder="편명 입력 (예: KE630)">
-            <button class="save-btn" onclick="alert('저장되었습니다! (기기에만 임시 저장)')">정보 저장하기</button>
+            <div class="flight-route">
+                <span class="route-code">ICN</span>
+                <span style="color:#999">➡</span>
+                <span class="route-code">DPS</span>
+            </div>
+            <div class="flight-time">10/19 (월) 16:10 → 22:10</div>
+            <div class="flight-detail">좌석: <span class="flight-seat">37H, 37J</span></div>
+            <div style="font-size:11px; color:#aaa; margin-top:3px;">No. 1802355539125</div>
+            
+            <hr style="border:0; border-top:1px dashed #eee; margin:15px 0;">
+
+            <div class="flight-route">
+                <span class="route-code">DPS</span>
+                <span style="color:#999">➡</span>
+                <span class="route-code">ICN</span>
+            </div>
+            <div class="flight-time">10/24 (토) 01:10 → 09:25</div>
+            <div class="flight-detail">좌석: <span class="flight-seat">43A, 43B</span></div>
+            <div style="font-size:11px; color:#aaa; margin-top:3px;">No. 1802355539124</div>
         </div>
         
         <div style="background:white; padding:20px; border-radius:16px; box-shadow:var(--shadow); margin-top:20px;">
-             <div class="section-title">예산 메모 (Budget)</div>
-             <textarea class="flight-input" rows="5" placeholder="예상 경비나 지출 내역을 자유롭게 메모하세요."></textarea>
+             <div class="section-title">💸 예산 관리표 (Budget)</div>
+             <p style="font-size:12px; color:#666; margin-bottom:10px;">루피아(IDR) 입력 시 원화(KRW) 자동 계산</p>
+             
+             <table class="budget-table">
+                <thead>
+                    <tr>
+                        <th style="width:20%">종류</th>
+                        <th style="width:30%">금액(IDR)</th>
+                        <th style="width:20%">KRW</th>
+                        <th>비고</th>
+                    </tr>
+                </thead>
+                <tbody id="budgetBody">
+                    </tbody>
+             </table>
+             <button onclick="addBudgetRow()" style="background:#f0f0f0; border:none; width:100%; padding:10px; margin-top:10px; border-radius:8px; font-weight:600; color:#555;">+ 항목 추가하기</button>
+        </div>
+
+        <div class="currency-box">
+            <div class="section-title">💱 환율 계산기</div>
+            <input type="number" id="calcInput" class="calc-input" placeholder="루피아(IDR) 입력" oninput="calculateSimple()">
+            <div id="calcResult" class="calc-result">0 원</div>
+
+            <h4 style="margin:20px 0 10px 0; font-size:14px; color:#555;">💡 환율 조견표 (x 0.087 기준)</h4>
+            <table class="currency-table">
+                <tr><th>IDR (루피아)</th><th>KRW (원)</th></tr>
+                <tr><td>10,000 (10k)</td><td>약 870원</td></tr>
+                <tr><td>50,000 (50k)</td><td>약 4,350원</td></tr>
+                <tr><td>100,000 (100k)</td><td>약 8,700원</td></tr>
+                <tr><td>500,000 (500k)</td><td>약 43,500원</td></tr>
+                <tr><td>1,000,000 (1juta)</td><td>약 87,000원</td></tr>
+            </table>
         </div>
     </main>
 
@@ -525,18 +532,67 @@
         </div>
         <div class="nav-item" onclick="switchTab('info')">
             <span class="nav-icon">ℹ️</span>
-            <span class="nav-label">정보</span>
+            <span class="nav-label">정보 & 예산</span>
         </div>
     </nav>
 
     <script>
-        // Toggle Hamburger Menu
-        function toggleMenu() {
-            var menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('show');
+        // --- Currency Logic (Rate: 100 IDR = 8.7 KRW approx) ---
+        const RATE = 0.087; 
+
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
 
-        // Tab Switching Logic
+        // 1. Budget Table Logic
+        function addBudgetRow() {
+            const tbody = document.getElementById('budgetBody');
+            const row = document.createElement('tr');
+            
+            row.innerHTML = `
+                <td>
+                    <select class="select-mini">
+                        <option>식비</option>
+                        <option>투어</option>
+                        <option>이동</option>
+                        <option>쇼핑</option>
+                        <option>기타</option>
+                    </select>
+                </td>
+                <td><input type="number" class="input-mini" placeholder="0" oninput="updateRowKrw(this)"></td>
+                <td><span class="krw-display">0</span></td>
+                <td><input type="text" class="input-mini" placeholder="메모"></td>
+            `;
+            tbody.appendChild(row);
+        }
+
+        function updateRowKrw(input) {
+            const idr = input.value;
+            const krwSpan = input.parentElement.nextElementSibling.querySelector('.krw-display');
+            const krw = Math.round(idr * RATE);
+            krwSpan.innerText = formatNumber(krw);
+        }
+
+        // Initialize with 3 rows
+        addBudgetRow();
+        addBudgetRow();
+        addBudgetRow();
+
+
+        // 2. Simple Calculator Logic
+        function calculateSimple() {
+            const input = document.getElementById('calcInput').value;
+            const resultDiv = document.getElementById('calcResult');
+            const krw = Math.round(input * RATE);
+            resultDiv.innerText = formatNumber(krw) + " 원";
+        }
+
+
+        // --- UI Logic (Menu, Tabs, Scroll) ---
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('show');
+        }
+
         function switchTab(tabName) {
             document.getElementById('view-schedule').style.display = 'none';
             document.getElementById('view-hotels').classList.remove('active');
@@ -557,7 +613,6 @@
             }
         }
 
-        // Day Switching Logic
         function showDay(dayNum) {
             document.querySelectorAll('.content-area').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.day-chip').forEach(el => el.classList.remove('active'));
@@ -565,19 +620,14 @@
             document.querySelectorAll('.day-chip')[dayNum - 1].classList.add('active');
         }
 
-        // Scroll to Top Logic
         var topBtn = document.getElementById("scrollTopBtn");
-
-        window.onscroll = function() {scrollFunction()};
-
-        function scrollFunction() {
+        window.onscroll = function() {
             if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
                 topBtn.style.display = "block";
             } else {
                 topBtn.style.display = "none";
             }
-        }
-
+        };
         function scrollToTop() {
             window.scrollTo({top: 0, behavior: 'smooth'});
         }
