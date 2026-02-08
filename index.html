@@ -8,7 +8,7 @@
         :root {
             --primary: #2c3e50;       /* 메인: 다크 네이비 */
             --accent: #2980b9;        /* 포인트: 세련된 블루 */
-            --kal-navy: #00256c;      /* 대한항공 네이비 (항공권 박스) */
+            --kal-navy: #00256c;      /* 대한항공 네이비 */
             --bg-gray: #f4f7f6;       /* 배경 */
             --white: #ffffff;
             --text-main: #333333;
@@ -20,8 +20,8 @@
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background-color: var(--bg-gray); color: var(--text-main); padding-bottom: 100px; }
 
-        /* --- Header & Hamburger --- */
-        header { background-color: var(--white); padding: 15px 20px 10px 20px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        /* --- Header --- */
+        header { background-color: var(--white); padding: 15px 20px 5px 20px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
         .header-row { display: flex; justify-content: space-between; align-items: flex-start; }
         .trip-title { font-size: 20px; font-weight: 800; color: var(--primary); margin: 0; }
         .trip-date { font-size: 12px; color: #888; margin-top: 2px; }
@@ -114,8 +114,10 @@
         .tip-box { background: #fffbe6; border: 1px solid #ffe58f; color: #856404; }
         .res-box { background: #e6f7ff; border: 1px solid #91d5ff; color: #0050b3; }
         .facility-box { background: #f9f9f9; border: 1px solid #eee; color: #555; }
+        
         .facility-list { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 5px; }
-        .facility-tag { background: white; padding: 5px 8px; border-radius: 4px; border: 1px solid #eee; font-size: 12px; text-align: center;}
+        .facility-tag { background: white; padding: 5px 8px; border-radius: 4px; border: 1px solid #eee; font-size: 12px; }
+        .facility-desc { display: block; font-size: 11px; color: #888; margin-top: 2px; }
 
         /* --- Info Tab --- */
         .google-map-btn { display: block; width: 100%; padding: 15px; background: var(--accent); color: white; text-align: center; border-radius: 12px; font-weight: 700; text-decoration: none; margin-bottom: 25px; box-shadow: 0 4px 10px rgba(41, 128, 185, 0.3); }
@@ -337,13 +339,6 @@
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">13:30</span></div>
-                    <div class="event-content">
-                        <div class="event-title">동물 쇼 / 아궁 쇼 <span class="tag">관광</span></div>
-                        <div class="event-desc">공연 관람 후 15:00 이동 시작</div>
-                    </div>
-                </div>
-                <div class="timeline-item">
                     <div class="time-col"><div class="dot"></div><span class="time-text">16:30</span></div>
                     <div class="event-content">
                         <div class="event-title">The Mulia 체크인 <span class="tag">숙소</span></div>
@@ -467,12 +462,24 @@
                 <div class="box-ui facility-box">
                     <strong>🏰 주요 부대시설</strong>
                     <div class="facility-list">
-                        <span class="facility-tag">CIRE (조식/양식)</span>
-                        <span class="facility-tag">The Warung (인니식)</span>
-                        <span class="facility-tag">Main Pool (24H)</span>
-                        <span class="facility-tag">Gym & Yoga (24H)</span>
-                        <span class="facility-tag">Spa Alila (09-21)</span>
-                        <span class="facility-tag">Library (24H)</span>
+                        <div class="facility-tag">
+                            <b>CIRE</b><span class="facility-desc">조식/양식 (07-23)</span>
+                        </div>
+                        <div class="facility-tag">
+                            <b>The Warung</b><span class="facility-desc">인도네시아식 (11-23)</span>
+                        </div>
+                        <div class="facility-tag">
+                            <b>Main Pool</b><span class="facility-desc">공용 풀장 (24H)</span>
+                        </div>
+                        <div class="facility-tag">
+                            <b>Spa Alila</b><span class="facility-desc">스파/마사지 (09-21)</span>
+                        </div>
+                        <div class="facility-tag">
+                            <b>Gym & Yoga</b><span class="facility-desc">피트니스 (24H)</span>
+                        </div>
+                        <div class="facility-tag">
+                            <b>Library</b><span class="facility-desc">독서/휴식 (24H)</span>
+                        </div>
                     </div>
                 </div>
 
@@ -480,7 +487,7 @@
                     <strong>💡 Honey Tip & Tipping</strong>
                     • <b>버기 호출:</b> 객실 전화 '0'번 ➡ "Buggy please"<br>
                     • <b>원숭이:</b> 발코니 문은 항상 잠궈두세요. (음식 노출 X)<br>
-                    • <b>팁 문화:</b> 벨보이 짐 운반 시 20k~50k 루피아, 룸 청소 20k 루피아, 마사지 후 50k 루피아 정도가 적당합니다.
+                    • <b>팁 문화 (21% 포함됨):</b> 의무는 아니나, 벨보이(20~50k), 하우스키핑(20k), 마사지(50k) 정도가 매너 팁입니다.
                 </div>
 
                 <div class="box-ui res-box">
@@ -503,21 +510,33 @@
                 <div class="box-ui facility-box">
                     <strong>🏰 주요 부대시설</strong>
                     <div class="facility-list">
-                        <span class="facility-tag">Oasis Pool (전용)</span>
-                        <span class="facility-tag">Aqua Pool (공용)</span>
-                        <span class="facility-tag">The Lounge</span>
-                        <span class="facility-tag">Mulia Spa & Gym</span>
-                        <span class="facility-tag">Tennis Court</span>
-                        <span class="facility-tag">Ice Room (스파)</span>
+                        <div class="facility-tag">
+                            <b>Oasis Pool</b><span class="facility-desc">스위트 전용 (07-19)</span>
+                        </div>
+                        <div class="facility-tag">
+                            <b>Aqua Pool</b><span class="facility-desc">공용 풀장 (07-20)</span>
+                        </div>
+                        <div class="facility-tag">
+                            <b>The Lounge</b><span class="facility-desc">조식/티타임 (07-23)</span>
+                        </div>
+                        <div class="facility-tag">
+                            <b>Mulia Spa</b><span class="facility-desc">럭셔리 스파 (09-21)</span>
+                        </div>
+                        <div class="facility-tag">
+                            <b>Fitness</b><span class="facility-desc">피트니스 센터 (06-22)</span>
+                        </div>
+                        <div class="facility-tag">
+                            <b>Tennis</b><span class="facility-desc">테니스 코트</span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="box-ui tip-box">
                     <strong>💡 Honey Tip & Tipping</strong>
                     • <b>칵테일 아워 이용법 (16~18시):</b><br> 
-                    'The Lounge' 또는 'The Bar' 방문 ➡ 직원에게 룸 키 제시 ➡ <b>"Afternoon Tea & Cocktail Benefit"</b> 이용하겠다고 말하기 ➡ 전용 메뉴판에서 무제한 주문.<br>
-                    • <b>수영장:</b> 'Oasis Pool'은 더 물리아(스위트) 투숙객 전용이라 아주 조용합니다.<br>
-                    • <b>팁:</b> 스파 후 테라피스트에게 50k~100k 루피아, 버틀러 서비스 이용 시 50k 루피아.
+                    'The Lounge' 또는 'The Bar' 방문 ➡ 룸 키 제시 후 <b>"Cocktail Benefit"</b> 이용한다고 말하면 전용 무제한 메뉴판을 줍니다.<br>
+                    • <b>수영장:</b> 'Oasis Pool'은 더 물리아(스위트) 투숙객 전용이라 아주 조용하고 사진 찍기 좋습니다.<br>
+                    • <b>팁 문화 (21% 포함됨):</b> 의무 X. 버틀러 서비스나 마사지 이용 시 50k~100k 루피아 정도.
                 </div>
 
                 <div class="box-ui res-box">
@@ -549,10 +568,10 @@
         </div>
 
         <div class="card">
-            <div class="section-title">📊 실제 지출 요약</div>
+            <div class="section-title">📊 실제 지출 요약 (입력값)</div>
             <table class="pretty-table">
                 <thead>
-                    <tr><th>일자</th><th style="text-align:right">예상 지출 (입력값)</th></tr>
+                    <tr><th>일자</th><th style="text-align:right">금액</th></tr>
                 </thead>
                 <tbody>
                     <tr><td>Day 1</td><td class="price-col" id="sum-day-1">0</td></tr>
