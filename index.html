@@ -94,41 +94,58 @@
         }
         .tip-box { background: #f1f9ff; border: 1px solid #dbe9f5; border-radius: 8px; padding: 10px; margin-top: 10px; font-size: 12px; color: #2980b9; display: flex; gap: 6px; align-items: flex-start; }
 
-        /* --- Info View Styles --- */
-        .info-view { display: none; padding: 20px; animation: fadeIn 0.3s; }
-        .info-view.active { display: block; }
-        
-        .hotel-card { background: var(--primary); color: #fff; border-radius: 16px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
-        .hotel-img-placeholder { height: 120px; background: linear-gradient(45deg, #34495e, #2c3e50); display: flex; align-items: center; justify-content: center; font-size: 30px; }
-        .hotel-body { padding: 20px; }
-        .hotel-name { font-size: 18px; font-weight: 700; color: var(--accent); margin-bottom: 5px; }
-        
-        /* Flight Ticket Card */
-        .flight-card {
-            background: white; border-radius: 12px; padding: 20px;
-            box-shadow: var(--shadow); margin-bottom: 20px;
-            border-left: 5px solid var(--accent);
+        /* --- Daily Budget Footer --- */
+        .daily-budget-box {
+            background: #2c3e50; color: white; padding: 15px; border-radius: 12px;
+            margin-top: 10px; display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
-        .flight-route { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-        .route-code { font-size: 24px; font-weight: 800; color: var(--primary); }
-        .flight-time { font-size: 14px; font-weight: 600; color: #333; }
-        .flight-detail { font-size: 13px; color: #666; margin-top: 5px; line-height: 1.5; }
-        .flight-seat { background: #eef2f5; padding: 4px 8px; border-radius: 4px; font-weight: 700; font-size: 12px; color: var(--primary); display: inline-block; margin-top: 5px; }
+        .db-label { font-size: 13px; font-weight: 600; opacity: 0.9; }
+        .db-amount { font-size: 16px; font-weight: 800; color: #f1c40f; }
 
-        /* Budget Table */
-        .budget-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 10px; }
-        .budget-table th { background: #f0f0f0; padding: 8px; text-align: left; font-weight: 600; color: #555; }
-        .budget-table td { border-bottom: 1px solid #eee; padding: 8px 4px; vertical-align: middle; }
-        .input-mini { width: 100%; border: 1px solid #ddd; padding: 6px; border-radius: 4px; font-size: 13px; }
-        .krw-display { font-size: 12px; color: var(--accent); font-weight: 600; display: block; margin-top: 2px; }
-        .select-mini { width: 100%; border: 1px solid #ddd; padding: 6px; border-radius: 4px; font-size: 12px; }
+        /* --- Hotel View Styles --- */
+        .hotel-detail-card {
+            background: white; border-radius: 16px; overflow: hidden; margin-bottom: 25px;
+            box-shadow: var(--shadow);
+        }
+        .hotel-hero-img {
+            width: 100%; height: 200px; object-fit: cover;
+            background-color: #eee;
+        }
+        .hotel-content { padding: 20px; }
+        .hotel-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+        .hotel-name-lg { font-size: 20px; font-weight: 800; color: var(--primary); line-height: 1.2; }
+        .hotel-dates { font-size: 12px; font-weight: 700; color: white; background: var(--accent); padding: 4px 10px; border-radius: 20px; white-space: nowrap; margin-left: 10px; }
+        
+        .amenity-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px; }
+        .amenity-item { font-size: 12px; background: #f4f6f8; padding: 6px 12px; border-radius: 6px; color: #555; font-weight: 600; }
+        
+        .service-list { margin-top: 15px; border-top: 1px dashed #eee; padding-top: 15px; }
+        .service-item { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 8px; color: #444; }
+        .res-badge { font-size: 10px; color: white; background: #e74c3c; padding: 2px 6px; border-radius: 4px; margin-left: 5px; font-weight: 700; }
+        .time-badge { font-size: 10px; color: #666; background: #eee; padding: 2px 6px; border-radius: 4px; }
+
+        /* --- Budget Plan Styles --- */
+        .budget-card { background: white; padding: 20px; border-radius: 16px; box-shadow: var(--shadow); margin-top: 10px; }
+        .budget-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .budget-cat { font-size: 14px; font-weight: 700; color: var(--primary); display: flex; align-items: center; }
+        .budget-cat::before { content: ''; display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; }
+        .b-flight::before { background: #3498db; }
+        .b-hotel::before { background: #2c3e50; }
+        .b-food::before { background: #e17055; }
+        .b-shop::before { background: #f1c40f; }
+        .b-etc::before { background: #95a5a6; }
+        
+        .budget-val { font-size: 14px; font-weight: 600; color: #333; }
+        .budget-bar-bg { width: 100%; height: 8px; background: #f0f0f0; border-radius: 4px; overflow: hidden; margin-bottom: 20px; }
+        .budget-bar-fill { height: 100%; border-radius: 4px; }
+        
+        .total-budget { text-align: center; margin-top: 20px; padding-top: 15px; border-top: 2px solid #f4f6f8; }
+        .total-label { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+        .total-amount { font-size: 24px; font-weight: 800; color: var(--primary); margin-top: 5px; }
 
         /* Currency Tools */
         .currency-box { background: white; padding: 15px; border-radius: 12px; box-shadow: var(--shadow); margin-top: 20px; }
-        .currency-table { width: 100%; font-size: 12px; text-align: center; border-collapse: collapse; margin-top: 10px; }
-        .currency-table th, .currency-table td { border: 1px solid #eee; padding: 6px; }
-        .currency-table th { background: #f9f9f9; color: #555; }
-        
         .calc-input { width: 100%; padding: 12px; border: 2px solid var(--accent); border-radius: 8px; font-size: 16px; margin-top: 10px; text-align: center; }
         .calc-result { text-align: center; font-size: 18px; font-weight: 800; color: var(--primary); margin-top: 10px; }
 
@@ -140,6 +157,14 @@
             box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3); margin-bottom: 25px;
         }
         .section-title { font-size: 18px; font-weight: 800; margin-bottom: 15px; color: var(--primary); border-left: 4px solid var(--accent); padding-left: 10px; }
+
+        /* Flight Card (Compact) */
+        .flight-card { background: white; border-radius: 12px; padding: 20px; box-shadow: var(--shadow); margin-bottom: 20px; border-left: 5px solid var(--accent); }
+        .flight-route { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .route-code { font-size: 24px; font-weight: 800; color: var(--primary); }
+        .flight-time { font-size: 14px; font-weight: 600; color: #333; }
+        .flight-detail { font-size: 13px; color: #666; margin-top: 5px; line-height: 1.5; }
+        .flight-seat { background: #eef2f5; padding: 4px 8px; border-radius: 4px; font-weight: 700; font-size: 12px; color: var(--primary); display: inline-block; margin-top: 5px; }
 
         /* --- Bottom Nav --- */
         .bottom-nav {
@@ -153,8 +178,7 @@
         .nav-item.active { color: var(--primary); }
         .nav-icon { font-size: 22px; display: block; margin-bottom: 3px; }
         .nav-label { font-size: 10px; font-weight: 600; }
-
-        /* --- Top Button --- */
+        
         #scrollTopBtn {
             display: none; position: fixed; bottom: 95px; left: 20px; z-index: 999;
             width: 45px; height: 45px; border: none; outline: none;
@@ -207,8 +231,11 @@
                     <h3 class="event-title">Alila Villas Uluwatu <span class="cat-badge cat-hotel">숙소</span></h3>
                     <p class="event-desc">웰컴 드링크 & 체크인. 피곤하니까 바로 휴식 😴</p>
                     <a href="https://www.google.com/maps/search/?api=1&query=Alila+Villas+Uluwatu" target="_blank" class="address-link">Jl. Belimbing Sari Tambiyak, Pecatu</a>
-                    <div class="tip-box">💡 Tip: 배고프면 룸서비스(나시고랭) or 도착 전 메일로 식사 요청!</div>
                 </div>
+            </div>
+            <div class="daily-budget-box">
+                <span class="db-label">💰 Day 1 예상 지출 (팁/간식)</span>
+                <span class="db-amount">약 50,000원</span>
             </div>
         </div>
 
@@ -242,8 +269,7 @@
                 <div class="event-card">
                     <h3 class="event-title">Bamboo Blonde <span class="cat-badge cat-shop">쇼핑</span></h3>
                     <p class="event-desc">메이슨 바로 옆! 신혼여행 룩 여기서 해결 👗</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Bamboo+Blonde+Uluwatu" target="_blank" class="address-link">Jl. Labuansait No.10 (Next to Mason)</a>
-                    <div class="tip-box">💡 식당 바로 옆이라 동선 낭비 0%</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Bamboo+Blonde+Uluwatu" target="_blank" class="address-link">Jl. Labuansait No.10</a>
                 </div>
             </div>
             <div class="timeline-item">
@@ -262,6 +288,10 @@
                     <a href="https://www.google.com/maps/search/?api=1&query=Wahaha+Pork+Ribs+Jimbaran" target="_blank" class="address-link">Jl. Wanagiri, Jimbaran</a>
                 </div>
             </div>
+            <div class="daily-budget-box">
+                <span class="db-label">💰 Day 2 예상 지출 (식비/쇼핑)</span>
+                <span class="db-amount">약 300,000원</span>
+            </div>
         </div>
 
         <div id="day-3" class="content-area">
@@ -270,7 +300,6 @@
                 <div class="event-card">
                     <h3 class="event-title">개인 풀빌라 휴식 <span class="cat-badge cat-relax">휴식</span></h3>
                     <p class="event-desc">아무것도 안 할 자유. 메인 풀 새장 카바나 즐기기.</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Alila+Villas+Uluwatu" target="_blank" class="address-link">Alila Villas Uluwatu</a>
                 </div>
             </div>
             <div class="timeline-item">
@@ -279,7 +308,6 @@
                     <h3 class="event-title">The Warung (더 와룽) <span class="cat-badge cat-food">식당</span></h3>
                     <p class="event-desc">★ 리조트 내 맛집. 바비 굴링(통돼지) 필수! 🐷</p>
                     <a href="https://www.google.com/maps/search/?api=1&query=The+Warung+Alila+Uluwatu" target="_blank" class="address-link">Inside Alila Villas Uluwatu</a>
-                    <div class="tip-box">💡 가장 깔끔하고 고급스러운 바비 굴링을 맛볼 기회.</div>
                 </div>
             </div>
             <div class="timeline-item">
@@ -296,15 +324,6 @@
                     <h3 class="event-title">Uluwatu Temple <span class="cat-badge cat-tour">관광</span></h3>
                     <p class="event-desc">★ 울루와뚜 사원. 절벽 위 절경과 원숭이 구경 🐒</p>
                     <a href="https://www.google.com/maps/search/?api=1&query=Uluwatu+Temple" target="_blank" class="address-link">Pecatu, South Kuta</a>
-                    <div class="tip-box">💡 사원 구경 후 바로 근처 슬루반 비치로 이동!</div>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="time-box"><div class="dot"></div><span class="time-text">17:00</span></div>
-                <div class="event-card">
-                    <h3 class="event-title">Suluban Beach <span class="cat-badge cat-tour">관광</span></h3>
-                    <p class="event-desc">신비로운 해식동굴 뷰 (원숭이 없음!)</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Suluban+Beach" target="_blank" class="address-link">Jl. Pantai Suluban, Pecatu</a>
                 </div>
             </div>
             <div class="timeline-item">
@@ -313,8 +332,11 @@
                     <h3 class="event-title">YUKI Uluwatu <span class="cat-badge cat-food">식당</span></h3>
                     <p class="event-desc">슬루반 바로 옆! 힙한 <b>모던 이자카야</b>. 스시롤 🍣</p>
                     <a href="https://www.google.com/maps/search/?api=1&query=YUKI+Uluwatu" target="_blank" class="address-link">Uluwatu, Pecatu (Next to Suluban)</a>
-                    <div class="tip-box">💡 슬루반 비치에서 차로 3분 거리.</div>
                 </div>
+            </div>
+            <div class="daily-budget-box">
+                <span class="db-label">💰 Day 3 예상 지출 (식비/마켓)</span>
+                <span class="db-amount">약 250,000원</span>
             </div>
         </div>
 
@@ -324,7 +346,6 @@
                 <div class="event-card">
                     <h3 class="event-title">체크아웃 & 이동 <span class="cat-badge cat-move">이동</span></h3>
                     <p class="event-desc">알릴라 안녕 👋 사파리로 출발 (약 1시간 40분)</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Bali+Safari+and+Marine+Park" target="_blank" class="address-link">Bali Safari Marine Park</a>
                 </div>
             </div>
             <div class="timeline-item">
@@ -344,14 +365,6 @@
                 </div>
             </div>
             <div class="timeline-item">
-                <div class="time-box"><div class="dot"></div><span class="time-text">17:00</span></div>
-                <div class="event-card">
-                    <h3 class="event-title">무제한 칵테일 아워 <span class="cat-badge cat-food">식당</span></h3>
-                    <p class="event-desc">더 라운지에서 술과 타파스 무제한 즐기기 🥂</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=The+Mulia+Bali" target="_blank" class="address-link">The Lounge at The Mulia</a>
-                </div>
-            </div>
-            <div class="timeline-item">
                 <div class="time-box"><div class="dot"></div><span class="time-text">19:00</span></div>
                 <div class="event-card">
                     <h3 class="event-title">Soleil (솔레일) <span class="cat-badge cat-food">식당</span></h3>
@@ -359,6 +372,10 @@
                     <a href="https://www.google.com/maps/search/?api=1&query=Soleil+Bali" target="_blank" class="address-link">Inside The Mulia Resort (Beachfront)</a>
                     <div class="tip-box">💡 Tip: 체크인 시 <b>'Outdoor Table'</b>로 예약 요청하세요!</div>
                 </div>
+            </div>
+            <div class="daily-budget-box">
+                <span class="db-label">💰 Day 4 예상 지출 (사파리/디너)</span>
+                <span class="db-amount">약 400,000원</span>
             </div>
         </div>
 
@@ -368,15 +385,6 @@
                 <div class="event-card">
                     <h3 class="event-title">라운지 조식 <span class="cat-badge cat-food">식당</span></h3>
                     <p class="event-desc">한우 스테이크가 나오는 조식 클라스 🥩</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=The+Mulia+Bali" target="_blank" class="address-link">The Lounge</a>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="time-box"><div class="dot"></div><span class="time-text">11:00</span></div>
-                <div class="event-card">
-                    <h3 class="event-title">오션 프론트 풀 <span class="cat-badge cat-relax">휴식</span></h3>
-                    <p class="event-desc">더 물리아 전용 풀장에서 황제 호캉스</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=The+Mulia+Bali" target="_blank" class="address-link">The Mulia Oceanfront Pool</a>
                 </div>
             </div>
             <div class="timeline-item">
@@ -386,14 +394,6 @@
                     <p class="event-desc">★ 도마(Teak), 기념품, 과자 여기서 싹쓸이!</p>
                     <a href="https://www.google.com/maps/search/?api=1&query=Krisna+Oleh+Oleh+Bypass" target="_blank" class="address-link">Jl. Raya Gusti Ngurah Rai, Kuta</a>
                     <div class="tip-box">💡 Tip: <b>2층/3층 티크 우드 코너</b>가 진짜입니다.</div>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="time-box"><div class="dot"></div><span class="time-text">16:00</span></div>
-                <div class="event-card">
-                    <h3 class="event-title">애프터눈 티 <span class="cat-badge cat-food">식당</span></h3>
-                    <p class="event-desc">라운지에서 무료 제공. 당 충전.</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=The+Mulia+Bali" target="_blank" class="address-link">The Lounge</a>
                 </div>
             </div>
             <div class="timeline-item">
@@ -409,8 +409,12 @@
                 <div class="event-card">
                     <h3 class="event-title">The Cafe 뷔페 <span class="cat-badge cat-food">식당</span></h3>
                     <p class="event-desc">랍스터 & 사시미 배 터질 때까지! 🔥</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=The+Cafe+Mulia" target="_blank" class="address-link">The Cafe at The Mulia</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=The+Cafe+at+The+Mulia" target="_blank" class="address-link">The Cafe at The Mulia</a>
                 </div>
+            </div>
+            <div class="daily-budget-box">
+                <span class="db-label">💰 Day 5 예상 지출 (도마/스파팁)</span>
+                <span class="db-amount">약 300,000원</span>
             </div>
         </div>
 
@@ -423,33 +427,71 @@
                     <a href="https://www.google.com/maps/search/?api=1&query=Ngurah+Rai+International+Airport" target="_blank" class="address-link">Ngurah Rai International Airport</a>
                 </div>
             </div>
-            <div class="timeline-item">
-                <div class="time-box"><div class="dot"></div><span class="time-text">01:10</span></div>
-                <div class="event-card">
-                    <h3 class="event-title">발리 출발 ✈️ <span class="cat-badge cat-move">이동</span></h3>
-                </div>
+            <div class="daily-budget-box">
+                <span class="db-label">💰 Day 6 예상 지출 (기타)</span>
+                <span class="db-amount">약 100,000원</span>
             </div>
         </div>
     </main>
 
     <main id="view-hotels" class="info-view">
         <h2 style="margin-bottom: 20px;">숙소 정보</h2>
-        <div class="hotel-card">
-            <div class="hotel-img-placeholder">🏨</div>
-            <div class="hotel-body">
-                <span class="hotel-nights">Day 1 - 3 (3박)</span>
-                <div class="hotel-name">Alila Villas Uluwatu</div>
-                <p>1 Bedroom Pool Villa</p>
-                <p style="color:#ddd; font-size:13px;">절벽 위 압도적인 오션뷰. 원숭이 없음.</p>
+        
+        <div class="hotel-detail-card">
+            <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Alila Villas" class="hotel-hero-img">
+            <div class="hotel-content">
+                <div class="hotel-header">
+                    <div class="hotel-name-lg">Alila Villas<br>Uluwatu</div>
+                    <span class="hotel-dates">10/19 - 10/22 (3박)</span>
+                </div>
+                <div style="font-size:14px; margin-bottom:15px; color:#555;">
+                    <span class="time-badge">체크인 15:00</span>
+                    <span class="time-badge">체크아웃 12:00</span>
+                </div>
+                
+                <p style="font-weight:700; margin-bottom:8px; font-size:14px;">포함 내역 (Amenities)</p>
+                <ul class="amenity-list">
+                    <li class="amenity-item">개인 풀빌라</li>
+                    <li class="amenity-item">24시간 버틀러</li>
+                    <li class="amenity-item">썬셋 카바나</li>
+                    <li class="amenity-item">조식 무제한</li>
+                    <li class="amenity-item">버기 서비스</li>
+                </ul>
+
+                <div class="service-list">
+                    <div class="service-item"><span>• Sunset Cabana 사진 촬영</span> <span class="res-badge">예약 추천</span></div>
+                    <div class="service-item"><span>• Spa Alila</span> <span class="res-badge">예약 필수</span></div>
+                    <div class="service-item"><span>• The Warung (점심/저녁)</span></div>
+                </div>
             </div>
         </div>
-        <div class="hotel-card">
-            <div class="hotel-img-placeholder">🏝️</div>
-            <div class="hotel-body">
-                <span class="hotel-nights">Day 4 - 5 (2박)</span>
-                <div class="hotel-name">The Mulia (Suite)</div>
-                <p>Earl Suite (Ocean Court)</p>
-                <p style="color:#ddd; font-size:13px;">라운지(술/음료) 무제한. 수영장 천국.</p>
+
+        <div class="hotel-detail-card">
+            <img src="https://images.unsplash.com/photo-1571896349842-6e53ce41be03?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="The Mulia" class="hotel-hero-img">
+            <div class="hotel-content">
+                <div class="hotel-header">
+                    <div class="hotel-name-lg">The Mulia<br>(Earl Suite)</div>
+                    <span class="hotel-dates">10/22 - 10/24 (2박)</span>
+                </div>
+                <div style="font-size:14px; margin-bottom:15px; color:#555;">
+                    <span class="time-badge">체크인 15:00</span>
+                    <span class="time-badge">체크아웃 12:00</span>
+                </div>
+
+                <p style="font-weight:700; margin-bottom:8px; font-size:14px;">포함 내역 (Amenities)</p>
+                <ul class="amenity-list">
+                    <li class="amenity-item">오션 프론트 풀</li>
+                    <li class="amenity-item">무제한 칵테일 (16-18시)</li>
+                    <li class="amenity-item">애프터눈 티</li>
+                    <li class="amenity-item">The Lounge 이용</li>
+                    <li class="amenity-item">아이스룸</li>
+                </ul>
+
+                <div class="service-list">
+                    <div class="service-item"><span>• Soleil Dinner (야외석)</span> <span class="res-badge">예약 필수</span></div>
+                    <div class="service-item"><span>• Mulia Spa</span> <span class="res-badge">예약 필수</span></div>
+                    <div class="service-item"><span>• The Cafe (뷔페)</span></div>
+                </div>
             </div>
         </div>
     </main>
@@ -463,61 +505,57 @@
 
         <div class="flight-card">
             <div class="section-title" style="border:none; padding:0; margin-bottom:10px; font-size:16px;">✈️ 대한항공 (Korean Air)</div>
-            
             <div class="flight-route">
-                <span class="route-code">ICN</span>
-                <span style="color:#999">➡</span>
-                <span class="route-code">DPS</span>
+                <span class="route-code">ICN</span> <span style="color:#999">➡</span> <span class="route-code">DPS</span>
             </div>
             <div class="flight-time">10/19 (월) 16:10 → 22:10</div>
             <div class="flight-detail">좌석: <span class="flight-seat">37H, 37J</span></div>
             <div style="font-size:11px; color:#aaa; margin-top:3px;">No. 1802355539125</div>
-            
             <hr style="border:0; border-top:1px dashed #eee; margin:15px 0;">
-
             <div class="flight-route">
-                <span class="route-code">DPS</span>
-                <span style="color:#999">➡</span>
-                <span class="route-code">ICN</span>
+                <span class="route-code">DPS</span> <span style="color:#999">➡</span> <span class="route-code">ICN</span>
             </div>
             <div class="flight-time">10/24 (토) 01:10 → 09:25</div>
             <div class="flight-detail">좌석: <span class="flight-seat">43A, 43B</span></div>
             <div style="font-size:11px; color:#aaa; margin-top:3px;">No. 1802355539124</div>
         </div>
         
-        <div style="background:white; padding:20px; border-radius:16px; box-shadow:var(--shadow); margin-top:20px;">
-             <div class="section-title">💸 예산 관리표 (Budget)</div>
-             <p style="font-size:12px; color:#666; margin-bottom:10px;">루피아(IDR) 입력 시 원화(KRW) 자동 계산</p>
-             
-             <table class="budget-table">
-                <thead>
-                    <tr>
-                        <th style="width:20%">종류</th>
-                        <th style="width:30%">금액(IDR)</th>
-                        <th style="width:20%">KRW</th>
-                        <th>비고</th>
-                    </tr>
-                </thead>
-                <tbody id="budgetBody">
-                    </tbody>
-             </table>
-             <button onclick="addBudgetRow()" style="background:#f0f0f0; border:none; width:100%; padding:10px; margin-top:10px; border-radius:8px; font-weight:600; color:#555;">+ 항목 추가하기</button>
+        <div class="section-title">💸 예산 추천안 (Total 800)</div>
+        <div class="budget-card">
+            <div class="budget-row">
+                <span class="budget-cat b-hotel">숙박비 (350만)</span>
+                <span class="budget-val">44%</span>
+            </div>
+            <div class="budget-bar-bg"><div class="budget-bar-fill" style="width:44%; background:#2c3e50;"></div></div>
+
+            <div class="budget-row">
+                <span class="budget-cat b-flight">항공권 (240만)</span>
+                <span class="budget-val">30%</span>
+            </div>
+            <div class="budget-bar-bg"><div class="budget-bar-fill" style="width:30%; background:#3498db;"></div></div>
+
+            <div class="budget-row">
+                <span class="budget-cat b-food">식비/경비 (100만)</span>
+                <span class="budget-val">12%</span>
+            </div>
+            <div class="budget-bar-bg"><div class="budget-bar-fill" style="width:12%; background:#e17055;"></div></div>
+
+            <div class="budget-row">
+                <span class="budget-cat b-shop">쇼핑/기타 (110만)</span>
+                <span class="budget-val">14%</span>
+            </div>
+            <div class="budget-bar-bg"><div class="budget-bar-fill" style="width:14%; background:#f1c40f;"></div></div>
+
+            <div class="total-budget">
+                <div class="total-label">Total Estimated Budget</div>
+                <div class="total-amount">₩ 8,000,000</div>
+            </div>
         </div>
 
         <div class="currency-box">
-            <div class="section-title">💱 환율 계산기</div>
+            <div class="section-title">💱 초간단 환율 계산기</div>
             <input type="number" id="calcInput" class="calc-input" placeholder="루피아(IDR) 입력" oninput="calculateSimple()">
             <div id="calcResult" class="calc-result">0 원</div>
-
-            <h4 style="margin:20px 0 10px 0; font-size:14px; color:#555;">💡 환율 조견표 (x 0.087 기준)</h4>
-            <table class="currency-table">
-                <tr><th>IDR (루피아)</th><th>KRW (원)</th></tr>
-                <tr><td>10,000 (10k)</td><td>약 870원</td></tr>
-                <tr><td>50,000 (50k)</td><td>약 4,350원</td></tr>
-                <tr><td>100,000 (100k)</td><td>약 8,700원</td></tr>
-                <tr><td>500,000 (500k)</td><td>약 43,500원</td></tr>
-                <tr><td>1,000,000 (1juta)</td><td>약 87,000원</td></tr>
-            </table>
         </div>
     </main>
 
@@ -537,69 +575,22 @@
     </nav>
 
     <script>
-        // --- Currency Logic (Rate: 100 IDR = 8.7 KRW approx) ---
         const RATE = 0.087; 
-
-        function formatNumber(num) {
-            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        }
-
-        // 1. Budget Table Logic
-        function addBudgetRow() {
-            const tbody = document.getElementById('budgetBody');
-            const row = document.createElement('tr');
-            
-            row.innerHTML = `
-                <td>
-                    <select class="select-mini">
-                        <option>식비</option>
-                        <option>투어</option>
-                        <option>이동</option>
-                        <option>쇼핑</option>
-                        <option>기타</option>
-                    </select>
-                </td>
-                <td><input type="number" class="input-mini" placeholder="0" oninput="updateRowKrw(this)"></td>
-                <td><span class="krw-display">0</span></td>
-                <td><input type="text" class="input-mini" placeholder="메모"></td>
-            `;
-            tbody.appendChild(row);
-        }
-
-        function updateRowKrw(input) {
-            const idr = input.value;
-            const krwSpan = input.parentElement.nextElementSibling.querySelector('.krw-display');
-            const krw = Math.round(idr * RATE);
-            krwSpan.innerText = formatNumber(krw);
-        }
-
-        // Initialize with 3 rows
-        addBudgetRow();
-        addBudgetRow();
-        addBudgetRow();
-
-
-        // 2. Simple Calculator Logic
+        function formatNumber(num) { return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
         function calculateSimple() {
             const input = document.getElementById('calcInput').value;
             const resultDiv = document.getElementById('calcResult');
             const krw = Math.round(input * RATE);
             resultDiv.innerText = formatNumber(krw) + " 원";
         }
-
-
-        // --- UI Logic (Menu, Tabs, Scroll) ---
-        function toggleMenu() {
-            document.getElementById('mobileMenu').classList.toggle('show');
-        }
-
+        
+        function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('show'); }
         function switchTab(tabName) {
             document.getElementById('view-schedule').style.display = 'none';
             document.getElementById('view-hotels').classList.remove('active');
             document.getElementById('view-info').classList.remove('active');
             document.getElementById('day-selector').style.display = 'none';
             document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-
             if (tabName === 'schedule') {
                 document.getElementById('view-schedule').style.display = 'block';
                 document.getElementById('day-selector').style.display = 'block';
@@ -612,25 +603,17 @@
                 document.querySelectorAll('.nav-item')[2].classList.add('active');
             }
         }
-
         function showDay(dayNum) {
             document.querySelectorAll('.content-area').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.day-chip').forEach(el => el.classList.remove('active'));
             document.getElementById('day-' + dayNum).classList.add('active');
             document.querySelectorAll('.day-chip')[dayNum - 1].classList.add('active');
         }
-
         var topBtn = document.getElementById("scrollTopBtn");
         window.onscroll = function() {
-            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                topBtn.style.display = "block";
-            } else {
-                topBtn.style.display = "none";
-            }
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) { topBtn.style.display = "block"; } else { topBtn.style.display = "none"; }
         };
-        function scrollToTop() {
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        }
+        function scrollToTop() { window.scrollTo({top: 0, behavior: 'smooth'}); }
     </script>
 </body>
 </html>
