@@ -15,6 +15,9 @@
             --border: #e1e4e8;
             --shadow: 0 4px 12px rgba(0,0,0,0.08);
             --safe-bottom: env(safe-area-inset-bottom);
+            --success: #27ae60;
+            --danger: #e74c3c;
+            --warning: #f39c12;
         }
 
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -144,17 +147,16 @@
         .pretty-table .price-col { text-align: right; font-family: 'Roboto', sans-serif; font-weight: 500; }
         .pretty-table .total-row td { background: #eef2f5; font-weight: 800; color: var(--primary); font-size: 15px; border-top: 2px solid #dde2e6; }
 
-        /* --- Budget Detail UI (Fixed 800) --- */
-        .budget-detail-box { margin-bottom: 20px; }
-        .budget-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 13px; }
-        .budget-label { display: flex; align-items: center; color: #555; font-weight: 500; }
-        .budget-icon { margin-right: 8px; width: 24px; text-align: center; }
-        .budget-val { font-weight: 700; color: var(--primary); }
-        .budget-bar-bg { width: 100%; height: 6px; background: #eee; border-radius: 3px; margin-top: 5px; overflow: hidden; }
-        .budget-bar-fill { height: 100%; border-radius: 3px; }
-        .budget-sub { display: block; font-size: 11px; color: #999; margin-top: 2px; margin-left: 32px; }
-        .b-blue { background-color: #3498db; } .b-navy { background-color: #2c3e50; } .b-orange { background-color: #e67e22; } .b-green { background-color: #27ae60; }
-        
+        /* --- Budget Dashboard UI --- */
+        .budget-dashboard { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+        .b-card { padding: 15px; border-radius: 12px; color: white; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .b-card.total { background: var(--primary); grid-column: 1 / -1; }
+        .b-card.fixed { background: #7f8c8d; }
+        .b-card.remain { background: var(--success); }
+        .b-label { font-size: 12px; opacity: 0.9; margin-bottom: 4px; display: block; }
+        .b-value { font-size: 20px; font-weight: 800; }
+        .b-sub { font-size: 10px; opacity: 0.8; margin-top: 4px; display: block; }
+
         /* CONFIRMED BADGE */
         .badge-confirmed {
             display: inline-block; background-color: #e74c3c; color: white;
@@ -225,7 +227,7 @@
             </div>
             <div class="accordion-content" id="flight-info">
                 <div class="ticket-box">
-                    <div class="ticket-top-bar">예약번호 : (입력 필요)</div>
+                    <div class="ticket-top-bar">예약번호 : DWHXCP</div>
                     <div class="ticket-body">
                         <div class="flight-row">
                             <div class="f-col"><span class="f-date">10.19 (월)</span><span class="f-time">16:10</span><span class="f-code">ICN</span></div>
@@ -234,7 +236,7 @@
                         </div>
                         <div class="f-detail-grid">
                             <div><span class="f-label">편명</span><span class="f-val">KE 431</span></div>
-                            <div><span class="f-label">좌석</span><span class="f-val">--</span></div>
+                            <div><span class="f-label">좌석</span><span class="f-val">37H, 37J</span></div>
                             <div><span class="f-label">수하물</span><span class="f-val">1 PC</span></div>
                         </div>
                         <hr style="border:0; border-top:1px dashed #eee; margin:20px 0;">
@@ -245,7 +247,7 @@
                         </div>
                         <div class="f-detail-grid">
                             <div><span class="f-label">편명</span><span class="f-val">KE 434</span></div>
-                            <div><span class="f-label">좌석</span><span class="f-val">--</span></div>
+                            <div><span class="f-label">좌석</span><span class="f-val">43A, 43B</span></div>
                             <div><span class="f-label">수하물</span><span class="f-val">1 PC</span></div>
                         </div>
                     </div>
@@ -393,32 +395,25 @@
                     <div class="time-col"><div class="dot"></div><span class="time-text">12:00</span><div class="path-icon">🚗</div></div>
                     <div class="event-content">
                         <div class="event-title">체크아웃 & 이동 <span class="tag">이동</span></div>
-                        <div class="event-desc">물리아 출발 ➡ 스미냑 (약 40분)</div>
+                        <div class="event-desc">물리아 출발 ➡ 알릴라 (약 40분)</div>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">13:00</span></div>
-                    <div class="event-content">
-                        <div class="event-title">스미냑 점심 식사 <span class="tag">식당</span></div>
-                        <div class="event-desc">Boy'N'Cow (스테이크) 등</div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">14:30</span><div class="path-icon">💎</div></div>
-                    <div class="event-content">
-                        <div class="event-title">스미냑 주얼리 쇼핑 <span class="tag">쇼핑</span></div>
-                        <div class="event-desc">
-                            1. <b>Atlas Pearls</b> (진주)<br>
-                            2. <b>Jemme Jewelry</b> (원석/금)
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">18:30</span><div class="path-icon">🏨</div></div>
+                    <div class="time-col"><div class="dot"></div><span class="time-text">15:00</span><div class="path-icon">🏨</div></div>
                     <div class="event-content">
                         <div class="event-title">Alila Villas 체크인 <span class="tag">숙소</span></div>
-                        <div class="event-desc"><b>1 Bedroom Pool Villa</b><br>웰컴 드링크 & 석양 감상</div>
+                        <div class="event-desc"><b>1 Bedroom Pool Villa</b><br>도착하자마자 체크인</div>
                         <a href="https://maps.app.goo.gl/XYZ123456789" target="_blank" class="link-btn">알릴라 지도</a>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">16:00</span><div class="path-icon">🚣‍♀️</div></div>
+                    <div class="event-content">
+                        <div class="event-title">Sundays Beach Club <span class="tag">휴양</span></div>
+                        <div class="event-desc">
+                            <b>카약 & 스노클링 즐기기</b><br>
+                            울루와뚜 최고의 프라이빗 비치 (차로 10분)
+                        </div>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -521,22 +516,20 @@
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">13:00</span><div class="path-icon">🚗</div></div>
+                    <div class="time-col"><div class="dot"></div><span class="time-text">13:30</span><div class="path-icon">🛍️</div></div>
                     <div class="event-content">
-                        <div class="event-title">공항 근처 쇼핑 & 식사 <span class="tag">쇼핑</span></div>
-                        <div class="event-desc">비치워크/아이콘발리 중 선택</div>
-                        <div class="shop-accordion">
-                            <div class="shop-header" onclick="toggleShopList('shop-day6', this)">
-                                <span>🛍️ 공항 근처 즐겨찾기 리스트</span>
-                                <span class="shop-arrow">▼</span>
-                            </div>
-                            <div class="shop-body" id="shop-day6">
-                                <div class="shop-item">🛍️ Beachwalk Shopping Center <span class="shop-cat">★4.5</span></div>
-                                <div class="shop-item">🛍️ ICON BALI Mall <span class="shop-cat">★4.3</span></div>
-                                <div class="shop-item">🥞 Pan & Co (팬케이크) <span class="shop-cat">★4.6</span></div>
-                                <div class="shop-item">✈️ Wolfgang Puck Kitchen (공항근처) <span class="shop-cat">★4.8</span></div>
-                            </div>
+                        <div class="event-title">Krisna Oleh Oleh (크리스나) <span class="tag">쇼핑</span></div>
+                        <div class="event-desc">
+                            발리 최대 기념품 샵 (Sunset Road)<br>
+                            과자, 비누, 기념품 원스톱 쇼핑
                         </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">15:00</span><div class="path-icon">🏙️</div></div>
+                    <div class="event-content">
+                        <div class="event-title">ICON BALI Mall (아이콘) <span class="tag">쇼핑</span></div>
+                        <div class="event-desc">최신 쇼핑몰 & 맛집 투어</div>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -627,23 +620,30 @@
         <a href="https://maps.app.goo.gl/XYZ123456789" target="_blank" class="google-map-btn">🗺️ 구글 맵 전체 보기</a>
 
         <div class="card">
-            <div class="section-title">💸 예산 추천안 (약 800 만원)</div>
+            <div class="section-title">💸 예산 대시보드</div>
+            <div class="budget-dashboard">
+                <div class="b-card total">
+                    <span class="b-label">총 예산</span>
+                    <span class="b-value">800 만원</span>
+                </div>
+                <div class="b-card fixed">
+                    <span class="b-label">고정 지출 (항공+숙박)</span>
+                    <span class="b-value">645 만원</span>
+                    <span class="b-sub">항공 240 + 숙소 405</span>
+                </div>
+                <div class="b-card remain">
+                    <span class="b-label">사용 가능 (식비/쇼핑)</span>
+                    <span class="b-value">155 만원</span>
+                    <span class="b-sub">꽤 여유로움! 😄</span>
+                </div>
+            </div>
+
             <div class="budget-detail-box">
                 <div class="budget-row"><div class="budget-label"><span class="budget-icon">✈️</span>항공 <span class="badge-confirmed">확정</span></div><div class="budget-val">240 만원</div></div>
-                <div class="budget-bar-bg"><div class="budget-bar-fill b-blue" style="width:30%"></div></div>
-                <span class="budget-sub">직항 왕복 2인 (예상)</span><br>
+                <div class="budget-bar-bg"><div class="budget-bar-fill b-blue" style="width:100%"></div></div>
 
                 <div class="budget-row"><div class="budget-label"><span class="budget-icon">🏨</span>숙박 <span class="badge-confirmed">확정</span></div><div class="budget-val">405 만원</div></div>
-                <div class="budget-bar-bg"><div class="budget-bar-fill b-navy" style="width:50%"></div></div>
-                <span class="budget-sub">물리아(130만) + 알릴라(275만)</span><br>
-
-                <div class="budget-row"><div class="budget-label"><span class="budget-icon">🍽️</span>식비/경비</div><div class="budget-val">80 만원</div></div>
-                <div class="budget-bar-bg"><div class="budget-bar-fill b-orange" style="width:10%"></div></div>
-                <span class="budget-sub">식사, 교통비, 팁 (여유)</span><br>
-
-                <div class="budget-row"><div class="budget-label"><span class="budget-icon">🛍️</span>쇼핑/기타</div><div class="budget-val">75 만원</div></div>
-                <div class="budget-bar-bg"><div class="budget-bar-fill b-green" style="width:10%"></div></div>
-                <span class="budget-sub">쇼핑 및 예비비 (충분)</span>
+                <div class="budget-bar-bg"><div class="budget-bar-fill b-navy" style="width:100%"></div></div>
             </div>
         </div>
 
