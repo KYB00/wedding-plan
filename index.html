@@ -25,7 +25,7 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
             background-color: var(--bg-gray); 
             color: var(--text-main); 
-            /* 하단바 높이(80px) + 안전영역 만큼 패딩을 줘서 내용이 가려지지 않게 함 */
+            /* 하단바 높이 + 안전영역 패딩 */
             padding-bottom: calc(90px + env(safe-area-inset-bottom)); 
         }
 
@@ -90,17 +90,16 @@
         .time-text { font-size: 11px; font-weight: 700; color: #adb5bd; display: block; margin-top: 4px; }
         .dot { width: 10px; height: 10px; background: var(--accent); border-radius: 50%; border: 2px solid var(--white); box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin: 5px auto 0 auto; }
         
-        /* New Path Icon Style (Clean Version) */
+        /* Path Icon Style */
         .path-icon { 
             margin-top: 10px; 
             font-size: 18px; 
-            background: var(--white); /* 선 가리기용 흰 배경 */
+            background: var(--white); 
             width: 24px; 
             height: 24px; 
             line-height: 24px; 
             text-align: center; 
             z-index: 2; 
-            /* 테두리 제거, 원형 제거 */
         }
         
         .event-content { flex: 1; }
@@ -109,7 +108,7 @@
         .tag { display: inline-block; font-size: 10px; padding: 2px 6px; border-radius: 4px; background: #eee; color: #555; margin-left: 5px; vertical-align: middle; }
         .link-btn { display: inline-flex; align-items: center; font-size: 12px; color: #555; text-decoration: none; background: #f1f3f5; padding: 5px 10px; border-radius: 6px; margin-top: 5px; border: 1px solid #e9ecef; }
 
-        /* --- Shopping Accordion (Updated) --- */
+        /* --- Shopping Accordion --- */
         .shop-accordion { border: 1px solid #eee; border-radius: 8px; margin-top: 10px; overflow: hidden; background: #fcfcfc; }
         .shop-header { padding: 12px 15px; font-size: 13px; font-weight: 700; color: var(--primary); background: #f8f9fa; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
         .shop-body { display: none; padding: 10px 15px; border-top: 1px solid #eee; }
@@ -142,34 +141,29 @@
         .add-btn { width: 100%; padding: 10px; background: #eef2f5; color: var(--primary); border: 1px dashed #ccc; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; margin-top: 5px; }
         .del-btn { background: #ff6b6b; color: white; border: none; border-radius: 6px; width: 30px; cursor: pointer; font-size: 12px; }
 
-        /* --- Budget Summary Table (Pretty) --- */
+        /* --- Budget Detail UI (Updated) --- */
+        .budget-detail-box { margin-bottom: 20px; }
+        .budget-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 13px; }
+        .budget-label { display: flex; align-items: center; color: #555; font-weight: 500; }
+        .budget-icon { margin-right: 8px; width: 24px; text-align: center; }
+        .budget-val { font-weight: 700; color: var(--primary); }
+        .budget-bar-bg { width: 100%; height: 6px; background: #eee; border-radius: 3px; margin-top: 5px; overflow: hidden; }
+        .budget-bar-fill { height: 100%; border-radius: 3px; }
+        .budget-sub { display: block; font-size: 11px; color: #999; margin-top: 2px; margin-left: 32px; }
+
+        .b-blue { background-color: #3498db; }
+        .b-navy { background-color: #2c3e50; }
+        .b-orange { background-color: #e67e22; }
+        .b-green { background-color: #27ae60; }
+        .b-purple { background-color: #9b59b6; }
+
+        /* --- Budget Summary Table --- */
         .pretty-table { width: 100%; border-collapse: separate; border-spacing: 0; border-radius: 12px; overflow: hidden; border: 1px solid #eee; margin-top: 10px; }
         .pretty-table th { background: #f8f9fa; color: #555; font-weight: 600; padding: 12px 15px; text-align: left; font-size: 13px; border-bottom: 1px solid #eee; }
         .pretty-table td { padding: 12px 15px; border-bottom: 1px solid #f8f9fa; color: #333; font-size: 14px; }
         .pretty-table tr:last-child td { border-bottom: none; }
         .pretty-table .price-col { text-align: right; font-family: 'Roboto', sans-serif; font-weight: 500; }
         .pretty-table .total-row td { background: #eef2f5; font-weight: 800; color: var(--primary); font-size: 15px; border-top: 2px solid #dde2e6; }
-
-        /* --- Hotel & Tips --- */
-        .hotel-img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; background-color: #eee; }
-        .info-row { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 8px; border-bottom: 1px dashed #eee; padding-bottom: 5px; }
-        .info-val { font-weight: 700; color: var(--primary); }
-        
-        .box-ui { padding: 15px; border-radius: 8px; margin-bottom: 10px; font-size: 13px; line-height: 1.5; }
-        .box-ui strong { display: block; margin-bottom: 5px; font-size: 14px; }
-        .tip-box { background: #fffbe6; border: 1px solid #ffe58f; color: #856404; }
-        .res-box { background: #e6f7ff; border: 1px solid #91d5ff; color: #0050b3; }
-        .facility-box { background: #f9f9f9; border: 1px solid #eee; color: #555; }
-        .facility-list { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 5px; }
-        .facility-tag { background: white; padding: 5px 8px; border-radius: 4px; border: 1px solid #eee; font-size: 12px; }
-        .facility-desc { display: block; font-size: 11px; color: #888; margin-top: 2px; }
-
-        /* --- Info Tab --- */
-        .google-map-btn { display: block; width: 100%; padding: 15px; background: var(--accent); color: white; text-align: center; border-radius: 12px; font-weight: 700; text-decoration: none; margin-bottom: 25px; box-shadow: 0 4px 10px rgba(41, 128, 185, 0.3); }
-        .budget-bar-row { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 13px; color: var(--primary); font-weight: 600; }
-        .budget-progress { width: 100%; height: 8px; background: #eee; border-radius: 4px; overflow: hidden; margin-bottom: 15px; }
-        .budget-fill { height: 100%; border-radius: 4px; }
-        .bg-1 { background: #3498db; } .bg-2 { background: #2c3e50; } .bg-3 { background: #e17055; } .bg-4 { background: #f1c40f; }
 
         /* --- Bottom Nav (Fixed) --- */
         .bottom-nav { 
@@ -779,23 +773,44 @@
         <a href="https://www.google.com/maps/search/Bali" target="_blank" class="google-map-btn">🗺️ 구글 맵 전체 보기</a>
 
         <div class="card">
-            <div class="section-title">💸 예산 추천안 (Total 800)</div>
+            <div class="section-title">💸 예상 견적 (Total 1,000 ~ 1,100)</div>
             
-            <div class="budget-bar-row"><span>숙박비 (350만)</span><span>44%</span></div>
-            <div class="budget-progress"><div class="budget-fill bg-2" style="width:44%"></div></div>
+            <div class="budget-detail-box">
+                <div class="budget-row">
+                    <div class="budget-label"><span class="budget-icon">✈️</span>항공 (대한항공)</div>
+                    <div class="budget-val">260 만원</div>
+                </div>
+                <div class="budget-bar-bg"><div class="budget-bar-fill b-blue" style="width:25%"></div></div>
+                <span class="budget-sub">직항 왕복 2인 (세금/유류포함)</span>
+                <br>
 
-            <div class="budget-bar-row"><span>항공권 (240만)</span><span>30%</span></div>
-            <div class="budget-progress"><div class="budget-fill bg-1" style="width:30%"></div></div>
+                <div class="budget-row">
+                    <div class="budget-label"><span class="budget-icon">🏨</span>숙박 (5박)</div>
+                    <div class="budget-val">500 만원</div>
+                </div>
+                <div class="budget-bar-bg"><div class="budget-bar-fill b-navy" style="width:45%"></div></div>
+                <span class="budget-sub">알릴라 3박 + 물리아 라군 2박</span>
+                <br>
 
-            <div class="budget-bar-row"><span>식비/경비 (100만)</span><span>12%</span></div>
-            <div class="budget-progress"><div class="budget-fill bg-3" style="width:12%"></div></div>
+                <div class="budget-row">
+                    <div class="budget-label"><span class="budget-icon">🍽️</span>식비/경비</div>
+                    <div class="budget-val">150 만원</div>
+                </div>
+                <div class="budget-bar-bg"><div class="budget-bar-fill b-orange" style="width:15%"></div></div>
+                <span class="budget-sub">Soleil 디너, 카페, 비치클럽 등</span>
+                <br>
 
-            <div class="budget-bar-row"><span>쇼핑/기타 (110만)</span><span>14%</span></div>
-            <div class="budget-progress"><div class="budget-fill bg-4" style="width:14%"></div></div>
+                <div class="budget-row">
+                    <div class="budget-label"><span class="budget-icon">🛍️</span>쇼핑/기타</div>
+                    <div class="budget-val">100 ~ 150 만원</div>
+                </div>
+                <div class="budget-bar-bg"><div class="budget-bar-fill b-green" style="width:15%"></div></div>
+                <span class="budget-sub">부티크 의류, 기념품, 스파, 교통비</span>
+            </div>
         </div>
 
         <div class="card">
-            <div class="section-title">📊 실제 지출 요약 (입력값)</div>
+            <div class="section-title">📊 실제 지출 입력</div>
             <table class="pretty-table">
                 <thead>
                     <tr><th>일자</th><th style="text-align:right">예상 지출</th></tr>
