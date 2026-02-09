@@ -80,23 +80,25 @@
         .dot { width: 10px; height: 10px; background: var(--accent); border-radius: 50%; border: 2px solid var(--white); box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin: 5px auto; }
         .event-content { flex: 1; }
         .event-title { font-size: 15px; font-weight: 700; color: var(--primary); margin-bottom: 4px; display:flex; align-items:center;}
-        .event-title .move-icon { font-size: 12px; margin-left: 5px; padding: 2px 5px; border-radius: 4px; background: #f1f3f5; font-weight: normal; }
+        .move-badge { font-size: 11px; margin-left: 6px; padding: 2px 6px; border-radius: 4px; background: #e3f2fd; color: #1976d2; font-weight: 600; border:1px solid #bbdefb; }
+        .walk-badge { font-size: 11px; margin-left: 6px; padding: 2px 6px; border-radius: 4px; background: #f3f0ff; color: #6741d9; font-weight: 600; border:1px solid #e5dbff; }
+        
         .event-desc { font-size: 13px; color: #555; line-height: 1.5; margin-bottom: 6px; }
         .tag { display: inline-block; font-size: 10px; padding: 2px 6px; border-radius: 4px; background: #eee; color: #555; margin-left: 5px; vertical-align: middle; }
         .link-btn { display: inline-flex; align-items: center; font-size: 12px; color: #555; text-decoration: none; background: #f1f3f5; padding: 5px 10px; border-radius: 6px; margin-top: 5px; border: 1px solid #e9ecef; }
 
-        /* --- Shopping Accordion (Nested) --- */
+        /* --- Shopping Accordion (Updated) --- */
         .shop-accordion { border: 1px solid #eee; border-radius: 8px; margin-top: 10px; overflow: hidden; background: #fcfcfc; }
-        .shop-header { padding: 10px 15px; font-size: 13px; font-weight: 700; color: var(--primary); background: #f8f9fa; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .shop-header { padding: 12px 15px; font-size: 13px; font-weight: 700; color: var(--primary); background: #f8f9fa; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
         .shop-body { display: none; padding: 10px 15px; border-top: 1px solid #eee; }
         .shop-body.show { display: block; }
-        .shop-item { display: flex; align-items: center; margin-bottom: 6px; font-size: 12px; color: #444; border-bottom: 1px dashed #eee; padding-bottom: 4px; }
+        .shop-item { display: flex; align-items: center; margin-bottom: 8px; font-size: 12px; color: #444; border-bottom: 1px dashed #eee; padding-bottom: 6px; }
         .shop-item:last-child { margin-bottom: 0; border-bottom: none; }
-        .shop-cat { font-size: 10px; color: #999; margin-left: auto; background: #fff; padding: 1px 5px; border: 1px solid #eee; border-radius: 3px; }
+        .shop-cat { font-size: 10px; color: #e67e22; font-weight:700; margin-left: auto; background: #fff; padding: 2px 6px; border: 1px solid #f39c12; border-radius: 4px; }
         .shop-arrow { transition: transform 0.2s; font-size: 10px; }
         .shop-arrow.open { transform: rotate(180deg); }
 
-        /* --- Route Map Button (Fixed) --- */
+        /* --- Route Map Button --- */
         .route-btn {
             display: flex; align-items: center; justify-content: center;
             width: 100%; padding: 14px; background-color: #e8f0fe; color: #1967d2;
@@ -226,7 +228,7 @@
                 <div class="timeline-item">
                     <div class="time-col"><div class="dot"></div><span class="time-text">22:10</span></div>
                     <div class="event-content">
-                        <div class="event-title">발리 공항 도착 <span class="tag">이동</span><span class="move-icon">🚗</span></div>
+                        <div class="event-title">발리 공항 도착 <span class="tag">이동</span><span class="move-badge">🚗 차량</span></div>
                         <div class="event-desc">짐 찾기 & 가이드 미팅 (약 1시간 소요)</div>
                         <a href="https://www.google.com/maps/search/Ngurah+Rai+International+Airport" target="_blank" class="link-btn">공항 지도</a>
                     </div>
@@ -244,7 +246,7 @@
                 </div>
             </div>
             <a href="https://www.google.com/maps/dir/Ngurah+Rai+International+Airport,+Jalan+Raya+Gusti+Ngurah+Rai,+Tuban,+Badung+Regency,+Bali/Alila+Villas+Uluwatu,+Jl.+Belimbing+Sari+Tambiyak,+Pecatu,+South+Kuta,+Badung+Regency,+Bali+80364" target="_blank" class="route-btn">
-                Day 1 전체 이동경로 지도 보기 (기사님용 🚗)
+                Day 1 차량 이동경로 보기 (기사님용)
             </a>
             <div class="budget-accordion">
                 <div class="ba-header" onclick="toggleBudget(1)">💸 Day 1 지출 내역 <span id="total-1">0 원</span></div>
@@ -270,40 +272,44 @@
                 <div class="timeline-item">
                     <div class="time-col"><div class="dot"></div><span class="time-text">12:30</span></div>
                     <div class="event-content">
-                        <div class="event-title">SODA CAFE (또는 Laggas) <span class="tag">식당</span><span class="move-icon">🚗</span></div>
-                        <div class="event-desc">구글 평점 4.8 맛집. 쇼핑 거리 초입</div>
+                        <div class="event-title">SODA CAFE (or Laggas) <span class="tag">식당</span><span class="move-badge">🚗 차량</span></div>
+                        <div class="event-desc">
+                            쇼핑 거리 초입 맛집 (평점 4.8)<br>
+                            식사 후 바로 도보 쇼핑 시작
+                        </div>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="time-col"><div class="dot"></div><span class="time-text">13:30</span></div>
                     <div class="event-content">
-                        <div class="event-title">Jl. Labuansait 쇼핑 <span class="tag">쇼핑</span><span class="move-icon">👣</span></div>
-                        <div class="event-desc">식당 근처 도보로 즐겨찾기 도장깨기</div>
+                        <div class="event-title">Jl. Labuansait 쇼핑 <span class="tag">쇼핑</span><span class="walk-badge">👣 도보</span></div>
+                        <div class="event-desc">식당 근처 힙한 샵들 도보 이동</div>
                         
                         <div class="shop-accordion">
                             <div class="shop-header" onclick="toggleShopList('shop-day2', this)">
-                                <span>🛍️ 즐겨찾기 상점 리스트 보기</span>
+                                <span>🛍️ 빙긴/울루와뚜 즐겨찾기 리스트</span>
                                 <span class="shop-arrow">▼</span>
                             </div>
                             <div class="shop-body" id="shop-day2">
-                                <div class="shop-item">👗 Indigo Luna Store (요가/수영복) <span class="shop-cat">4.7</span></div>
-                                <div class="shop-item">👗 Paulina Katarina (부티크) <span class="shop-cat">5.0</span></div>
-                                <div class="shop-item">👜 Dellavenda Leather (가죽) <span class="shop-cat">5.0</span></div>
-                                <div class="shop-item">👙 Elce swim (수영복) <span class="shop-cat">4.9</span></div>
-                                <div class="shop-item">👗 Maria Malo (친환경 의류) <span class="shop-cat">4.6</span></div>
-                                <div class="shop-item">🧘‍♀️ Foxy Activewear (운동복) <span class="shop-cat">4.7</span></div>
-                                <div class="shop-item">👗 Bamboo Blonde (비치웨어) <span class="shop-cat">4.5</span></div>
-                                <div class="shop-item">👗 Earth Circus (의류) <span class="shop-cat">5.0</span></div>
-                                <div class="shop-item">👗 Miss Milne (의류) <span class="shop-cat">5.0</span></div>
-                                <div class="shop-item">👗 Asmara Butik (의류) <span class="shop-cat">5.0</span></div>
-                                <div class="shop-item">👗 Mimpi Mannis (의류/잡화) <span class="shop-cat">4.5</span></div>
-                                <div class="shop-item">💍 Ananda Soul (주얼리) <span class="shop-cat">5.0</span></div>
-                                <div class="shop-item">💍 Lucky charm (귀금속) <span class="shop-cat">5.0</span></div>
-                                <div class="shop-item">⛺ Ticket To The Moon (해먹) <span class="shop-cat">4.9</span></div>
-                                <div class="shop-item">🍦 Gelato Factory (아이스크림) <span class="shop-cat">4.9</span></div>
-                                <div class="shop-item">🥯 Sinamon Bali (디저트) <span class="shop-cat">4.9</span></div>
-                                <div class="shop-item">🥤 Smoothie Shop (스무디) <span class="shop-cat">4.6</span></div>
-                                <div class="shop-item">🛒 Island Foods (마트/맥주) <span class="shop-cat">4.1</span></div>
+                                <div class="shop-item">👗 Indigo Luna Store (요가/수영복) <span class="shop-cat">★4.7</span></div>
+                                <div class="shop-item">👗 Paulina Katarina (부티크) <span class="shop-cat">★5.0</span></div>
+                                <div class="shop-item">👙 Elce swim (수영복) <span class="shop-cat">★4.9</span></div>
+                                <div class="shop-item">👗 Maria Malo (친환경 의류) <span class="shop-cat">★4.6</span></div>
+                                <div class="shop-item">🧘‍♀️ Foxy Activewear (운동복) <span class="shop-cat">★4.7</span></div>
+                                <div class="shop-item">👗 Bamboo Blonde (비치웨어) <span class="shop-cat">★4.5</span></div>
+                                <div class="shop-item">👜 Dellavenda Leather (가죽) <span class="shop-cat">★5.0</span></div>
+                                <div class="shop-item">👗 Earth Circus (의류) <span class="shop-cat">★5.0</span></div>
+                                <div class="shop-item">👗 Miss Milne (의류) <span class="shop-cat">★5.0</span></div>
+                                <div class="shop-item">👗 Asmara Butik (의류) <span class="shop-cat">★5.0</span></div>
+                                <div class="shop-item">👗 Mimpi Mannis (의류/잡화) <span class="shop-cat">★4.5</span></div>
+                                <div class="shop-item">💍 Ananda Soul (주얼리) <span class="shop-cat">★5.0</span></div>
+                                <div class="shop-item">💍 Lucky charm (귀금속) <span class="shop-cat">★5.0</span></div>
+                                <div class="shop-item">⛺ Ticket To The Moon (해먹) <span class="shop-cat">★4.9</span></div>
+                                <div class="shop-item">🍦 Gelato Factory (아이스크림) <span class="shop-cat">★4.9</span></div>
+                                <div class="shop-item">🥯 Sinamon Bali (디저트) <span class="shop-cat">★4.9</span></div>
+                                <div class="shop-item">🛒 Island Foods (마트/맥주) <span class="shop-cat">★4.1</span></div>
+                                <div class="shop-item">👙 Gooseberry Intimates (란제리) <span class="shop-cat">★4.9</span></div>
+                                <div class="shop-item">🌮 Lola's Cantina (멕시칸/옵션) <span class="shop-cat">★4.4</span></div>
                             </div>
                         </div>
                     </div>
@@ -311,20 +317,20 @@
                 <div class="timeline-item">
                     <div class="time-col"><div class="dot"></div><span class="time-text">15:00</span></div>
                     <div class="event-content">
-                        <div class="event-title">Sundays Beach Club <span class="tag">휴식</span><span class="move-icon">🚗</span></div>
+                        <div class="event-title">Sundays Beach Club <span class="tag">휴식</span><span class="move-badge">🚗 차량</span></div>
                         <div class="event-desc">스노클링, 카약, 빈백 휴식</div>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="time-col"><div class="dot"></div><span class="time-text">18:30</span></div>
                     <div class="event-content">
-                        <div class="event-title">WAHAHA Ribs (짐바란) <span class="tag">식당</span><span class="move-icon">🚗</span></div>
+                        <div class="event-title">WAHAHA Ribs (짐바란) <span class="tag">식당</span><span class="move-badge">🚗 차량</span></div>
                         <div class="event-desc">숙소 가는 길, 폭립 맛집 (평점 4.5)</div>
                     </div>
                 </div>
             </div>
             <a href="https://www.google.com/maps/dir/Alila+Villas+Uluwatu/SODA+CAFE/Sundays+Beach+Club/WAHAHA+Pork+Ribs+-+Jimbaran/Alila+Villas+Uluwatu" target="_blank" class="route-btn">
-                Day 2 전체 이동경로 지도 보기 (기사님용 🚗)
+                Day 2 차량 이동경로 보기 (기사님용)
             </a>
             <div class="budget-accordion">
                 <div class="ba-header" onclick="toggleBudget(2)">💸 Day 2 지출 내역 <span id="total-2">0 원</span></div>
@@ -347,27 +353,27 @@
                 <div class="timeline-item">
                     <div class="time-col"><div class="dot"></div><span class="time-text">13:00</span></div>
                     <div class="event-content">
-                        <div class="event-title">Mrs Widya's Campur <span class="tag">식당</span><span class="move-icon">🚗</span></div>
-                        <div class="event-desc">로컬 짬뿌르 찐맛집 (평점 4.5)</div>
+                        <div class="event-title">The Warung (더 와룽) <span class="tag">식당</span></div>
+                        <div class="event-desc">호텔 내 위치. 바비 굴링 & 메기붕 세트</div>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="time-col"><div class="dot"></div><span class="time-text">16:30</span></div>
                     <div class="event-content">
-                        <div class="event-title">울루와뚜 사원 <span class="tag">관광</span><span class="move-icon">🚗</span></div>
+                        <div class="event-title">울루와뚜 사원 <span class="tag">관광</span><span class="move-badge">🚗 차량</span></div>
                         <div class="event-desc">절벽 사원 뷰 & 원숭이 조심</div>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="time-col"><div class="dot"></div><span class="time-text">18:00</span></div>
                     <div class="event-content">
-                        <div class="event-title">YUKI Uluwatu <span class="tag">식당</span><span class="move-icon">👣</span></div>
+                        <div class="event-title">YUKI Uluwatu <span class="tag">식당</span><span class="walk-badge">👣 도보</span></div>
                         <div class="event-desc">일몰 보며 스시롤 & 칵테일 (사원 근처)</div>
                     </div>
                 </div>
             </div>
             <a href="https://www.google.com/maps/dir/Alila+Villas+Uluwatu/Mrs+Widya's+Campur-Campur+Restaurant/Uluwatu+Temple/YUKI+Uluwatu/Alila+Villas+Uluwatu" target="_blank" class="route-btn">
-                Day 3 전체 이동경로 지도 보기 (기사님용 🚗)
+                Day 3 차량 이동경로 보기 (기사님용)
             </a>
             <div class="budget-accordion">
                 <div class="ba-header" onclick="toggleBudget(3)">💸 Day 3 지출 내역 <span id="total-3">0 원</span></div>
@@ -383,7 +389,7 @@
                 <div class="timeline-item">
                     <div class="time-col"><div class="dot"></div><span class="time-text">09:30</span></div>
                     <div class="event-content">
-                        <div class="event-title">체크아웃 & 이동 <span class="tag">이동</span><span class="move-icon">🚗</span></div>
+                        <div class="event-title">체크아웃 & 이동 <span class="tag">이동</span><span class="move-badge">🚗 차량</span></div>
                         <div class="event-desc">
                             <span style="color:#e74c3c;">Check-out 12:00</span><br>
                             알릴라 출발 (약 1시간 40분 소요)
@@ -407,7 +413,7 @@
                 <div class="timeline-item">
                     <div class="time-col"><div class="dot"></div><span class="time-text">16:30</span></div>
                     <div class="event-content">
-                        <div class="event-title">Mulia Resort 체크인 <span class="tag">숙소</span><span class="move-icon">🚗</span></div>
+                        <div class="event-title">Mulia Resort 체크인 <span class="tag">숙소</span><span class="move-badge">🚗 차량</span></div>
                         <div class="event-desc">
                             <span style="color:#e74c3c;">Check-in 15:00</span><br>
                             시그니처 라군룸 (수영장 연결)
@@ -430,7 +436,7 @@
                 </div>
             </div>
             <a href="https://www.google.com/maps/dir/Alila+Villas+Uluwatu/Bali+Safari+and+Marine+Park/Mulia+Resort/Soleil" target="_blank" class="route-btn">
-                Day 4 전체 이동경로 지도 보기 (기사님용 🚗)
+                Day 4 차량 이동경로 보기 (기사님용)
             </a>
             <div class="budget-accordion">
                 <div class="ba-header" onclick="toggleBudget(4)">💸 Day 4 지출 내역 <span id="total-4">0 원</span></div>
@@ -453,33 +459,34 @@
                 <div class="timeline-item">
                     <div class="time-col"><div class="dot"></div><span class="time-text">12:00</span></div>
                     <div class="event-content">
-                        <div class="event-title">Manarai Beach House <span class="tag">식당</span><span class="move-icon">🚗</span></div>
+                        <div class="event-title">Manarai Beach House <span class="tag">식당</span><span class="move-badge">🚗 차량</span></div>
                         <div class="event-desc">소피텔 앞 트렌디한 비치 클럽 브런치</div>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="time-col"><div class="dot"></div><span class="time-text">14:00</span></div>
                     <div class="event-content">
-                        <div class="event-title">Zahra Spa Nusa Dua <span class="tag">스파</span><span class="move-icon">🚗</span></div>
+                        <div class="event-title">Zahra Spa Nusa Dua <span class="tag">스파</span><span class="move-badge">🚗 차량</span></div>
                         <div class="event-desc">평점 4.9 인생 마사지</div>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="time-col"><div class="dot"></div><span class="time-text">16:00</span></div>
                     <div class="event-content">
-                        <div class="event-title">기념품 쇼핑 <span class="tag">쇼핑</span><span class="move-icon">🚗</span></div>
+                        <div class="event-title">누사두아 지역 쇼핑 <span class="tag">쇼핑</span><span class="move-badge">🚗 차량</span></div>
                         <div class="event-desc">크리스나(필수) & 페피토 (간식)</div>
                         
                         <div class="shop-accordion">
                             <div class="shop-header" onclick="toggleShopList('shop-day5', this)">
-                                <span>🛍️ Day 5 쇼핑 리스트</span>
+                                <span>🛍️ 누사두아 즐겨찾기 리스트</span>
                                 <span class="shop-arrow">▼</span>
                             </div>
                             <div class="shop-body" id="shop-day5">
-                                <div class="shop-item">🛍️ Krisna Oleh Oleh (기념품 싹쓸이) <span class="shop-cat">4.5</span></div>
-                                <div class="shop-item">🛒 Pepito Express (마트/간식) <span class="shop-cat">4.4</span></div>
-                                <div class="shop-item">🛍️ Bali Collection (쇼핑몰/선택) <span class="shop-cat">4.2</span></div>
-                                <div class="shop-item">💄 Sensatia Botanicals (천연화장품) <span class="shop-cat">4.5</span></div>
+                                <div class="shop-item">🍛 Mrs Widya's Campur (로컬맛집) <span class="shop-cat">★4.5</span></div>
+                                <div class="shop-item">🛍️ Krisna Oleh Oleh (기념품 싹쓸이) <span class="shop-cat">★4.5</span></div>
+                                <div class="shop-item">🛒 Pepito Express Sawangan (마트) <span class="shop-cat">★4.4</span></div>
+                                <div class="shop-item">🛍️ Bali Collection (쇼핑몰/선택) <span class="shop-cat">★4.2</span></div>
+                                <div class="shop-item">💄 Sensatia Botanicals (천연화장품) <span class="shop-cat">★4.5</span></div>
                             </div>
                         </div>
                     </div>
@@ -487,13 +494,13 @@
                 <div class="timeline-item">
                     <div class="time-col"><div class="dot"></div><span class="time-text">18:00</span></div>
                     <div class="event-content">
-                        <div class="event-title">The Cafe 뷔페 <span class="tag">식당</span><span class="move-icon">🚗</span></div>
+                        <div class="event-title">The Cafe 뷔페 <span class="tag">식당</span><span class="move-badge">🚗 차량</span></div>
                         <div class="event-desc">물리아 복귀 후 랍스터 디너</div>
                     </div>
                 </div>
             </div>
             <a href="https://www.google.com/maps/dir/Mulia+Resort/Manarai+Beach+House/Zahra+Spa+Nusa+Dua/Krisna+Oleh+-+Oleh+Bali+Bypass/Mulia+Resort" target="_blank" class="route-btn">
-                Day 5 전체 이동경로 지도 보기 (기사님용 🚗)
+                Day 5 차량 이동경로 보기 (기사님용)
             </a>
             <div class="budget-accordion">
                 <div class="ba-header" onclick="toggleBudget(5)">💸 Day 5 지출 내역 <span id="total-5">0 원</span></div>
@@ -519,19 +526,19 @@
                 <div class="timeline-item">
                     <div class="time-col"><div class="dot"></div><span class="time-text">13:00</span></div>
                     <div class="event-content">
-                        <div class="event-title">마지막 쇼핑 & 식사 <span class="tag">쇼핑</span><span class="move-icon">🚗</span></div>
+                        <div class="event-title">공항 근처 쇼핑 & 식사 <span class="tag">쇼핑</span><span class="move-badge">🚗 차량</span></div>
                         <div class="event-desc">비치워크/아이콘발리 중 선택</div>
                         
                         <div class="shop-accordion">
                             <div class="shop-header" onclick="toggleShopList('shop-day6', this)">
-                                <span>🛍️ Day 6 쇼핑/맛집 리스트</span>
+                                <span>🛍️ 공항 근처 즐겨찾기 리스트</span>
                                 <span class="shop-arrow">▼</span>
                             </div>
                             <div class="shop-body" id="shop-day6">
-                                <div class="shop-item">🛍️ Beachwalk Shopping Center <span class="shop-cat">4.5</span></div>
-                                <div class="shop-item">🛍️ ICON BALI Mall <span class="shop-cat">4.3</span></div>
-                                <div class="shop-item">🥞 Pan & Co (팬케이크) <span class="shop-cat">4.6</span></div>
-                                <div class="shop-item">✈️ Wolfgang Puck Kitchen (공항근처) <span class="shop-cat">4.8</span></div>
+                                <div class="shop-item">🛍️ Beachwalk Shopping Center <span class="shop-cat">★4.5</span></div>
+                                <div class="shop-item">🛍️ ICON BALI Mall <span class="shop-cat">★4.3</span></div>
+                                <div class="shop-item">🥞 Pan & Co (팬케이크) <span class="shop-cat">★4.6</span></div>
+                                <div class="shop-item">✈️ Wolfgang Puck Kitchen (공항근처) <span class="shop-cat">★4.8</span></div>
                             </div>
                         </div>
                     </div>
@@ -539,7 +546,7 @@
                 <div class="timeline-item">
                     <div class="time-col"><div class="dot"></div><span class="time-text">21:30</span></div>
                     <div class="event-content">
-                        <div class="event-title">공항으로 출발 <span class="tag">이동</span><span class="move-icon">🚗</span></div>
+                        <div class="event-title">공항으로 출발 <span class="tag">이동</span><span class="move-badge">🚗 차량</span></div>
                         <div class="event-desc">
                             호텔 로비 차량 탑승 (비행기 3.5시간 전)<br>
                             이동 시간: 약 30~40분 (유료 도로 이용)
@@ -555,7 +562,7 @@
                 </div>
             </div>
             <a href="https://www.google.com/maps/dir/Mulia+Resort/Beachwalk+Shopping+Center/Wolfgang+Puck+Kitchen+%2B+Bar/Ngurah+Rai+International+Airport" target="_blank" class="route-btn">
-                Day 6 전체 이동경로 지도 보기 (기사님용 🚗)
+                Day 6 차량 이동경로 보기 (기사님용)
             </a>
             <div class="budget-accordion">
                 <div class="ba-header" onclick="toggleBudget(6)">💸 Day 6 지출 내역 <span id="total-6">0 원</span></div>
