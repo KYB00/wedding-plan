@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Bali Honeymoon Final</title>
+    <title>Bali Honeymoon Plan</title>
     <style>
         :root {
-            /* 🎨 Tone & Manner: Navy, Blue, Gray */
-            --navy-dark: #0f172a;       /* 메인 텍스트 */
-            --navy-main: #1e3a8a;       /* 포인트, 활성 탭 */
-            --blue-accent: #2563eb;     /* 버튼, 강조 */
-            --blue-soft: #eff6ff;       /* 배경 포인트 */
-            --gray-bg: #f8fafc;         /* 전체 배경 */
-            --gray-line: #cbd5e1;       /* 타임라인 선 색상 */
+            --primary: #2c3e50;
+            --accent: #2980b9;
+            --kal-navy: #00256c;
+            --bg-gray: #f4f7f6;
             --white: #ffffff;
-            --danger: #dc2626;          /* 경고 (트래픽) */
+            --text-main: #333333;
+            --border: #e1e4e8;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
             --safe-bottom: env(safe-area-inset-bottom);
         }
 
@@ -22,187 +21,173 @@
         body { 
             margin: 0; padding: 0; 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
-            background-color: var(--gray-bg); 
-            color: var(--navy-dark); 
+            background-color: var(--bg-gray); 
+            color: var(--text-main); 
             padding-bottom: calc(90px + var(--safe-bottom)); 
         }
 
         /* --- Header --- */
-        header { background-color: var(--white); padding: 15px 20px 10px 20px; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #e2e8f0; }
+        header { background-color: var(--white); padding: 15px 20px 10px 20px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
         .header-row { display: flex; justify-content: space-between; align-items: flex-start; }
-        .trip-title { font-size: 22px; font-weight: 800; color: var(--navy-dark); margin: 0; letter-spacing: -0.5px; }
-        .trip-date { font-size: 13px; color: #64748b; margin-top: 4px; font-weight: 500; }
-        .hamburger-btn { font-size: 24px; color: var(--navy-dark); cursor: pointer; padding: 5px; }
+        .trip-title { font-size: 20px; font-weight: 800; color: var(--primary); margin: 0; }
+        .trip-date { font-size: 12px; color: #888; margin-top: 2px; }
+        .hamburger-btn { font-size: 24px; color: var(--primary); cursor: pointer; padding: 5px; }
 
-        /* --- Menu --- */
+        /* --- Mobile Menu --- */
         .mobile-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--white); box-shadow: 0 10px 20px rgba(0,0,0,0.1); padding: 10px 0; z-index: 99; border-top: 1px solid #eee; }
         .mobile-menu.show { display: block; animation: slideDown 0.3s ease; }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-        .menu-item { padding: 15px 20px; font-size: 16px; font-weight: 600; color: var(--navy-dark); border-bottom: 1px solid #f5f5f5; display: flex; align-items: center; cursor: pointer; }
+        .menu-item { padding: 15px 20px; font-size: 16px; font-weight: 600; color: var(--primary); border-bottom: 1px solid #f5f5f5; display: flex; align-items: center; cursor: pointer; }
+        .menu-icon { margin-right: 10px; }
 
-        /* --- Day Tabs --- */
+        /* --- Day Selector --- */
         .day-scroll-wrapper { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 10px; margin-top: 5px; -ms-overflow-style: none; scrollbar-width: none; }
         .day-scroll-wrapper::-webkit-scrollbar { display: none; }
-        .day-chip { flex: 0 0 auto; padding: 10px 18px; background: #e2e8f0; border-radius: 12px; font-size: 14px; font-weight: 600; color: #64748b; cursor: pointer; transition: all 0.2s; }
-        .day-chip.active { background-color: var(--navy-dark); color: var(--white); box-shadow: 0 4px 6px rgba(15, 23, 42, 0.3); }
+        .day-chip { flex: 0 0 auto; padding: 8px 16px; background: #eef2f5; border-radius: 20px; font-size: 13px; font-weight: 600; color: #868e96; cursor: pointer; transition: all 0.2s; border: 1px solid transparent; }
+        .day-chip.active { background-color: var(--primary); color: white; font-weight: 700; box-shadow: 0 4px 8px rgba(44, 62, 80, 0.2); }
 
         /* --- Layout --- */
         main { display: none; padding: 20px; animation: fadeIn 0.3s ease; }
         main.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- Common Card --- */
-        .card { background: var(--white); border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 1px solid #e2e8f0; }
-        .section-title { font-size: 18px; font-weight: 800; color: var(--navy-dark); margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #f1f5f9; }
+        /* --- Common UI --- */
+        .card { background: var(--white); border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); overflow: hidden; }
+        .section-title { font-size: 17px; font-weight: 800; color: var(--primary); margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #f0f0f0; }
 
-        /* --- Flight Info --- */
-        .accordion-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 16px; background: var(--navy-dark); border-radius: 12px; color: white; margin-bottom: 20px; }
+        /* --- Flight Accordion --- */
+        .flight-accordion-wrap { margin-bottom: 20px; }
+        .accordion-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 15px; background: var(--kal-navy); border-radius: 12px; color: white; box-shadow: 0 4px 8px rgba(0,37,108,0.25); }
         .accordion-title { font-size: 15px; font-weight: 700; display: flex; align-items: center; }
-        .accordion-content { display: none; margin-top: 10px; }
+        .accordion-content { display: none; padding-top: 10px; }
         .accordion-content.open { display: block; }
-        .ticket-box { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; }
-        .ticket-body { padding: 5px; }
-        .flight-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-        .f-col { flex: 1; text-align: center; }
-        .f-date { font-size: 11px; color: #64748b; display: block; margin-bottom: 2px; }
-        .f-time { font-size: 16px; font-weight: 700; color: #0f172a; }
-        .f-code { font-size: 24px; font-weight: 800; color: var(--blue-main); line-height: 1.2; display: block; }
-        .f-detail-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5px; background: #f8fafc; padding: 10px; border-radius: 6px; text-align: center; margin-top: 10px; }
-        .f-label { font-size: 10px; color: #94a3b8; display: block; }
-        .f-val { font-size: 12px; font-weight: 700; color: #334155; }
+        .arrow-icon { transition: transform 0.3s; font-size: 12px; }
+        .arrow-icon.open { transform: rotate(180deg); }
 
-        /* --- Timeline (FIXED ALIGNMENT) --- */
-        .timeline-item { display: flex; margin-bottom: 0; position: relative; padding-bottom: 30px; }
-        
-        /* Vertical Line Positioned relative to time-col */
-        .timeline-item::before { 
-            content: ''; 
-            position: absolute; 
-            left: 29px; /* (60px width / 2) - 1px width */
-            top: 25px; 
-            bottom: 0; 
-            width: 2px; 
-            background: var(--gray-line); 
-            z-index: 0; 
-        }
-        .timeline-item:last-child { padding-bottom: 0; }
+        /* --- Ticket UI --- */
+        .ticket-box { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: white; margin-bottom: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .ticket-top-bar { background-color: #f8f9fa; color: #333; padding: 8px 15px; font-size: 12px; font-weight: 700; border-bottom: 1px solid #eee; }
+        .ticket-body { padding: 15px; }
+        .flight-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .f-col { flex: 1; text-align: center; }
+        .f-date { font-size: 11px; color: #666; display: block; margin-bottom: 2px; }
+        .f-time { font-size: 18px; font-weight: 700; color: #222; }
+        .f-code { font-size: 28px; font-weight: 800; color: var(--kal-navy); line-height: 1.2; display: block; }
+        .f-detail-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5px; background: #f8f9fa; padding: 10px; border-radius: 6px; text-align: center; margin-top: 10px; }
+        .f-label { font-size: 10px; color: #999; display: block; }
+        .f-val { font-size: 12px; font-weight: 700; color: #333; }
+
+        /* --- Timeline UI --- */
+        .timeline-item { display: flex; margin-bottom: 25px; position: relative; }
+        .timeline-item::before { content: ''; position: absolute; left: 14px; top: 25px; bottom: -35px; width: 2px; background: #e9ecef; z-index: 0; }
         .timeline-item:last-child::before { display: none; }
         
-        .time-col { 
-            flex: 0 0 60px; /* Fixed width column */
-            max-width: 60px;
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; /* Center horizontally */
-            margin-right: 15px; 
-            position: relative; /* Context for z-index */
-        }
+        .time-col { min-width: 35px; margin-right: 15px; position: relative; z-index: 1; text-align: center; display: flex; flex-direction: column; align-items: center; }
+        .time-text { font-size: 11px; font-weight: 700; color: #adb5bd; display: block; margin-top: 4px; }
+        .dot { width: 10px; height: 10px; background: var(--accent); border-radius: 50%; border: 2px solid var(--white); box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin: 5px auto 0 auto; }
         
-        .time-text { font-size: 12px; font-weight: 700; color: #64748b; margin-bottom: 4px; z-index: 1; }
-        
-        /* Dot Style */
-        .dot { 
-            width: 10px; height: 10px; 
-            background: var(--navy-dark); 
-            border-radius: 50%; 
-            z-index: 2; 
-            margin-top: 4px; 
-            border: 2px solid white; 
-            box-shadow: 0 0 0 1px #cbd5e1; 
-        }
-        
-        /* Icon Style (No Circle) */
+        /* Compact Icon Style */
         .path-icon { 
+            margin-top: 10px; 
             font-size: 18px; 
-            background: var(--white); /* Masks the line */
+            background: var(--white); 
             width: 24px; 
             height: 24px; 
             line-height: 24px; 
             text-align: center; 
-            z-index: 2;
-            margin-top: 4px;
+            z-index: 2; 
         }
-
-        .event-content { flex: 1; padding-top: 0px; }
-        .event-title { font-size: 16px; font-weight: 700; color: var(--navy-dark); margin-bottom: 4px; margin-top: -2px; }
-        .event-desc { font-size: 13px; color: #475569; line-height: 1.5; margin-bottom: 6px; }
         
-        .tag { display: inline-block; font-size: 10px; padding: 2px 6px; border-radius: 4px; background: #f1f5f9; color: #64748b; border: 1px solid #cbd5e1; margin-left: 6px; vertical-align: middle; }
-        
-        .warning-text { color: var(--danger); font-weight: 700; font-size: 12px; background: #fef2f2; padding: 4px 8px; border-radius: 4px; display: inline-block; margin-top: 6px; border: 1px solid #fecaca; }
+        .event-content { flex: 1; }
+        .event-title { font-size: 15px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+        .event-desc { font-size: 13px; color: #555; line-height: 1.5; margin-bottom: 6px; }
+        .tag { display: inline-block; font-size: 10px; padding: 2px 6px; border-radius: 4px; background: #eee; color: #555; margin-left: 5px; vertical-align: middle; }
+        .link-btn { display: inline-flex; align-items: center; font-size: 12px; color: #555; text-decoration: none; background: #f1f3f5; padding: 5px 10px; border-radius: 6px; margin-top: 5px; border: 1px solid #e9ecef; cursor: pointer; }
 
-        /* --- Shopping Toggle --- */
-        .shop-accordion { border: 1px solid #e2e8f0; border-radius: 8px; margin-top: 10px; overflow: hidden; background: #f8fafc; }
-        .shop-header { padding: 10px 15px; font-size: 13px; font-weight: 600; color: var(--navy-dark); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
-        .shop-body { display: none; padding: 10px 15px; border-top: 1px solid #e2e8f0; background: white; }
+        /* --- Shopping Accordion --- */
+        .shop-accordion { border: 1px solid #eee; border-radius: 8px; margin-top: 10px; overflow: hidden; background: #fcfcfc; }
+        .shop-header { padding: 12px 15px; font-size: 13px; font-weight: 700; color: var(--primary); background: #f8f9fa; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .shop-body { display: none; padding: 10px 15px; border-top: 1px solid #eee; }
         .shop-body.show { display: block; }
-        .shop-item { display: flex; align-items: center; margin-bottom: 6px; font-size: 12px; color: #334155; }
-        .shop-cat { font-size: 10px; color: #d97706; font-weight:700; margin-left: auto; background: #fffbeb; padding: 2px 6px; border: 1px solid #fcd34d; border-radius: 4px; }
+        .shop-item { display: flex; align-items: center; margin-bottom: 8px; font-size: 12px; color: #444; border-bottom: 1px dashed #eee; padding-bottom: 6px; }
+        .shop-item:last-child { margin-bottom: 0; border-bottom: none; }
+        .shop-cat { font-size: 10px; color: #e67e22; font-weight:700; margin-left: auto; background: #fff; padding: 2px 6px; border: 1px solid #f39c12; border-radius: 4px; }
         .shop-arrow { transition: transform 0.2s; font-size: 10px; }
         .shop-arrow.open { transform: rotate(180deg); }
 
-        /* --- Budget Dashboard --- */
-        .budget-dashboard { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
-        .b-card { padding: 15px; border-radius: 12px; color: white; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .b-card.total { background: var(--navy-dark); grid-column: 1 / -1; }
-        .b-card.fixed { background: #475569; }
-        .b-card.remain { background: var(--blue-main); }
-        .b-label { font-size: 12px; opacity: 0.8; margin-bottom: 4px; display: block; }
-        .b-value { font-size: 20px; font-weight: 800; }
-        .b-sub { font-size: 10px; opacity: 0.7; margin-top: 4px; display: block; }
-
-        .pretty-table { width: 100%; border-collapse: separate; border-spacing: 0; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; margin-top: 10px; }
-        .pretty-table th { background: #f8fafc; color: #475569; font-weight: 600; padding: 12px 15px; text-align: left; font-size: 13px; border-bottom: 1px solid #e2e8f0; }
-        .pretty-table td { padding: 12px 15px; border-bottom: 1px solid #f1f5f9; color: #1e293b; font-size: 14px; }
-        .pretty-table tr:last-child td { border-bottom: none; }
-        .pretty-table .price-col { text-align: right; font-family: 'Roboto', sans-serif; font-weight: 500; }
-        .pretty-table .total-row td { background: #f1f5f9; font-weight: 800; color: var(--navy-dark); font-size: 15px; border-top: 2px solid #cbd5e1; }
-        .pretty-table .remain-row td { background: var(--blue-soft); color: var(--blue-accent); font-weight: 800; font-size: 16px; border-top: 2px solid var(--blue-accent); }
-        .pretty-table .remain-row.negative td { background: #fef2f2; color: var(--danger); border-top: 2px solid #ef4444; }
-
-        /* --- Budget Inputs --- */
-        .budget-accordion { border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; margin-top: 15px; background: white; }
-        .ba-header { background: #f8fafc; padding: 12px 15px; font-size: 13px; font-weight: 600; color: var(--navy-dark); display: flex; justify-content: space-between; cursor: pointer; }
-        .ba-content { display: none; padding: 15px; border-top: 1px solid #e2e8f0; }
-        .ba-content.show { display: block; }
-        .budget-list-item { display: flex; gap: 5px; margin-bottom: 8px; }
-        .budget-input, .budget-select, .budget-num { padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; }
-        .budget-input { flex: 1; } .budget-select { width: 70px; } .budget-num { width: 90px; text-align: right; }
-        .add-btn { width: 100%; padding: 10px; background: #f1f5f9; color: var(--navy-dark); border: 1px dashed #cbd5e1; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; margin-top: 5px; }
-        .del-btn { background: #ef4444; color: white; border: none; border-radius: 6px; width: 30px; cursor: pointer; font-size: 12px; }
-
         /* --- Route Map Button --- */
-        .route-btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 14px; background-color: var(--blue-soft); color: var(--blue-accent); border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 14px; margin-top: 15px; border: 1px solid var(--blue-accent); transition: background 0.2s; }
-        .route-btn:active { background-color: #dbeafe; }
+        .route-btn {
+            display: flex; align-items: center; justify-content: center;
+            width: 100%; padding: 14px; background-color: #e8f0fe; color: #1967d2;
+            border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 14px;
+            margin-top: 15px; border: 1px solid #d2e3fc; transition: background 0.2s;
+        }
+        .route-btn:active { background-color: #d2e3fc; }
         .route-btn::before { content: '🗺️'; margin-right: 8px; }
 
-        /* --- Fixed Costs UI --- */
-        .fixed-cost-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
-        .fc-item { background: white; border: 1px solid #e2e8f0; padding: 15px; border-radius: 10px; text-align: center; }
-        .fc-icon { font-size: 20px; display: block; margin-bottom: 5px; }
-        .fc-title { font-size: 12px; color: #64748b; font-weight: 600; display: block; }
-        .fc-price { font-size: 15px; color: var(--navy-dark); font-weight: 700; display: block; margin-top: 3px; }
+        /* --- Budget Accordion & Table --- */
+        .budget-accordion { border: 1px solid #e1e4e8; border-radius: 10px; overflow: hidden; margin-top: 15px; background: white; }
+        .ba-header { background: #fafafa; padding: 12px 15px; font-size: 13px; font-weight: 600; color: var(--primary); display: flex; justify-content: space-between; cursor: pointer; }
+        .ba-content { display: none; padding: 15px; border-top: 1px solid #eee; }
+        .ba-content.show { display: block; }
+        .budget-list-item { display: flex; gap: 5px; margin-bottom: 8px; }
+        .budget-input { padding: 8px; border: 1px solid #ddd; border-radius: 6px; font-size: 13px; flex: 1; }
+        .budget-select { width: 75px; padding: 8px; border: 1px solid #ddd; border-radius: 6px; font-size: 13px; }
+        .budget-num { width: 90px; text-align: right; padding: 8px; border: 1px solid #ddd; border-radius: 6px; font-size: 13px; }
+        .add-btn { width: 100%; padding: 10px; background: #eef2f5; color: var(--primary); border: 1px dashed #ccc; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; margin-top: 5px; }
+        .del-btn { background: #ff6b6b; color: white; border: none; border-radius: 6px; width: 30px; cursor: pointer; font-size: 12px; }
 
-        /* --- Bottom Nav --- */
-        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: var(--white); height: 80px; display: flex; justify-content: space-around; padding-top: 12px; border-top: 1px solid #e2e8f0; z-index: 99999; padding-bottom: var(--safe-bottom); width: 100%; }
-        .nav-item { text-align: center; flex: 1; color: #94a3b8; cursor: pointer; }
-        .nav-item.active { color: var(--navy-main); }
-        .nav-icon { font-size: 20px; display: block; margin-bottom: 4px; }
-        .nav-label { font-size: 10px; font-weight: 600; }
-        #scrollTopBtn { display: none; position: fixed; bottom: 90px; left: 20px; width: 40px; height: 40px; background: rgba(15, 23, 42, 0.8); color: white; border: none; border-radius: 50%; font-size: 18px; cursor: pointer; z-index: 90; }
-        
-        .badge-confirmed { display: inline-block; background-color: #334155; color: white; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 10px; margin-left: 6px; vertical-align: middle; }
-        .hotel-img { width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid #e2e8f0; display: block; }
-        .info-row { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 8px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 5px; }
-        .info-val { font-weight: 700; color: var(--navy-dark); }
+        .pretty-table { width: 100%; border-collapse: separate; border-spacing: 0; border-radius: 12px; overflow: hidden; border: 1px solid #eee; margin-top: 10px; }
+        .pretty-table th { background: #f8f9fa; color: #555; font-weight: 600; padding: 12px 15px; text-align: left; font-size: 13px; border-bottom: 1px solid #eee; }
+        .pretty-table td { padding: 12px 15px; border-bottom: 1px solid #f8f9fa; color: #333; font-size: 14px; }
+        .pretty-table tr:last-child td { border-bottom: none; }
+        .pretty-table .price-col { text-align: right; font-family: 'Roboto', sans-serif; font-weight: 500; }
+        .pretty-table .total-row td { background: #eef2f5; font-weight: 800; color: var(--primary); font-size: 15px; border-top: 2px solid #dde2e6; }
+
+        /* --- Budget Detail UI (Fixed 800) --- */
+        .budget-detail-box { margin-bottom: 20px; }
+        .budget-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 13px; }
+        .budget-label { display: flex; align-items: center; color: #555; font-weight: 500; }
+        .budget-icon { margin-right: 8px; width: 24px; text-align: center; }
+        .budget-val { font-weight: 700; color: var(--primary); }
+        .budget-bar-bg { width: 100%; height: 6px; background: #eee; border-radius: 3px; margin-top: 5px; overflow: hidden; }
+        .budget-bar-fill { height: 100%; border-radius: 3px; }
+        .budget-sub { display: block; font-size: 11px; color: #999; margin-top: 2px; margin-left: 32px; }
+        .b-blue { background-color: #3498db; } .b-navy { background-color: #2c3e50; } .b-orange { background-color: #e67e22; } .b-green { background-color: #27ae60; }
+
+        /* --- Hotel & Tips --- */
+        .hotel-img { 
+            width: 100%; height: 200px; object-fit: cover; 
+            border-bottom: 1px solid #eee; display: block; 
+        }
+        .info-row { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 8px; border-bottom: 1px dashed #eee; padding-bottom: 5px; }
+        .info-val { font-weight: 700; color: var(--primary); }
         .box-ui { padding: 15px; border-radius: 8px; margin-bottom: 10px; font-size: 13px; line-height: 1.5; }
         .box-ui strong { display: block; margin-bottom: 5px; font-size: 14px; }
-        .tip-box { background: #fffbe6; border: 1px solid #fcd34d; color: #92400e; }
-        .facility-box { background: #f8fafc; border: 1px solid #e2e8f0; color: #475569; }
+        .tip-box { background: #fffbe6; border: 1px solid #ffe58f; color: #856404; }
+        .res-box { background: #e6f7ff; border: 1px solid #91d5ff; color: #0050b3; }
+        .facility-box { background: #f9f9f9; border: 1px solid #eee; color: #555; }
         .facility-list { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 5px; }
-        .facility-tag { background: white; padding: 5px 8px; border-radius: 4px; border: 1px solid #e2e8f0; font-size: 12px; }
-        .facility-desc { display: block; font-size: 11px; color: #94a3b8; margin-top: 2px; }
-        .link-btn { display: inline-flex; align-items: center; font-size: 12px; color: #475569; text-decoration: none; background: #f1f5f9; padding: 5px 10px; border-radius: 6px; margin-top: 5px; border: 1px solid #cbd5e1; cursor: pointer; }
+        .facility-tag { background: white; padding: 5px 8px; border-radius: 4px; border: 1px solid #eee; font-size: 12px; }
+        .facility-desc { display: block; font-size: 11px; color: #888; margin-top: 2px; }
+
+        /* --- Google Map Button --- */
+        .google-map-btn { display: block; width: 100%; padding: 15px; background: var(--accent); color: white; text-align: center; border-radius: 12px; font-weight: 700; text-decoration: none; margin-bottom: 25px; box-shadow: 0 4px 10px rgba(41, 128, 185, 0.3); }
+
+        /* --- Bottom Nav (Fixed) --- */
+        .bottom-nav { 
+            position: fixed; bottom: 0; left: 0; right: 0; 
+            background: var(--white); height: 80px; 
+            display: flex; justify-content: space-around; 
+            padding-top: 12px; border-top: 1px solid #eee; 
+            z-index: 99999; padding-bottom: var(--safe-bottom); 
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05); width: 100%;
+        }
+        .nav-item { text-align: center; flex: 1; color: #ced4da; cursor: pointer; }
+        .nav-item.active { color: var(--primary); }
+        .nav-icon { font-size: 20px; display: block; margin-bottom: 4px; }
+        .nav-label { font-size: 10px; font-weight: 600; }
+        #scrollTopBtn { display: none; position: fixed; bottom: 90px; left: 20px; width: 40px; height: 40px; background: rgba(44, 62, 80, 0.8); color: white; border: none; border-radius: 50%; font-size: 18px; cursor: pointer; z-index: 90; }
     </style>
 </head>
 <body>
@@ -233,6 +218,7 @@
             </div>
             <div class="accordion-content" id="flight-info">
                 <div class="ticket-box">
+                    <div class="ticket-top-bar">예약번호 : DWHXCP</div>
                     <div class="ticket-body">
                         <div class="flight-row">
                             <div class="f-col"><span class="f-date">10.19 (월)</span><span class="f-time">16:10</span><span class="f-code">ICN</span></div>
@@ -244,7 +230,7 @@
                             <div><span class="f-label">좌석</span><span class="f-val">37H, 37J</span></div>
                             <div><span class="f-label">수하물</span><span class="f-val">1 PC</span></div>
                         </div>
-                        <hr style="border:0; border-top:1px dashed #e2e8f0; margin:20px 0;">
+                        <hr style="border:0; border-top:1px dashed #eee; margin:20px 0;">
                         <div class="flight-row">
                             <div class="f-col"><span class="f-date">10.24 (토)</span><span class="f-time">01:10</span><span class="f-code">DPS</span></div>
                             <div class="f-col" style="flex:0.5; color:#ccc;">✈</div>
@@ -260,7 +246,7 @@
             </div>
         </div>
 
-        <div class="day-scroll-wrapper" id="day-selector" style="position:sticky; top:60px; background:var(--gray-bg); z-index:90; padding: 10px 0;">
+        <div class="day-scroll-wrapper" id="day-selector" style="position:sticky; top:60px; background:var(--bg-gray); z-index:90; padding: 10px 0;">
             <div class="day-chip active" onclick="showDay(1)">Day 1</div>
             <div class="day-chip" onclick="showDay(2)">Day 2</div>
             <div class="day-chip" onclick="showDay(3)">Day 3</div>
@@ -272,44 +258,30 @@
         <div id="day-1" class="day-content">
             <div class="card">
                 <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">13:00</span><div class="path-icon">🚗</div></div>
+                    <div class="time-col"><div class="dot"></div><span class="time-text">22:10</span></div>
                     <div class="event-content">
-                        <div class="event-title">인천공항 도착 <span class="tag">이동</span></div>
-                        <div class="event-desc">공항 리무진/차량 하차</div>
+                        <div class="event-title">발리 공항 도착 <span class="tag">이동</span></div>
+                        <div class="event-desc">짐 찾기 & 가이드 미팅 (약 1시간 소요)</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=I+Gusti+Ngurah+Rai+International+Airport" target="_blank" class="link-btn">공항 지도 보기</a>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">14:00</span><div class="path-icon">👣</div></div>
+                    <div class="time-col"><div class="dot"></div><span class="time-text">23:30</span></div>
                     <div class="event-content">
-                        <div class="event-title">체크인 및 면세점 <span class="tag">쇼핑</span></div>
-                        <div class="event-desc">수하물 위탁 후 면세 구역 구경</div>
+                        <div class="event-title">Alila Villas 체크인 <span class="tag">숙소</span></div>
+                        <div class="event-desc">웰컴 드링크 & 룸서비스(나시고랭 추천)</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Alila+Villas+Uluwatu" target="_blank" class="link-btn">알릴라 지도 보기</a>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">16:10</span></div>
+                    <div class="time-col"><div class="dot"></div><span class="time-text">24:00</span></div>
                     <div class="event-content">
-                        <div class="event-title">인천 출발 (KE431) <span class="tag">비행</span></div>
-                        <div class="event-desc">발리 덴파사르행 탑승</div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">22:10</span><div class="path-icon">🚗</div></div>
-                    <div class="event-content">
-                        <div class="event-title">발리 도착 & 이동 <span class="tag">이동</span></div>
-                        <div class="event-desc">가이드 미팅 후 숙소 이동</div>
-                        <a href="https://goo.gl/maps/8Z1Z1Z1Z1Z1Z1Z1Z1" target="_blank" class="link-btn">공항 지도 보기</a>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">23:40</span></div>
-                    <div class="event-content">
-                        <div class="event-title">Mulia Resort 체크인 <span class="tag">숙소</span></div>
-                        <div class="event-desc"><b>Signature Lagoon Access</b><br>룸서비스(나시고랭) 야식</div>
-                        <a href="https://maps.app.goo.gl/XYZ123456789" target="_blank" class="link-btn">물리아 지도 보기</a>
+                        <div class="event-title">휴식 및 취침 <span class="tag">일정 종료</span></div>
+                        <div class="event-desc">내일 일정을 위해 휴식</div>
                     </div>
                 </div>
             </div>
-            <a href="https://www.google.com/maps" target="_blank" class="route-btn">Day 1 차량 이동경로 보기</a>
+            <a href="https://www.google.com/maps/dir/Ngurah+Rai+International+Airport/Alila+Villas+Uluwatu" target="_blank" class="route-btn">Day 1 차량 이동경로 보기 (공항 → 알릴라)</a>
             <div class="budget-accordion">
                 <div class="ba-header" onclick="toggleBudget(1)">💸 Day 1 지출 내역 <span id="total-1">0 원</span></div>
                 <div class="ba-content" id="ba-1"><div id="budget-list-1"></div><button class="add-btn" onclick="addBudgetRow(1)">+ 내역 추가</button></div>
@@ -319,163 +291,35 @@
         <div id="day-2" class="day-content" style="display:none;">
             <div class="card">
                 <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">09:00</span></div>
-                    <div class="event-content">
-                        <div class="event-title">The Cafe 조식 <span class="tag">식당</span></div>
-                        <div class="event-desc">발리 최고의 뷔페식 조식</div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">12:00</span><div class="path-icon">🚗</div></div>
-                    <div class="event-content">
-                        <div class="event-title">Manarai Beach House <span class="tag">식당</span></div>
-                        <div class="event-desc">소피텔 앞 트렌디한 비치 클럽 브런치</div>
-                        <a href="https://maps.app.goo.gl/XYZ123456789" target="_blank" class="link-btn">마나라이 지도</a>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">14:00</span><div class="path-icon">🚗</div></div>
-                    <div class="event-content">
-                        <div class="event-title">Zahra Spa Nusa Dua <span class="tag">스파</span></div>
-                        <div class="event-desc">평점 4.9 인생 마사지</div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">16:00</span><div class="path-icon">🚗</div></div>
-                    <div class="event-content">
-                        <div class="event-title">누사두아 지역 쇼핑 <span class="tag">쇼핑</span></div>
-                        <div class="event-desc">크리스나(필수) & 페피토 (간식)</div>
-                        <div class="shop-accordion">
-                            <div class="shop-header" onclick="toggleShopList('shop-day2', this)">
-                                <span>🛍️ 누사두아 즐겨찾기 리스트</span>
-                                <span class="shop-arrow">▼</span>
-                            </div>
-                            <div class="shop-body" id="shop-day2">
-                                <div class="shop-item">🍛 Mrs Widya's Campur (로컬맛집) <span class="shop-cat">★4.5</span></div>
-                                <div class="shop-item">🛍️ Krisna Oleh Oleh (기념품 싹쓸이) <span class="shop-cat">★4.5</span></div>
-                                <div class="shop-item">🛒 Pepito Express Sawangan (마트) <span class="shop-cat">★4.4</span></div>
-                                <div class="shop-item">🛍️ Bali Collection (쇼핑몰/선택) <span class="shop-cat">★4.2</span></div>
-                                <div class="shop-item">💄 Sensatia Botanicals (천연화장품) <span class="shop-cat">★4.5</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">19:00</span><div class="path-icon">🚗</div></div>
-                    <div class="event-content">
-                        <div class="event-title">Soleil (솔레일) <span class="tag">식당</span></div>
-                        <div class="event-desc">야외 테이블 디너 (스테이크 & 와인)</div>
-                    </div>
-                </div>
-            </div>
-            <a href="https://maps.app.goo.gl/XYZ123456789" target="_blank" class="route-btn">Day 2 차량 이동경로 보기</a>
-            <div class="budget-accordion">
-                <div class="ba-header" onclick="toggleBudget(2)">💸 Day 2 지출 내역 <span id="total-2">0 원</span></div>
-                <div class="ba-content" id="ba-2"><div id="budget-list-2"></div><button class="add-btn" onclick="addBudgetRow(2)">+ 내역 추가</button></div>
-            </div>
-        </div>
-
-        <div id="day-3" class="day-content" style="display:none;">
-            <div class="card">
-                <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">10:00</span><div class="path-icon">🚗</div></div>
-                    <div class="event-content">
-                        <div class="event-title">물리아 출발 <span class="tag">이동</span></div>
-                        <div class="event-desc">사파리로 이동</div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">11:30</span><div class="path-icon">👣</div></div>
-                    <div class="event-content">
-                        <div class="event-title">Safari Journey <span class="tag">관광</span></div>
-                        <div class="event-desc">전용 차량 탑승, 동물 구경</div>
-                        <a href="https://maps.app.goo.gl/XYZ123456789" target="_blank" class="link-btn">사파리 지도</a>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">16:00</span></div>
-                    <div class="event-content">
-                        <div class="event-title">물리아 복귀 <span class="tag">숙소</span></div>
-                        <div class="event-desc">오션 풀 & 라군 수영장 즐기기</div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">18:00</span></div>
-                    <div class="event-content">
-                        <div class="event-title">The Cafe 디너 뷔페 <span class="tag">식당</span></div>
-                        <div class="event-desc">물리아 메인 레스토랑</div>
-                    </div>
-                </div>
-            </div>
-            <a href="https://maps.app.goo.gl/XYZ123456789" target="_blank" class="route-btn">Day 3 차량 이동경로 보기</a>
-            <div class="budget-accordion">
-                <div class="ba-header" onclick="toggleBudget(3)">💸 Day 3 지출 내역 <span id="total-3">0 원</span></div>
-                <div class="ba-content" id="ba-3"><div id="budget-list-3"></div><button class="add-btn" onclick="addBudgetRow(3)">+ 내역 추가</button></div>
-            </div>
-        </div>
-
-        <div id="day-4" class="day-content" style="display:none;">
-            <div class="card">
-                <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">12:00</span><div class="path-icon">🚗</div></div>
-                    <div class="event-content">
-                        <div class="event-title">체크아웃 & 이동 <span class="tag">이동</span></div>
-                        <div class="event-desc">물리아 출발 ➡ 알릴라</div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">15:00</span><div class="path-icon">🏨</div></div>
-                    <div class="event-content">
-                        <div class="event-title">Alila Villas 체크인 <span class="tag">숙소</span></div>
-                        <div class="event-desc"><b>1 Bedroom Pool Villa</b><br>도착하자마자 체크인</div>
-                        <a href="https://maps.app.goo.gl/XYZ123456789" target="_blank" class="link-btn">알릴라 지도</a>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">16:00</span><div class="path-icon">🚗</div></div>
-                    <div class="event-content">
-                        <div class="event-title">Sundays Beach Club <span class="tag">휴양</span></div>
-                        <div class="event-desc">
-                            <b>카약 & 스노클링 즐기기</b><br>
-                            울루와뚜 최고의 프라이빗 비치
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">19:30</span></div>
-                    <div class="event-content">
-                        <div class="event-title">The Warung (더 와룽) <span class="tag">식당</span></div>
-                        <div class="event-desc">호텔 내 위치. 바비 굴링 & 메기붕 세트</div>
-                    </div>
-                </div>
-            </div>
-            <a href="https://maps.app.goo.gl/XYZ123456789" target="_blank" class="route-btn">Day 4 차량 이동경로 보기</a>
-            <div class="budget-accordion">
-                <div class="ba-header" onclick="toggleBudget(4)">💸 Day 4 지출 내역 <span id="total-4">0 원</span></div>
-                <div class="ba-content" id="ba-4"><div id="budget-list-4"></div><button class="add-btn" onclick="addBudgetRow(4)">+ 내역 추가</button></div>
-            </div>
-        </div>
-
-        <div id="day-5" class="day-content" style="display:none;">
-            <div class="card">
-                <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">09:00</span></div>
+                    <div class="time-col"><div class="dot"></div><span class="time-text">09:00</span><div class="path-icon">🚗</div></div>
                     <div class="event-content">
                         <div class="event-title">알릴라 조식 <span class="tag">식당</span></div>
                         <div class="event-desc"><b>CIRE 레스토랑</b> (무제한 주문식)</div>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">13:00</span><div class="path-icon">🚗</div></div>
+                    <div class="time-col"><div class="dot"></div><span class="time-text">12:30</span><div class="path-icon">👣</div></div>
                     <div class="event-content">
-                        <div class="event-title">SODA CAFE & 쇼핑 <span class="tag">식당</span></div>
-                        <div class="event-desc">식당 앞 거리 샵 구경 (간단히)</div>
+                        <div class="event-title">SODA CAFE (or Laggas) <span class="tag">식당</span></div>
+                        <div class="event-desc">쇼핑 거리 초입 맛집 (평점 4.8)</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=SODA+Dining+Bingin" target="_blank" class="link-btn">소다 카페 지도</a>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">13:30</span><div class="path-icon">🚗</div></div>
+                    <div class="event-content">
+                        <div class="event-title">Jl. Labuansait 쇼핑 <span class="tag">쇼핑</span></div>
+                        <div class="event-desc">
+                            식당 근처 힙한 샵들 도보 이동 (약 1.6km 구간)<br>
+                            <span style="font-size:11px; color:#e74c3c;">*도보 20~25분 소요, 더우면 차량 이용 권장</span>
+                        </div>
+                        
                         <div class="shop-accordion">
-                            <div class="shop-header" onclick="toggleShopList('shop-day5', this)">
+                            <div class="shop-header" onclick="toggleShopList('shop-day2', this)">
                                 <span>🛍️ 빙긴/울루와뚜 즐겨찾기 리스트</span>
                                 <span class="shop-arrow">▼</span>
                             </div>
-                            <div class="shop-body" id="shop-day5">
+                            <div class="shop-body" id="shop-day2">
                                 <div class="shop-item">👗 Indigo Luna Store (요가/수영복) <span class="shop-cat">★4.7</span></div>
                                 <div class="shop-item">👗 Paulina Katarina (부티크) <span class="shop-cat">★5.0</span></div>
                                 <div class="shop-item">👙 Elce swim (수영복) <span class="shop-cat">★4.9</span></div>
@@ -500,32 +344,188 @@
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">16:00</span><div class="path-icon">👣</div></div>
+                    <div class="time-col"><div class="dot"></div><span class="time-text">15:00</span><div class="path-icon">🚗</div></div>
                     <div class="event-content">
-                        <div class="event-title">Spa Alila (리조트 마사지) <span class="tag">힐링</span></div>
-                        <div class="event-desc">
-                            <b>울루와뚜 사원 대신 선택!</b><br>
-                            이동 없이 편안하게 리조트 내 최고급 스파<br>
-                            (⚠️ 중요: 빙긴에서 15:20에는 출발해야 늦지 않음)
-                        </div>
+                        <div class="event-title">Sundays Beach Club <span class="tag">휴식</span></div>
+                        <div class="event-desc">스노클링, 카약, 빈백 휴식</div>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">18:30</span><div class="path-icon">🚗</div></div>
+                    <div class="time-col"><div class="dot"></div><span class="time-text">18:30</span></div>
+                    <div class="event-content">
+                        <div class="event-title">WAHAHA Ribs (페카투) <span class="tag">식당</span></div>
+                        <div class="event-desc">숙소 근처 폭립 맛집 (평점 4.5)</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">21:00</span></div>
+                    <div class="event-content">
+                        <div class="event-title">숙소 귀가 <span class="tag">일정 종료</span></div>
+                        <div class="event-desc">알릴라 복귀 및 휴식</div>
+                    </div>
+                </div>
+            </div>
+            <a href="https://www.google.com/maps/dir/Alila+Villas+Uluwatu/SODA+Dining+Bingin/Sundays+Beach+Club/Wahaha+Pork+Ribs+Pecatu/Alila+Villas+Uluwatu" target="_blank" class="route-btn">Day 2 차량 이동경로 보기 (기사님용)</a>
+            <div class="budget-accordion">
+                <div class="ba-header" onclick="toggleBudget(2)">💸 Day 2 지출 내역 <span id="total-2">0 원</span></div>
+                <div class="ba-content" id="ba-2"><div id="budget-list-2"></div><button class="add-btn" onclick="addBudgetRow(2)">+ 내역 추가</button></div>
+            </div>
+        </div>
+
+        <div id="day-3" class="day-content" style="display:none;">
+            <div class="card">
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">09:00</span></div>
+                    <div class="event-content">
+                        <div class="event-title">풀빌라 휴식 <span class="tag">휴식</span></div>
+                        <div class="event-desc">메인 풀 & 선셋 카바나 인생샷</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">13:00</span><div class="path-icon">🚗</div></div>
+                    <div class="event-content">
+                        <div class="event-title">The Warung (더 와룽) <span class="tag">식당</span></div>
+                        <div class="event-desc">호텔 내 위치. 바비 굴링 & 메기붕 세트</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">16:30</span><div class="path-icon">👣</div></div>
+                    <div class="event-content">
+                        <div class="event-title">울루와뚜 사원 <span class="tag">관광</span></div>
+                        <div class="event-desc">절벽 사원 뷰 & 원숭이 조심</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Uluwatu+Temple" target="_blank" class="link-btn">사원 지도</a>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">18:00</span></div>
                     <div class="event-content">
                         <div class="event-title">YUKI Uluwatu <span class="tag">식당</span></div>
-                        <div class="event-desc">일몰 보며 스시롤 & 칵테일<br>(⚠️ 중요: 선셋 트래픽 감안, 리조트에서 17:50 출발 필수)</div>
+                        <div class="event-desc">일몰 보며 스시롤 & 칵테일 (사원 근처)</div>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="time-col"><div class="dot"></div><span class="time-text">20:30</span></div>
                     <div class="event-content">
-                        <div class="event-title">객실 귀가 <span class="tag">일정 종료</span></div>
-                        <div class="event-desc">마지막 밤, 풀빌라 휴식</div>
+                        <div class="event-title">숙소 귀가 <span class="tag">일정 종료</span></div>
+                        <div class="event-desc">알릴라 복귀 및 휴식</div>
                     </div>
                 </div>
             </div>
-            <a href="https://maps.app.goo.gl/XYZ123456789" target="_blank" class="route-btn">Day 5 차량 이동경로 보기</a>
+            <a href="https://www.google.com/maps/dir/Alila+Villas+Uluwatu/Uluwatu+Temple/YUKI+Uluwatu/Alila+Villas+Uluwatu" target="_blank" class="route-btn">Day 3 차량 이동경로 보기 (기사님용)</a>
+            <div class="budget-accordion">
+                <div class="ba-header" onclick="toggleBudget(3)">💸 Day 3 지출 내역 <span id="total-3">0 원</span></div>
+                <div class="ba-content" id="ba-3"><div id="budget-list-3"></div><button class="add-btn" onclick="addBudgetRow(3)">+ 내역 추가</button></div>
+            </div>
+        </div>
+
+        <div id="day-4" class="day-content" style="display:none;">
+            <div class="card">
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">09:30</span><div class="path-icon">🚗</div></div>
+                    <div class="event-content">
+                        <div class="event-title">체크아웃 & 이동 <span class="tag">이동</span></div>
+                        <div class="event-desc"><span style="color:#e74c3c;">Check-out 12:00</span><br>알릴라 출발 (약 1시간 40분 소요)</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">11:15</span></div>
+                    <div class="event-content">
+                        <div class="event-title">Safari Journey <span class="tag">관광</span></div>
+                        <div class="event-desc">전용 차량 탑승, 동물 구경</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Bali+Safari+and+Marine+Park" target="_blank" class="link-btn">사파리 지도</a>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">16:30</span></div>
+                    <div class="event-content">
+                        <div class="event-title">Mulia Resort 체크인 <span class="tag">숙소</span></div>
+                        <div class="event-desc"><span style="color:#e74c3c;">Check-in 15:00</span><br>시그니처 라군룸 (수영장 연결)</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=The+Mulia,+Mulia+Resort+%26+Villas" target="_blank" class="link-btn">물리아 지도</a>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">19:00</span></div>
+                    <div class="event-content">
+                        <div class="event-title">Soleil (솔레일) <span class="tag">식당</span></div>
+                        <div class="event-desc">야외 테이블 디너 (스테이크 & 와인)</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">21:00</span></div>
+                    <div class="event-content">
+                        <div class="event-title">객실 귀가 및 휴식 <span class="tag">일정 종료</span></div>
+                        <div class="event-desc">리조트 내 휴식</div>
+                    </div>
+                </div>
+            </div>
+            <a href="https://www.google.com/maps/dir/Alila+Villas+Uluwatu/Bali+Safari+and+Marine+Park/The+Mulia+-+Nusa+Dua,+Bali" target="_blank" class="route-btn">Day 4 차량 이동경로 보기 (기사님용)</a>
+            <div class="budget-accordion">
+                <div class="ba-header" onclick="toggleBudget(4)">💸 Day 4 지출 내역 <span id="total-4">0 원</span></div>
+                <div class="ba-content" id="ba-4"><div id="budget-list-4"></div><button class="add-btn" onclick="addBudgetRow(4)">+ 내역 추가</button></div>
+            </div>
+        </div>
+
+        <div id="day-5" class="day-content" style="display:none;">
+            <div class="card">
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">09:00</span><div class="path-icon">🚗</div></div>
+                    <div class="event-content">
+                        <div class="event-title">The Cafe 조식 <span class="tag">식당</span></div>
+                        <div class="event-desc">발리 최고의 뷔페식 조식 (한식 포함)</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">12:00</span><div class="path-icon">🚗</div></div>
+                    <div class="event-content">
+                        <div class="event-title">Manarai Beach House <span class="tag">식당</span></div>
+                        <div class="event-desc">소피텔 앞 트렌디한 비치 클럽 브런치</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Manarai+Beach+House" target="_blank" class="link-btn">마나라이 지도</a>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">14:00</span><div class="path-icon">🚗</div></div>
+                    <div class="event-content">
+                        <div class="event-title">Zahra Spa Nusa Dua <span class="tag">스파</span></div>
+                        <div class="event-desc">평점 4.9 인생 마사지</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">16:00</span><div class="path-icon">🚗</div></div>
+                    <div class="event-content">
+                        <div class="event-title">누사두아 지역 쇼핑 <span class="tag">쇼핑</span></div>
+                        <div class="event-desc">크리스나(필수) & 페피토 (간식)</div>
+                        
+                        <div class="shop-accordion">
+                            <div class="shop-header" onclick="toggleShopList('shop-day5', this)">
+                                <span>🛍️ 누사두아 즐겨찾기 리스트</span>
+                                <span class="shop-arrow">▼</span>
+                            </div>
+                            <div class="shop-body" id="shop-day5">
+                                <div class="shop-item">🍛 Mrs Widya's Campur (로컬맛집) <span class="shop-cat">★4.5</span></div>
+                                <div class="shop-item">🛍️ Krisna Oleh Oleh (기념품 싹쓸이) <span class="shop-cat">★4.5</span></div>
+                                <div class="shop-item">🛒 Pepito Express Sawangan (마트) <span class="shop-cat">★4.4</span></div>
+                                <div class="shop-item">🛍️ Bali Collection (쇼핑몰/선택) <span class="shop-cat">★4.2</span></div>
+                                <div class="shop-item">💄 Sensatia Botanicals (천연화장품) <span class="shop-cat">★4.5</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">18:00</span></div>
+                    <div class="event-content">
+                        <div class="event-title">The Cafe 뷔페 <span class="tag">식당</span></div>
+                        <div class="event-desc">물리아 복귀 후 랍스터 디너</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">20:00</span></div>
+                    <div class="event-content">
+                        <div class="event-title">객실 귀가 및 휴식 <span class="tag">일정 종료</span></div>
+                        <div class="event-desc">짐 정리 및 마지막 밤 휴식</div>
+                    </div>
+                </div>
+            </div>
+            <a href="https://www.google.com/maps/dir/The+Mulia+-+Nusa+Dua,+Bali/Manarai+Beach+House/Zahra+Spa+Nusa+Dua/Krisna+Oleh+-+Oleh+Bali+Bypass/The+Mulia+-+Nusa+Dua,+Bali" target="_blank" class="route-btn">Day 5 차량 이동경로 보기 (기사님용)</a>
             <div class="budget-accordion">
                 <div class="ba-header" onclick="toggleBudget(5)">💸 Day 5 지출 내역 <span id="total-5">0 원</span></div>
                 <div class="ba-content" id="ba-5"><div id="budget-list-5"></div><button class="add-btn" onclick="addBudgetRow(5)">+ 내역 추가</button></div>
@@ -538,31 +538,33 @@
                     <div class="time-col"><div class="dot"></div><span class="time-text">12:00</span><div class="path-icon">🚗</div></div>
                     <div class="event-content">
                         <div class="event-title">체크아웃 <span class="tag">숙소</span></div>
-                        <div class="event-desc">알릴라 출발 ➡ 공항 방향 (짐 싣고)</div>
+                        <div class="event-desc">짐 맡기고 수영장 이용 가능</div>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">13:30</span><div class="path-icon">👣</div></div>
+                    <div class="time-col"><div class="dot"></div><span class="time-text">13:00</span><div class="path-icon">🚗</div></div>
                     <div class="event-content">
-                        <div class="event-title">Krisna Oleh Oleh (크리스나) <span class="tag">쇼핑</span></div>
-                        <div class="event-desc">
-                            발리 최대 기념품 샵 (Sunset Road)<br>
-                            과자, 비누, 기념품 원스톱 쇼핑<br>
+                        <div class="event-title">공항 근처 쇼핑 & 식사 <span class="tag">쇼핑</span></div>
+                        <div class="event-desc">비치워크/아이콘발리 중 선택</div>
+                        <div class="shop-accordion">
+                            <div class="shop-header" onclick="toggleShopList('shop-day6', this)">
+                                <span>🛍️ 공항 근처 즐겨찾기 리스트</span>
+                                <span class="shop-arrow">▼</span>
+                            </div>
+                            <div class="shop-body" id="shop-day6">
+                                <div class="shop-item">🛍️ Beachwalk Shopping Center <span class="shop-cat">★4.5</span></div>
+                                <div class="shop-item">🛍️ ICON BALI Mall <span class="shop-cat">★4.3</span></div>
+                                <div class="shop-item">🥞 Pan & Co (팬케이크) <span class="shop-cat">★4.6</span></div>
+                                <div class="shop-item">✈️ Wolfgang Puck Kitchen (공항근처) <span class="shop-cat">★4.8</span></div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">15:30</span><div class="path-icon">👣</div></div>
-                    <div class="event-content">
-                        <div class="event-title">ICON BALI Mall (아이콘) <span class="tag">쇼핑</span></div>
-                        <div class="event-desc">최신 쇼핑몰 & 맛집 투어</div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">21:30</span><div class="path-icon">🚗</div></div>
+                    <div class="time-col"><div class="dot"></div><span class="time-text">21:30</span><div class="path-icon">✈️</div></div>
                     <div class="event-content">
                         <div class="event-title">공항으로 출발 <span class="tag">이동</span></div>
-                        <div class="event-desc">호텔 로비 차량 탑승 (비행기 3.5시간 전)<br>(사누르→공항 30~40분 소요)</div>
+                        <div class="event-desc">호텔 로비 차량 탑승 (비행기 3.5시간 전)</div>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -580,7 +582,7 @@
                     </div>
                 </div>
             </div>
-            <a href="https://maps.app.goo.gl/XYZ123456789" target="_blank" class="route-btn">Day 6 차량 이동경로 보기</a>
+            <a href="https://www.google.com/maps/dir/The+Mulia+-+Nusa+Dua,+Bali/Beachwalk+Shopping+Center/Ngurah+Rai+International+Airport" target="_blank" class="route-btn">Day 6 차량 이동경로 보기 (기사님용)</a>
             <div class="budget-accordion">
                 <div class="ba-header" onclick="toggleBudget(6)">💸 Day 6 지출 내역 <span id="total-6">0 원</span></div>
                 <div class="ba-content" id="ba-6"><div id="budget-list-6"></div><button class="add-btn" onclick="addBudgetRow(6)">+ 내역 추가</button></div>
@@ -590,36 +592,10 @@
 
     <main id="tab-hotels">
         <div class="card" style="padding:0; overflow:hidden;">
-            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" class="hotel-img" alt="The Mulia">
-            <div style="padding:20px;">
-                <div class="section-title">Mulia Resort (Lagoon) <span class="badge-confirmed">확정</span></div>
-                <div class="info-row"><span class="info-val">10/19 - 10/22 (3박)</span></div>
-                <div class="info-row"><span class="info-val">Signature Lagoon Access</span></div>
-                <div class="info-row"><span class="info-val">IN 15:00 / OUT 12:00</span></div>
-
-                <div class="box-ui facility-box">
-                    <strong>🏰 주요 부대시설</strong>
-                    <div class="facility-list">
-                        <div class="facility-tag"><b>Ocean Pool</b><span class="facility-desc">메인 비치 풀장</span></div>
-                        <div class="facility-tag"><b>Lagoon Pool</b><span class="facility-desc">객실 바로 연결</span></div>
-                        <div class="facility-tag"><b>The Cafe</b><span class="facility-desc">조식 뷔페</span></div>
-                        <div class="facility-tag"><b>Mulia Spa</b><span class="facility-desc">럭셔리 스파</span></div>
-                    </div>
-                </div>
-                <div class="box-ui tip-box">
-                    <strong>💡 Honey Tip & Tipping</strong>
-                    • <b>라군 룸:</b> 베란다 문 열면 바로 수영장 연결 (튜브 챙기기)<br>
-                    • <b>주의:</b> 물가라 모기 유의 (방충망 닫기)<br>
-                    • <b>조식:</b> 'The Cafe' 뷔페 퀄리티 최상
-                </div>
-            </div>
-        </div>
-
-        <div class="card" style="padding:0; overflow:hidden;">
             <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" class="hotel-img" alt="Alila">
             <div style="padding:20px;">
-                <div class="section-title">Alila Villas Uluwatu <span class="badge-confirmed">확정</span></div>
-                <div class="info-row"><span class="info-val">10/22 - 10/24 (2박)</span></div>
+                <div class="section-title">Alila Villas Uluwatu</div>
+                <div class="info-row"><span class="info-val">10/19 - 10/22 (3박)</span></div>
                 <div class="info-row"><span class="info-val">1 Bedroom Pool Villa</span></div>
                 <div class="info-row"><span class="info-val">IN 15:00 / OUT 12:00</span></div>
                 
@@ -640,48 +616,62 @@
                 </div>
             </div>
         </div>
+
+        <div class="card" style="padding:0; overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" class="hotel-img" alt="The Mulia">
+            <div style="padding:20px;">
+                <div class="section-title">Mulia Resort (Lagoon)</div>
+                <div class="info-row"><span class="info-val">10/22 - 10/24 (2박)</span></div>
+                <div class="info-row"><span class="info-val">Signature Lagoon Access</span></div>
+                <div class="info-row"><span class="info-val">IN 15:00 / OUT 12:00</span></div>
+
+                <div class="box-ui facility-box">
+                    <strong>🏰 주요 부대시설</strong>
+                    <div class="facility-list">
+                        <div class="facility-tag"><b>Ocean Pool</b><span class="facility-desc">메인 비치 풀장</span></div>
+                        <div class="facility-tag"><b>Lagoon Pool</b><span class="facility-desc">객실 바로 연결</span></div>
+                        <div class="facility-tag"><b>The Cafe</b><span class="facility-desc">조식 뷔페</span></div>
+                        <div class="facility-tag"><b>Mulia Spa</b><span class="facility-desc">럭셔리 스파</span></div>
+                    </div>
+                </div>
+                <div class="box-ui tip-box">
+                    <strong>💡 Honey Tip & Tipping</strong>
+                    • <b>라군 룸:</b> 베란다 문 열면 바로 수영장 연결 (튜브 챙기기)<br>
+                    • <b>주의:</b> 물가라 모기 유의 (방충망 닫기)<br>
+                    • <b>조식:</b> 'The Cafe' 뷔페 퀄리티 최상
+                </div>
+            </div>
+        </div>
     </main>
 
     <main id="tab-info">
-        <a href="https://goo.gl/maps/8Z1Z1Z1Z1Z1Z1Z1Z1" target="_blank" class="route-btn">🗺️ 구글 맵 전체 보기</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Bali" target="_blank" class="google-map-btn">🗺️ 구글 맵 전체 보기</a>
 
         <div class="card">
-            <div class="section-title">💸 예산 대시보드 (실시간)</div>
-            <div class="budget-dashboard">
-                <div class="b-card total">
-                    <span class="b-label">총 예산</span>
-                    <span class="b-value">800 만원</span>
-                </div>
-                <div class="b-card fixed">
-                    <span class="b-label">고정 지출</span>
-                    <span class="b-value">645 만원</span>
-                    <span class="b-sub">항공+숙박 (확정)</span>
-                </div>
-                <div class="b-card remain">
-                    <span class="b-label">가용 예산</span>
-                    <span class="b-value" id="top-remain-display">155 만원</span>
-                    <span class="b-sub">식비/쇼핑/기타</span>
-                </div>
-            </div>
+            <div class="section-title">💸 예산 추천안 (Total 800)</div>
+            <div class="budget-detail-box">
+                <div class="budget-row"><div class="budget-label"><span class="budget-icon">✈️</span>항공</div><div class="budget-val">240 만원</div></div>
+                <div class="budget-bar-bg"><div class="budget-bar-fill b-blue" style="width:30%"></div></div>
+                <span class="budget-sub">직항 왕복 2인</span><br>
 
-            <div class="fixed-cost-list">
-                <div class="fc-item">
-                    <span class="fc-icon">✈️</span>
-                    <span class="fc-title">항공권 <span class="badge-confirmed">확정</span></span>
-                    <span class="fc-price">240 만원</span>
-                </div>
-                <div class="fc-item">
-                    <span class="fc-icon">🏨</span>
-                    <span class="fc-title">숙박비 <span class="badge-confirmed">확정</span></span>
-                    <span class="fc-price">405 만원</span>
-                </div>
+                <div class="budget-row"><div class="budget-label"><span class="budget-icon">🏨</span>숙박</div><div class="budget-val">350 만원</div></div>
+                <div class="budget-bar-bg"><div class="budget-bar-fill b-navy" style="width:44%"></div></div>
+                <span class="budget-sub">알릴라 3박 + 물리아 2박</span><br>
+
+                <div class="budget-row"><div class="budget-label"><span class="budget-icon">🍽️</span>식비/경비</div><div class="budget-val">100 만원</div></div>
+                <div class="budget-bar-bg"><div class="budget-bar-fill b-orange" style="width:12%"></div></div>
+                <span class="budget-sub">식사, 교통비, 팁</span><br>
+
+                <div class="budget-row"><div class="budget-label"><span class="budget-icon">🛍️</span>쇼핑/기타</div><div class="budget-val">110 만원</div></div>
+                <div class="budget-bar-bg"><div class="budget-bar-fill b-green" style="width:14%"></div></div>
+                <span class="budget-sub">쇼핑 및 예비비</span>
             </div>
         </div>
 
         <div class="card">
-            <div class="section-title">📊 지출 내역 합계</div>
+            <div class="section-title">📊 실제 지출 입력</div>
             <table class="pretty-table">
-                <thead><tr><th>일자</th><th style="text-align:right">금액</th></tr></thead>
+                <thead><tr><th>일자</th><th style="text-align:right">예상 지출</th></tr></thead>
                 <tbody>
                     <tr><td>Day 1</td><td class="price-col" id="sum-day-1">0</td></tr>
                     <tr><td>Day 2</td><td class="price-col" id="sum-day-2">0</td></tr>
@@ -689,16 +679,15 @@
                     <tr><td>Day 4</td><td class="price-col" id="sum-day-4">0</td></tr>
                     <tr><td>Day 5</td><td class="price-col" id="sum-day-5">0</td></tr>
                     <tr><td>Day 6</td><td class="price-col" id="sum-day-6">0</td></tr>
-                    <tr class="total-row"><td>지출 합계</td><td class="price-col" id="local-total-display">0 원</td></tr>
-                    <tr class="remain-row" id="remain-row-el"><td>남은 예산 (잔액)</td><td class="price-col" id="remaining-budget-display">1,545,648 원</td></tr>
+                    <tr class="total-row"><td>현지 지출 합계</td><td class="price-col" id="local-total-display">0</td></tr>
                 </tbody>
             </table>
         </div>
 
         <div class="card">
-            <div class="section-title">💱 간단 환율 계산기 (x 0.087)</div>
-            <input type="number" id="calcInput" style="width:100%; padding:12px; border:1px solid #cbd5e1; border-radius:8px; font-size:16px; margin-bottom:10px;" placeholder="루피아 금액 입력" oninput="calculateSimple()">
-            <div id="calcResult" style="text-align:center; font-size:20px; font-weight:800; color:#1e3a8a;">0 원</div>
+            <div class="section-title">💱 환율 계산기 (x 0.087)</div>
+            <input type="number" id="calcInput" style="width:100%; padding:10px; border:1px solid #ddd; border-radius:6px; font-size:16px; margin-bottom:10px;" placeholder="루피아 입력" oninput="calculateSimple()">
+            <div id="calcResult" style="text-align:center; font-size:18px; font-weight:800; color:var(--primary);">0 원</div>
         </div>
     </main>
 
@@ -709,117 +698,40 @@
     </nav>
 
     <script>
-        // --- DATA & LOGIC ---
-        const TOTAL_BUDGET = 8000000;
-        const FLIGHT_COST = 2400000;
-        const HOTEL_COST = 4054352;
-        const FIXED_TOTAL = FLIGHT_COST + HOTEL_COST; // 6,454,352
-
         let budgetData = { 1: [], 2: [], 3: [], 4: [], 5: [], 6: [] };
-        
         function init() { loadData(); renderAllBudgets(); calculateTotals(); }
-        
-        function addBudgetRow(day) { 
-            budgetData[day].push({ cat: '식비', desc: '', cost: 0 }); 
-            saveData(); renderBudget(day); calculateTotals(); 
-        }
-        function removeBudgetRow(day, index) { 
-            budgetData[day].splice(index, 1); 
-            saveData(); renderBudget(day); calculateTotals(); 
-        }
-        function updateBudgetRow(day, index, field, value) { 
-            budgetData[day][index][field] = value; 
-            saveData(); 
-            if (field === 'cost') { renderBudget(day); calculateTotals(); } 
-        }
-        
+        function addBudgetRow(day) { budgetData[day].push({ cat: '식비', desc: '', cost: 0 }); saveData(); renderBudget(day); calculateTotals(); }
+        function removeBudgetRow(day, index) { budgetData[day].splice(index, 1); saveData(); renderBudget(day); calculateTotals(); }
+        function updateBudgetRow(day, index, field, value) { budgetData[day][index][field] = value; saveData(); if (field === 'cost') { renderBudget(day); calculateTotals(); } }
         function renderBudget(day) {
-            const container = document.getElementById(`budget-list-${day}`); 
-            container.innerHTML = ''; 
-            let daySum = 0;
+            const container = document.getElementById(`budget-list-${day}`); container.innerHTML = ''; let daySum = 0;
             budgetData[day].forEach((item, index) => {
                 const cost = parseInt(item.cost) || 0; daySum += cost;
                 const div = document.createElement('div'); div.className = 'budget-list-item';
-                div.innerHTML = `
-                    <select class="budget-select" onchange="updateBudgetRow(${day}, ${index}, 'cat', this.value)">
-                        <option value="식비" ${item.cat === '식비' ? 'selected' : ''}>식비</option>
-                        <option value="쇼핑" ${item.cat === '쇼핑' ? 'selected' : ''}>쇼핑</option>
-                        <option value="이동" ${item.cat === '이동' ? 'selected' : ''}>이동</option>
-                        <option value="기타" ${item.cat === '기타' ? 'selected' : ''}>기타</option>
-                    </select>
-                    <input type="text" class="budget-input" placeholder="내용" value="${item.desc}" oninput="updateBudgetRow(${day}, ${index}, 'desc', this.value)">
-                    <input type="number" class="budget-num" placeholder="금액" value="${cost === 0 ? '' : cost}" onchange="updateBudgetRow(${day}, ${index}, 'cost', this.value)">
-                    <button class="del-btn" onclick="removeBudgetRow(${day}, ${index})">X</button>
-                `;
+                div.innerHTML = `<select class="budget-select" onchange="updateBudgetRow(${day}, ${index}, 'cat', this.value)"><option value="식비" ${item.cat === '식비' ? 'selected' : ''}>식비</option><option value="투어" ${item.cat === '투어' ? 'selected' : ''}>투어</option><option value="이동" ${item.cat === '이동' ? 'selected' : ''}>이동</option><option value="쇼핑" ${item.cat === '쇼핑' ? 'selected' : ''}>쇼핑</option><option value="팁" ${item.cat === '팁' ? 'selected' : ''}>팁</option></select><input type="text" class="budget-input" placeholder="내용" value="${item.desc}" oninput="updateBudgetRow(${day}, ${index}, 'desc', this.value)"><input type="number" class="budget-num" placeholder="금액" value="${cost === 0 ? '' : cost}" onchange="updateBudgetRow(${day}, ${index}, 'cost', this.value)"><button class="del-btn" onclick="removeBudgetRow(${day}, ${index})">X</button>`;
                 container.appendChild(div);
             });
             document.getElementById(`total-${day}`).innerText = formatNum(daySum) + " 원";
         }
-        
         function renderAllBudgets() { for(let i=1; i<=6; i++) renderBudget(i); }
-        
-        function calculateTotals() { 
-            let localTotal = 0; 
-            for (let i = 1; i <= 6; i++) { 
-                let daySum = budgetData[i].reduce((sum, item) => sum + (parseInt(item.cost) || 0), 0); 
-                document.getElementById(`sum-day-${i}`).innerText = formatNum(daySum); 
-                localTotal += daySum; 
-            } 
-            
-            document.getElementById('local-total-display').innerText = formatNum(localTotal) + " 원"; 
-            
-            // 155만원 - 사용금액 = 남은 돈
-            let remain = (TOTAL_BUDGET - FIXED_TOTAL) - localTotal;
-            document.getElementById('remaining-budget-display').innerText = formatNum(remain) + " 원";
-            
-            const remainRow = document.getElementById('remain-row-el');
-            if(remain < 0) remainRow.classList.add('negative');
-            else remainRow.classList.remove('negative');
-            
-            document.getElementById('top-remain-display').innerText = formatNum(remain / 10000).split('.')[0] + " 만원";
-        }
-        
-        function saveData() { localStorage.setItem('baliBudgetVFinal', JSON.stringify(budgetData)); }
-        function loadData() { const saved = localStorage.getItem('baliBudgetVFinal'); if (saved) budgetData = JSON.parse(saved); }
+        function calculateTotals() { let localTotal = 0; for (let i = 1; i <= 6; i++) { let daySum = budgetData[i].reduce((sum, item) => sum + (parseInt(item.cost) || 0), 0); document.getElementById(`sum-day-${i}`).innerText = formatNum(daySum); localTotal += daySum; } document.getElementById('local-total-display').innerText = formatNum(localTotal) + " 원"; }
+        function saveData() { localStorage.setItem('baliBudgetV3', JSON.stringify(budgetData)); }
+        function loadData() { const saved = localStorage.getItem('baliBudgetV3'); if (saved) budgetData = JSON.parse(saved); }
         function formatNum(n) { return parseInt(n).toLocaleString(); }
         function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('show'); }
         function switchMainTab(tabName) {
             document.querySelectorAll('main').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
             const daySelector = document.getElementById('day-selector');
-            if (tabName === 'schedule') { 
-                document.getElementById('tab-schedule').classList.add('active'); 
-                daySelector.style.display = 'flex'; 
-                document.querySelectorAll('.nav-item')[0].classList.add('active'); 
-            } else if (tabName === 'hotels') { 
-                document.getElementById('tab-hotels').classList.add('active'); 
-                daySelector.style.display = 'none'; 
-                document.querySelectorAll('.nav-item')[1].classList.add('active'); 
-            } else if (tabName === 'info') { 
-                document.getElementById('tab-info').classList.add('active'); 
-                daySelector.style.display = 'none'; 
-                document.querySelectorAll('.nav-item')[2].classList.add('active'); 
-                calculateTotals(); 
-            }
+            if (tabName === 'schedule') { document.getElementById('tab-schedule').classList.add('active'); daySelector.style.display = 'flex'; document.querySelectorAll('.nav-item')[0].classList.add('active'); }
+            else if (tabName === 'hotels') { document.getElementById('tab-hotels').classList.add('active'); daySelector.style.display = 'none'; document.querySelectorAll('.nav-item')[1].classList.add('active'); }
+            else if (tabName === 'info') { document.getElementById('tab-info').classList.add('active'); daySelector.style.display = 'none'; document.querySelectorAll('.nav-item')[2].classList.add('active'); calculateTotals(); }
         }
-        function showDay(dayNum) { 
-            document.querySelectorAll('.day-content').forEach(el => el.style.display = 'none'); 
-            document.querySelectorAll('.day-chip').forEach(el => el.classList.remove('active')); 
-            document.getElementById('day-' + dayNum).style.display = 'block'; 
-            document.querySelectorAll('.day-chip')[dayNum - 1].classList.add('active'); 
-        }
-        function toggleAccordion(id) { 
-            document.getElementById(id).classList.toggle('open'); 
-            const arrow = document.getElementById('arrow-' + id); 
-            if(arrow) arrow.classList.toggle('open'); 
-        }
+        function showDay(dayNum) { document.querySelectorAll('.day-content').forEach(el => el.style.display = 'none'); document.querySelectorAll('.day-chip').forEach(el => el.classList.remove('active')); document.getElementById('day-' + dayNum).style.display = 'block'; document.querySelectorAll('.day-chip')[dayNum - 1].classList.add('active'); }
+        function toggleAccordion(id) { document.getElementById(id).classList.toggle('open'); const arrow = document.getElementById('arrow-' + id); if(arrow) arrow.classList.toggle('open'); }
         function toggleBudget(day) { document.getElementById('ba-' + day).classList.toggle('show'); }
-        function toggleShopList(id, headerElement) { document.getElementById(id).classList.toggle('show'); }
-        function calculateSimple() { 
-            const val = document.getElementById('calcInput').value; 
-            document.getElementById('calcResult').innerText = formatNum(Math.round(val * 0.087)) + " 원"; 
-        }
-        
+        function toggleShopList(id, headerElement) { document.getElementById(id).classList.toggle('show'); const arrow = headerElement.querySelector('.shop-arrow'); if(arrow) arrow.classList.toggle('open'); }
+        function calculateSimple() { const val = document.getElementById('calcInput').value; document.getElementById('calcResult').innerText = formatNum(Math.round(val * 0.087)) + " 원"; }
         init(); showDay(1);
     </script>
 </body>
