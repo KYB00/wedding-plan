@@ -9,12 +9,12 @@
             /* 🎨 Tone & Manner: Navy, Blue, Gray */
             --navy-dark: #0f172a;       /* 메인 텍스트 */
             --navy-main: #1e3a8a;       /* 포인트, 활성 탭 */
-            --blue-accent: #2563eb;     /* 버튼, 강조 */
+            --blue-accent: #2563eb;     /* 버튼, 강조, 가용예산 배경 */
             --blue-soft: #eff6ff;       /* 배경 포인트 */
             --gray-bg: #f8fafc;         /* 전체 배경 */
             --gray-line: #cbd5e1;       /* 타임라인 선 색상 */
             --white: #ffffff;
-            --danger: #dc2626;          /* 경고 (트래픽) */
+            --danger: #dc2626;          /* 경고 */
             --safe-bottom: env(safe-area-inset-bottom);
         }
 
@@ -66,70 +66,40 @@
         .f-col { flex: 1; text-align: center; }
         .f-date { font-size: 11px; color: #64748b; display: block; margin-bottom: 2px; }
         .f-time { font-size: 16px; font-weight: 700; color: #0f172a; }
-        .f-code { font-size: 24px; font-weight: 800; color: var(--blue-main); line-height: 1.2; display: block; }
+        .f-code { font-size: 24px; font-weight: 800; color: var(--blue-accent); line-height: 1.2; display: block; }
         .f-detail-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5px; background: #f8fafc; padding: 10px; border-radius: 6px; text-align: center; margin-top: 10px; }
         .f-label { font-size: 10px; color: #94a3b8; display: block; }
         .f-val { font-size: 12px; font-weight: 700; color: #334155; }
 
         /* --- Timeline (FIXED ALIGNMENT) --- */
         .timeline-item { display: flex; margin-bottom: 0; position: relative; padding-bottom: 30px; }
-        
-        /* Vertical Line Positioned relative to time-col */
         .timeline-item::before { 
             content: ''; 
-            position: absolute; 
-            left: 29px; /* (60px width / 2) - 1px width */
-            top: 25px; 
-            bottom: 0; 
-            width: 2px; 
-            background: var(--gray-line); 
-            z-index: 0; 
+            position: absolute; left: 29px; top: 25px; bottom: 0; 
+            width: 2px; background: var(--gray-line); z-index: 0; 
         }
         .timeline-item:last-child { padding-bottom: 0; }
         .timeline-item:last-child::before { display: none; }
         
         .time-col { 
-            flex: 0 0 60px; /* Fixed width column */
-            max-width: 60px;
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; /* Center horizontally */
-            margin-right: 15px; 
-            position: relative; /* Context for z-index */
+            flex: 0 0 60px; max-width: 60px;
+            display: flex; flex-direction: column; align-items: center; 
+            margin-right: 15px; position: relative; 
         }
-        
         .time-text { font-size: 12px; font-weight: 700; color: #64748b; margin-bottom: 4px; z-index: 1; }
-        
-        /* Dot Style */
         .dot { 
-            width: 10px; height: 10px; 
-            background: var(--navy-dark); 
-            border-radius: 50%; 
-            z-index: 2; 
-            margin-top: 4px; 
-            border: 2px solid white; 
-            box-shadow: 0 0 0 1px #cbd5e1; 
+            width: 10px; height: 10px; background: var(--navy-dark); border-radius: 50%; 
+            z-index: 2; margin-top: 4px; border: 2px solid white; box-shadow: 0 0 0 1px #cbd5e1; 
         }
-        
-        /* Icon Style (No Circle) */
         .path-icon { 
-            font-size: 18px; 
-            background: var(--white); /* Masks the line */
-            width: 24px; 
-            height: 24px; 
-            line-height: 24px; 
-            text-align: center; 
-            z-index: 2;
-            margin-top: 4px;
+            font-size: 18px; background: var(--white); width: 24px; height: 24px; 
+            line-height: 24px; text-align: center; z-index: 2; margin-top: 4px;
         }
 
         .event-content { flex: 1; padding-top: 0px; }
         .event-title { font-size: 16px; font-weight: 700; color: var(--navy-dark); margin-bottom: 4px; margin-top: -2px; }
         .event-desc { font-size: 13px; color: #475569; line-height: 1.5; margin-bottom: 6px; }
-        
         .tag { display: inline-block; font-size: 10px; padding: 2px 6px; border-radius: 4px; background: #f1f5f9; color: #64748b; border: 1px solid #cbd5e1; margin-left: 6px; vertical-align: middle; }
-        
-        .warning-text { color: var(--danger); font-weight: 700; font-size: 12px; background: #fef2f2; padding: 4px 8px; border-radius: 4px; display: inline-block; margin-top: 6px; border: 1px solid #fecaca; }
 
         /* --- Shopping Toggle --- */
         .shop-accordion { border: 1px solid #e2e8f0; border-radius: 8px; margin-top: 10px; overflow: hidden; background: #f8fafc; }
@@ -146,7 +116,8 @@
         .b-card { padding: 15px; border-radius: 12px; color: white; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .b-card.total { background: var(--navy-dark); grid-column: 1 / -1; }
         .b-card.fixed { background: #475569; }
-        .b-card.remain { background: var(--blue-main); }
+        /* 수정: 가용예산 박스 컬러 적용 */
+        .b-card.remain { background: var(--blue-accent); color: white; } 
         .b-label { font-size: 12px; opacity: 0.8; margin-bottom: 4px; display: block; }
         .b-value { font-size: 20px; font-weight: 800; }
         .b-sub { font-size: 10px; opacity: 0.7; margin-top: 4px; display: block; }
@@ -383,7 +354,7 @@
                     <div class="time-col"><div class="dot"></div><span class="time-text">10:00</span><div class="path-icon">🚗</div></div>
                     <div class="event-content">
                         <div class="event-title">물리아 출발 <span class="tag">이동</span></div>
-                        <div class="event-desc">사파리로 이동</div>
+                        <div class="event-desc">사파리로 이동 (약 1시간 30분 소요)</div>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -422,11 +393,22 @@
                     <div class="time-col"><div class="dot"></div><span class="time-text">12:00</span><div class="path-icon">🚗</div></div>
                     <div class="event-content">
                         <div class="event-title">체크아웃 & 이동 <span class="tag">이동</span></div>
-                        <div class="event-desc">물리아 출발 ➡ 알릴라</div>
+                        <div class="event-desc">물리아 출발 ➡ 빙긴/울루와뚜</div>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">15:00</span><div class="path-icon">🏨</div></div>
+                    <div class="time-col"><div class="dot"></div><span class="time-text">13:15</span><div class="path-icon">🚗</div></div>
+                    <div class="event-content">
+                        <div class="event-title">SODA CAFE (or Laggas) <span class="tag">식당</span></div>
+                        <div class="event-desc">
+                            체크인 전 점심 (이동시간 고려)<br>
+                            <span class="warning-text">교통체증 감안 시간 조정됨</span>
+                        </div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=SODA+Bali" target="_blank" class="link-btn">소다 카페 지도</a>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">15:00</span><div class="path-icon">🚗</div></div>
                     <div class="event-content">
                         <div class="event-title">Alila Villas 체크인 <span class="tag">숙소</span></div>
                         <div class="event-desc"><b>1 Bedroom Pool Villa</b><br>도착하자마자 체크인</div>
@@ -434,7 +416,7 @@
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">16:00</span><div class="path-icon">🚗</div></div>
+                    <div class="time-col"><div class="dot"></div><span class="time-text">16:30</span><div class="path-icon">🚗</div></div>
                     <div class="event-content">
                         <div class="event-title">Sundays Beach Club <span class="tag">휴양</span></div>
                         <div class="event-desc">
@@ -445,7 +427,7 @@
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">19:30</span></div>
+                    <div class="time-col"><div class="dot"></div><span class="time-text">20:00</span></div>
                     <div class="event-content">
                         <div class="event-title">The Warung (더 와룽) <span class="tag">식당</span></div>
                         <div class="event-desc">호텔 내 위치. 바비 굴링 & 메기붕 세트</div>
@@ -471,9 +453,8 @@
                 <div class="timeline-item">
                     <div class="time-col"><div class="dot"></div><span class="time-text">13:00</span><div class="path-icon">🚗</div></div>
                     <div class="event-content">
-                        <div class="event-title">SODA CAFE & 쇼핑 <span class="tag">식당</span></div>
-                        <div class="event-desc">식당 앞 거리 샵 구경 (간단히)</div>
-                        <a href="https://www.google.com/maps/search/SODA+Bali" target="_blank" class="link-btn">SODA 카페 지도</a>
+                        <div class="event-title">빙긴 거리 쇼핑 <span class="tag">쇼핑</span></div>
+                        <div class="event-desc">Drifter Surf 등 힙한 샵 구경</div>
                         <div class="shop-accordion">
                             <div class="shop-header" onclick="toggleShopList('shop-day5', this)">
                                 <span>🛍️ 빙긴/울루와뚜 즐겨찾기 리스트</span>
@@ -509,8 +490,7 @@
                         <div class="event-title">Spa Alila (리조트 마사지) <span class="tag">힐링</span></div>
                         <div class="event-desc">
                             <b>울루와뚜 사원 대신 선택!</b><br>
-                            이동 없이 편안하게 리조트 내 최고급 스파<br>
-                            (⚠️ 중요: 빙긴에서 15:20에는 출발해야 늦지 않음)
+                            이동 없이 편안하게 리조트 내 최고급 스파
                         </div>
                     </div>
                 </div>
