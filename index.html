@@ -90,16 +90,17 @@
         .time-text { font-size: 11px; font-weight: 700; color: #adb5bd; display: block; margin-top: 4px; }
         .dot { width: 10px; height: 10px; background: var(--accent); border-radius: 50%; border: 2px solid var(--white); box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin: 5px auto 0 auto; }
         
-        /* Path Icon Style */
+        /* Path Icon Style (Clean Version) */
         .path-icon { 
             margin-top: 10px; 
             font-size: 18px; 
-            background: var(--white); 
+            background: var(--white); /* 선 가리기용 흰 배경 */
             width: 24px; 
             height: 24px; 
             line-height: 24px; 
             text-align: center; 
             z-index: 2; 
+            /* 테두리 제거, 원형 제거 */
         }
         
         .event-content { flex: 1; }
@@ -773,38 +774,38 @@
         <a href="https://www.google.com/maps/search/Bali" target="_blank" class="google-map-btn">🗺️ 구글 맵 전체 보기</a>
 
         <div class="card">
-            <div class="section-title">💸 예상 견적 (Total 1,000 ~ 1,100)</div>
+            <div class="section-title">💸 예산 추천안 (Total 800)</div>
             
             <div class="budget-detail-box">
                 <div class="budget-row">
                     <div class="budget-label"><span class="budget-icon">✈️</span>항공 (대한항공)</div>
-                    <div class="budget-val">260 만원</div>
+                    <div class="budget-val">240 만원</div>
                 </div>
-                <div class="budget-bar-bg"><div class="budget-bar-fill b-blue" style="width:25%"></div></div>
+                <div class="budget-bar-bg"><div class="budget-bar-fill b-blue" style="width:30%"></div></div>
                 <span class="budget-sub">직항 왕복 2인 (세금/유류포함)</span>
                 <br>
 
                 <div class="budget-row">
                     <div class="budget-label"><span class="budget-icon">🏨</span>숙박 (5박)</div>
-                    <div class="budget-val">500 만원</div>
+                    <div class="budget-val">350 만원</div>
                 </div>
-                <div class="budget-bar-bg"><div class="budget-bar-fill b-navy" style="width:45%"></div></div>
+                <div class="budget-bar-bg"><div class="budget-bar-fill b-navy" style="width:44%"></div></div>
                 <span class="budget-sub">알릴라 3박 + 물리아 라군 2박</span>
                 <br>
 
                 <div class="budget-row">
                     <div class="budget-label"><span class="budget-icon">🍽️</span>식비/경비</div>
-                    <div class="budget-val">150 만원</div>
+                    <div class="budget-val">100 만원</div>
                 </div>
-                <div class="budget-bar-bg"><div class="budget-bar-fill b-orange" style="width:15%"></div></div>
+                <div class="budget-bar-bg"><div class="budget-bar-fill b-orange" style="width:12%"></div></div>
                 <span class="budget-sub">Soleil 디너, 카페, 비치클럽 등</span>
                 <br>
 
                 <div class="budget-row">
                     <div class="budget-label"><span class="budget-icon">🛍️</span>쇼핑/기타</div>
-                    <div class="budget-val">100 ~ 150 만원</div>
+                    <div class="budget-val">110 만원</div>
                 </div>
-                <div class="budget-bar-bg"><div class="budget-bar-fill b-green" style="width:15%"></div></div>
+                <div class="budget-bar-bg"><div class="budget-bar-fill b-green" style="width:14%"></div></div>
                 <span class="budget-sub">부티크 의류, 기념품, 스파, 교통비</span>
             </div>
         </div>
