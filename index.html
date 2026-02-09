@@ -146,6 +146,7 @@
         .pretty-table tr:last-child td { border-bottom: none; }
         .pretty-table .price-col { text-align: right; font-family: 'Roboto', sans-serif; font-weight: 500; }
         .pretty-table .total-row td { background: #eef2f5; font-weight: 800; color: var(--primary); font-size: 15px; border-top: 2px solid #dde2e6; }
+        .pretty-table .remain-row td { background: #e8f8f5; color: var(--success); font-weight: 800; font-size: 16px; border-top: 2px solid #27ae60; }
 
         /* --- Budget Dashboard UI --- */
         .budget-dashboard { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
@@ -156,6 +157,12 @@
         .b-label { font-size: 12px; opacity: 0.9; margin-bottom: 4px; display: block; }
         .b-value { font-size: 20px; font-weight: 800; }
         .b-sub { font-size: 10px; opacity: 0.8; margin-top: 4px; display: block; }
+        
+        .fixed-cost-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+        .fc-item { background: white; border: 1px solid #eee; padding: 15px; border-radius: 10px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .fc-icon { font-size: 20px; display: block; margin-bottom: 5px; }
+        .fc-title { font-size: 12px; color: #777; font-weight: 600; display: block; }
+        .fc-price { font-size: 15px; color: var(--primary); font-weight: 700; display: block; margin-top: 3px; }
 
         /* CONFIRMED BADGE */
         .badge-confirmed {
@@ -620,7 +627,7 @@
         <a href="https://maps.app.goo.gl/XYZ123456789" target="_blank" class="google-map-btn">🗺️ 구글 맵 전체 보기</a>
 
         <div class="card">
-            <div class="section-title">💸 예산 대시보드</div>
+            <div class="section-title">💸 예산 대시보드 (실시간)</div>
             <div class="budget-dashboard">
                 <div class="b-card total">
                     <span class="b-label">총 예산</span>
@@ -629,28 +636,33 @@
                 <div class="b-card fixed">
                     <span class="b-label">고정 지출 (항공+숙박)</span>
                     <span class="b-value">645 만원</span>
-                    <span class="b-sub">항공 240 + 숙소 405</span>
+                    <span class="b-sub">이미 결제/확정됨</span>
                 </div>
                 <div class="b-card remain">
-                    <span class="b-label">사용 가능 (식비/쇼핑)</span>
-                    <span class="b-value">155 만원</span>
-                    <span class="b-sub">꽤 여유로움! 😄</span>
+                    <span class="b-label">쓸 수 있는 돈 (식비/쇼핑)</span>
+                    <span class="b-value" id="top-remain-display">155 만원</span>
+                    <span class="b-sub">실시간 자동 계산됨</span>
                 </div>
             </div>
 
-            <div class="budget-detail-box">
-                <div class="budget-row"><div class="budget-label"><span class="budget-icon">✈️</span>항공 <span class="badge-confirmed">확정</span></div><div class="budget-val">240 만원</div></div>
-                <div class="budget-bar-bg"><div class="budget-bar-fill b-blue" style="width:100%"></div></div>
-
-                <div class="budget-row"><div class="budget-label"><span class="budget-icon">🏨</span>숙박 <span class="badge-confirmed">확정</span></div><div class="budget-val">405 만원</div></div>
-                <div class="budget-bar-bg"><div class="budget-bar-fill b-navy" style="width:100%"></div></div>
+            <div class="fixed-cost-list">
+                <div class="fc-item">
+                    <span class="fc-icon">✈️</span>
+                    <span class="fc-title">항공권 <span class="badge-confirmed">확정</span></span>
+                    <span class="fc-price">240 만원</span>
+                </div>
+                <div class="fc-item">
+                    <span class="fc-icon">🏨</span>
+                    <span class="fc-title">숙박비 <span class="badge-confirmed">확정</span></span>
+                    <span class="fc-price">405 만원</span>
+                </div>
             </div>
         </div>
 
         <div class="card">
             <div class="section-title">📊 실제 지출 입력</div>
             <table class="pretty-table">
-                <thead><tr><th>일자</th><th style="text-align:right">예상 지출</th></tr></thead>
+                <thead><tr><th>일자</th><th style="text-align:right">금액</th></tr></thead>
                 <tbody>
                     <tr><td>Day 1</td><td class="price-col" id="sum-day-1">0</td></tr>
                     <tr><td>Day 2</td><td class="price-col" id="sum-day-2">0</td></tr>
@@ -658,7 +670,8 @@
                     <tr><td>Day 4</td><td class="price-col" id="sum-day-4">0</td></tr>
                     <tr><td>Day 5</td><td class="price-col" id="sum-day-5">0</td></tr>
                     <tr><td>Day 6</td><td class="price-col" id="sum-day-6">0</td></tr>
-                    <tr class="total-row"><td>현지 지출 합계</td><td class="price-col" id="local-total-display">0</td></tr>
+                    <tr class="total-row"><td>현지 지출 합계</td><td class="price-col" id="local-total-display">0 원</td></tr>
+                    <tr class="remain-row"><td>남은 예산 (실시간)</td><td class="price-col" id="remaining-budget-display">1,545,648 원</td></tr>
                 </tbody>
             </table>
         </div>
@@ -677,11 +690,20 @@
     </nav>
 
     <script>
+        // FIXED COSTS
+        const TOTAL_BUDGET = 8000000;
+        const FLIGHT_COST = 2400000;
+        const HOTEL_COST = 4054352;
+        const FIXED_TOTAL = FLIGHT_COST + HOTEL_COST; // 6,454,352
+
         let budgetData = { 1: [], 2: [], 3: [], 4: [], 5: [], 6: [] };
+        
         function init() { loadData(); renderAllBudgets(); calculateTotals(); }
+        
         function addBudgetRow(day) { budgetData[day].push({ cat: '식비', desc: '', cost: 0 }); saveData(); renderBudget(day); calculateTotals(); }
         function removeBudgetRow(day, index) { budgetData[day].splice(index, 1); saveData(); renderBudget(day); calculateTotals(); }
         function updateBudgetRow(day, index, field, value) { budgetData[day][index][field] = value; saveData(); if (field === 'cost') { renderBudget(day); calculateTotals(); } }
+        
         function renderBudget(day) {
             const container = document.getElementById(`budget-list-${day}`); container.innerHTML = ''; let daySum = 0;
             budgetData[day].forEach((item, index) => {
@@ -692,8 +714,28 @@
             });
             document.getElementById(`total-${day}`).innerText = formatNum(daySum) + " 원";
         }
+        
         function renderAllBudgets() { for(let i=1; i<=6; i++) renderBudget(i); }
-        function calculateTotals() { let localTotal = 0; for (let i = 1; i <= 6; i++) { let daySum = budgetData[i].reduce((sum, item) => sum + (parseInt(item.cost) || 0), 0); document.getElementById(`sum-day-${i}`).innerText = formatNum(daySum); localTotal += daySum; } document.getElementById('local-total-display').innerText = formatNum(localTotal) + " 원"; }
+        
+        function calculateTotals() { 
+            let localTotal = 0; 
+            for (let i = 1; i <= 6; i++) { 
+                let daySum = budgetData[i].reduce((sum, item) => sum + (parseInt(item.cost) || 0), 0); 
+                document.getElementById(`sum-day-${i}`).innerText = formatNum(daySum); 
+                localTotal += daySum; 
+            } 
+            
+            // Update Local Total
+            document.getElementById('local-total-display').innerText = formatNum(localTotal) + " 원"; 
+            
+            // Real-time Calculation
+            let remain = (TOTAL_BUDGET - FIXED_TOTAL) - localTotal;
+            document.getElementById('remaining-budget-display').innerText = formatNum(remain) + " 원";
+            
+            // Update Top Dashboard
+            document.getElementById('top-remain-display').innerText = formatNum(remain / 10000).split('.')[0] + " 만원";
+        }
+        
         function saveData() { localStorage.setItem('baliBudgetV3', JSON.stringify(budgetData)); }
         function loadData() { const saved = localStorage.getItem('baliBudgetV3'); if (saved) budgetData = JSON.parse(saved); }
         function formatNum(n) { return parseInt(n).toLocaleString(); }
@@ -711,6 +753,7 @@
         function toggleBudget(day) { document.getElementById('ba-' + day).classList.toggle('show'); }
         function toggleShopList(id, headerElement) { document.getElementById(id).classList.toggle('show'); const arrow = headerElement.querySelector('.shop-arrow'); if(arrow) arrow.classList.toggle('open'); }
         function calculateSimple() { const val = document.getElementById('calcInput').value; document.getElementById('calcResult').innerText = formatNum(Math.round(val * 0.087)) + " 원"; }
+        
         init(); showDay(1);
     </script>
 </body>
