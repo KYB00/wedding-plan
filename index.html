@@ -81,8 +81,18 @@
         .time-text { font-size: 11px; font-weight: 700; color: #adb5bd; display: block; margin-top: 4px; }
         .dot { width: 10px; height: 10px; background: var(--accent); border-radius: 50%; border: 2px solid var(--white); box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin: 5px auto 0 auto; }
         
-        /* New Path Icon Style (In Timeline) */
-        .path-icon { margin-top: 15px; font-size: 14px; background: var(--bg-gray); border-radius: 50%; padding: 2px; width: 20px; height: 20px; line-height: 16px; text-align: center; z-index: 2; border: 1px solid #e9ecef; }
+        /* New Path Icon Style (Clean Version) */
+        .path-icon { 
+            margin-top: 10px; 
+            font-size: 18px; 
+            background: var(--white); /* 선 가리기용 흰 배경 */
+            width: 24px; 
+            height: 24px; 
+            line-height: 24px; 
+            text-align: center; 
+            z-index: 2; 
+            /* 테두리 제거, 원형 제거 */
+        }
         
         .event-content { flex: 1; }
         .event-title { font-size: 15px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
@@ -152,8 +162,22 @@
         .budget-fill { height: 100%; border-radius: 4px; }
         .bg-1 { background: #3498db; } .bg-2 { background: #2c3e50; } .bg-3 { background: #e17055; } .bg-4 { background: #f1c40f; }
 
-        /* --- Bottom Nav --- */
-        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: var(--white); height: 80px; display: flex; justify-content: space-around; padding-top: 12px; border-top: 1px solid #eee; z-index: 1000; padding-bottom: var(--safe-area-bottom); }
+        /* --- Bottom Nav (Fixed) --- */
+        .bottom-nav { 
+            position: fixed; 
+            bottom: 0; 
+            left: 0; 
+            right: 0; 
+            background: var(--white); 
+            height: 80px; 
+            display: flex; 
+            justify-content: space-around; 
+            padding-top: 12px; 
+            border-top: 1px solid #eee; 
+            z-index: 9999; /* Ensure it stays on top */
+            padding-bottom: var(--safe-area-bottom); 
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+        }
         .nav-item { text-align: center; flex: 1; color: #ced4da; cursor: pointer; }
         .nav-item.active { color: var(--primary); }
         .nav-icon { font-size: 20px; display: block; margin-bottom: 4px; }
