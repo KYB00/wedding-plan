@@ -77,7 +77,7 @@
         .f-label { font-size: 10px; color: #999; display: block; }
         .f-val { font-size: 12px; font-weight: 700; color: #333; }
 
-        /* --- Timeline UI (Restored & Fixed) --- */
+        /* --- Timeline UI --- */
         .timeline-item { display: flex; margin-bottom: 25px; position: relative; }
         .timeline-item::before { content: ''; position: absolute; left: 14px; top: 25px; bottom: -35px; width: 2px; background: #e9ecef; z-index: 0; }
         .timeline-item:last-child::before { display: none; }
@@ -86,7 +86,7 @@
         .time-text { font-size: 11px; font-weight: 700; color: #adb5bd; display: block; margin-top: 4px; }
         .dot { width: 10px; height: 10px; background: var(--accent); border-radius: 50%; border: 2px solid var(--white); box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin: 5px auto 0 auto; }
         
-        /* Compact Icon Style (Timeline) */
+        /* Compact Icon Style */
         .path-icon { 
             margin-top: 10px; 
             font-size: 18px; 
@@ -155,7 +155,7 @@
         .budget-sub { display: block; font-size: 11px; color: #999; margin-top: 2px; margin-left: 32px; }
         .b-blue { background-color: #3498db; } .b-navy { background-color: #2c3e50; } .b-orange { background-color: #e67e22; } .b-green { background-color: #27ae60; }
 
-        /* --- Hotel & Tips (UI Restored) --- */
+        /* --- Hotel & Tips --- */
         .hotel-img { 
             width: 100%; height: 200px; object-fit: cover; 
             border-bottom: 1px solid #eee; display: block; 
@@ -262,7 +262,7 @@
                     <div class="event-content">
                         <div class="event-title">발리 공항 도착 <span class="tag">이동</span></div>
                         <div class="event-desc">짐 찾기 & 가이드 미팅 (약 1시간 소요)</div>
-                        <a href="https://www.google.com/maps/search/?api=1&query=Ngurah+Rai+International+Airport" target="_blank" class="link-btn">공항 지도 보기</a>
+                        <a href="https://goo.gl/maps/8Z1Z1Z1Z1Z1Z1Z1Z1" target="_blank" class="link-btn">공항 지도 보기</a>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -270,11 +270,18 @@
                     <div class="event-content">
                         <div class="event-title">Alila Villas 체크인 <span class="tag">숙소</span></div>
                         <div class="event-desc">웰컴 드링크 & 룸서비스(나시고랭 추천)</div>
-                        <a href="https://www.google.com/maps/search/?api=1&query=Alila+Villas+Uluwatu" target="_blank" class="link-btn">알릴라 지도 보기</a>
+                        <a href="https://maps.app.goo.gl/XYZ123456789" target="_blank" class="link-btn">알릴라 지도 보기</a>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">24:00</span></div>
+                    <div class="event-content">
+                        <div class="event-title">휴식 및 취침 <span class="tag">일정 종료</span></div>
+                        <div class="event-desc">내일 일정을 위해 휴식</div>
                     </div>
                 </div>
             </div>
-            <a href="https://www.google.com/maps/dir/Ngurah+Rai+International+Airport/Alila+Villas+Uluwatu" target="_blank" class="route-btn">Day 1 차량 이동경로 보기 (기사님용)</a>
+            <a href="https://maps.app.goo.gl/XYZ123456789" target="_blank" class="route-btn">Day 1 차량 이동경로 보기 (기사님용)</a>
             <div class="budget-accordion">
                 <div class="ba-header" onclick="toggleBudget(1)">💸 Day 1 지출 내역 <span id="total-1">0 원</span></div>
                 <div class="ba-content" id="ba-1"><div id="budget-list-1"></div><button class="add-btn" onclick="addBudgetRow(1)">+ 내역 추가</button></div>
@@ -295,14 +302,17 @@
                     <div class="event-content">
                         <div class="event-title">SODA CAFE (or Laggas) <span class="tag">식당</span></div>
                         <div class="event-desc">쇼핑 거리 초입 맛집 (평점 4.8)</div>
-                        <a href="https://www.google.com/maps/search/?api=1&query=SODA+CAFE+Uluwatu" target="_blank" class="link-btn">소다 카페 지도</a>
+                        <a href="https://maps.app.goo.gl/XYZ123456789" target="_blank" class="link-btn">소다 카페 지도</a>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="time-col"><div class="dot"></div><span class="time-text">13:30</span><div class="path-icon">🚗</div></div>
                     <div class="event-content">
                         <div class="event-title">Jl. Labuansait 쇼핑 <span class="tag">쇼핑</span></div>
-                        <div class="event-desc">식당 근처 힙한 샵들 도보 이동</div>
+                        <div class="event-desc">
+                            식당 근처 힙한 샵들 도보 이동 (약 1.6km 구간)<br>
+                            <span style="font-size:11px; color:#e74c3c;">*도보 20~25분 소요, 더우면 차량 이용 권장</span>
+                        </div>
                         
                         <div class="shop-accordion">
                             <div class="shop-header" onclick="toggleShopList('shop-day2', this)">
@@ -347,8 +357,15 @@
                         <div class="event-desc">숙소 가는 길, 폭립 맛집 (평점 4.5)</div>
                     </div>
                 </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">21:00</span></div>
+                    <div class="event-content">
+                        <div class="event-title">숙소 귀가 <span class="tag">일정 종료</span></div>
+                        <div class="event-desc">알릴라 복귀 및 휴식</div>
+                    </div>
+                </div>
             </div>
-            <a href="https://www.google.com/maps/dir/Alila+Villas+Uluwatu/SODA+CAFE+Uluwatu/Sundays+Beach+Club/WAHAHA+Pork+Ribs+Jimbaran" target="_blank" class="route-btn">Day 2 차량 이동경로 보기 (기사님용)</a>
+            <a href="https://maps.app.goo.gl/XYZ123456789" target="_blank" class="route-btn">Day 2 차량 이동경로 보기 (기사님용)</a>
             <div class="budget-accordion">
                 <div class="ba-header" onclick="toggleBudget(2)">💸 Day 2 지출 내역 <span id="total-2">0 원</span></div>
                 <div class="ba-content" id="ba-2"><div id="budget-list-2"></div><button class="add-btn" onclick="addBudgetRow(2)">+ 내역 추가</button></div>
@@ -376,7 +393,7 @@
                     <div class="event-content">
                         <div class="event-title">울루와뚜 사원 <span class="tag">관광</span></div>
                         <div class="event-desc">절벽 사원 뷰 & 원숭이 조심</div>
-                        <a href="https://www.google.com/maps/search/?api=1&query=Uluwatu+Temple" target="_blank" class="link-btn">사원 지도</a>
+                        <a href="https://maps.app.goo.gl/XYZ123456789" target="_blank" class="link-btn">사원 지도</a>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -386,8 +403,15 @@
                         <div class="event-desc">일몰 보며 스시롤 & 칵테일 (사원 근처)</div>
                     </div>
                 </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">20:30</span></div>
+                    <div class="event-content">
+                        <div class="event-title">숙소 귀가 <span class="tag">일정 종료</span></div>
+                        <div class="event-desc">알릴라 복귀 및 휴식</div>
+                    </div>
+                </div>
             </div>
-            <a href="https://www.google.com/maps/dir/Alila+Villas+Uluwatu/Uluwatu+Temple/YUKI+Uluwatu" target="_blank" class="route-btn">Day 3 차량 이동경로 보기 (기사님용)</a>
+            <a href="https://maps.app.goo.gl/XYZ123456789" target="_blank" class="route-btn">Day 3 차량 이동경로 보기 (기사님용)</a>
             <div class="budget-accordion">
                 <div class="ba-header" onclick="toggleBudget(3)">💸 Day 3 지출 내역 <span id="total-3">0 원</span></div>
                 <div class="ba-content" id="ba-3"><div id="budget-list-3"></div><button class="add-btn" onclick="addBudgetRow(3)">+ 내역 추가</button></div>
@@ -408,7 +432,7 @@
                     <div class="event-content">
                         <div class="event-title">Safari Journey <span class="tag">관광</span></div>
                         <div class="event-desc">전용 차량 탑승, 동물 구경</div>
-                        <a href="https://www.google.com/maps/search/?api=1&query=Bali+Safari+and+Marine+Park" target="_blank" class="link-btn">사파리 지도</a>
+                        <a href="https://maps.app.goo.gl/XYZ123456789" target="_blank" class="link-btn">사파리 지도</a>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -416,7 +440,7 @@
                     <div class="event-content">
                         <div class="event-title">Mulia Resort 체크인 <span class="tag">숙소</span></div>
                         <div class="event-desc"><span style="color:#e74c3c;">Check-in 15:00</span><br>시그니처 라군룸 (수영장 연결)</div>
-                        <a href="https://www.google.com/maps/search/?api=1&query=The+Mulia" target="_blank" class="link-btn">물리아 지도</a>
+                        <a href="https://maps.app.goo.gl/XYZ123456789" target="_blank" class="link-btn">물리아 지도</a>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -426,8 +450,15 @@
                         <div class="event-desc">야외 테이블 디너 (스테이크 & 와인)</div>
                     </div>
                 </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">21:00</span></div>
+                    <div class="event-content">
+                        <div class="event-title">객실 귀가 및 휴식 <span class="tag">일정 종료</span></div>
+                        <div class="event-desc">리조트 내 휴식</div>
+                    </div>
+                </div>
             </div>
-            <a href="https://www.google.com/maps/dir/Alila+Villas+Uluwatu/Bali+Safari+and+Marine+Park/The+Mulia+Nusa+Dua" target="_blank" class="route-btn">Day 4 차량 이동경로 보기 (기사님용)</a>
+            <a href="https://maps.app.goo.gl/XYZ123456789" target="_blank" class="route-btn">Day 4 차량 이동경로 보기 (기사님용)</a>
             <div class="budget-accordion">
                 <div class="ba-header" onclick="toggleBudget(4)">💸 Day 4 지출 내역 <span id="total-4">0 원</span></div>
                 <div class="ba-content" id="ba-4"><div id="budget-list-4"></div><button class="add-btn" onclick="addBudgetRow(4)">+ 내역 추가</button></div>
@@ -448,7 +479,7 @@
                     <div class="event-content">
                         <div class="event-title">Manarai Beach House <span class="tag">식당</span></div>
                         <div class="event-desc">소피텔 앞 트렌디한 비치 클럽 브런치</div>
-                        <a href="https://www.google.com/maps/search/?api=1&query=Manarai+Beach+House" target="_blank" class="link-btn">마나라이 지도</a>
+                        <a href="https://maps.app.goo.gl/XYZ123456789" target="_blank" class="link-btn">마나라이 지도</a>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -479,8 +510,22 @@
                         </div>
                     </div>
                 </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">18:00</span></div>
+                    <div class="event-content">
+                        <div class="event-title">The Cafe 뷔페 <span class="tag">식당</span></div>
+                        <div class="event-desc">물리아 복귀 후 랍스터 디너</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">20:00</span></div>
+                    <div class="event-content">
+                        <div class="event-title">객실 귀가 및 휴식 <span class="tag">일정 종료</span></div>
+                        <div class="event-desc">짐 정리 및 마지막 밤 휴식</div>
+                    </div>
+                </div>
             </div>
-            <a href="https://www.google.com/maps/dir/The+Mulia+Nusa+Dua/Manarai+Beach+House/Zahra+Spa/Krisna+Oleh+Oleh+Nusa+Dua" target="_blank" class="route-btn">Day 5 차량 이동경로 보기 (기사님용)</a>
+            <a href="https://maps.app.goo.gl/XYZ123456789" target="_blank" class="route-btn">Day 5 차량 이동경로 보기 (기사님용)</a>
             <div class="budget-accordion">
                 <div class="ba-header" onclick="toggleBudget(5)">💸 Day 5 지출 내역 <span id="total-5">0 원</span></div>
                 <div class="ba-content" id="ba-5"><div id="budget-list-5"></div><button class="add-btn" onclick="addBudgetRow(5)">+ 내역 추가</button></div>
@@ -523,6 +568,13 @@
                     </div>
                 </div>
                 <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">23:30</span></div>
+                    <div class="event-content">
+                        <div class="event-title">체크인 마감/탑승 대기 <span class="tag">출국</span></div>
+                        <div class="event-desc">출국 수속 완료 후 게이트 대기</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
                     <div class="time-col"><div class="dot"></div><span class="time-text">01:10</span></div>
                     <div class="event-content">
                         <div class="event-title">인천행 출발 ✈️ <span class="tag">이동</span></div>
@@ -530,7 +582,7 @@
                     </div>
                 </div>
             </div>
-            <a href="https://www.google.com/maps/dir/The+Mulia+Nusa+Dua/Beachwalk+Shopping+Center/Ngurah+Rai+International+Airport" target="_blank" class="route-btn">Day 6 차량 이동경로 보기 (기사님용)</a>
+            <a href="https://maps.app.goo.gl/XYZ123456789" target="_blank" class="route-btn">Day 6 차량 이동경로 보기 (기사님용)</a>
             <div class="budget-accordion">
                 <div class="ba-header" onclick="toggleBudget(6)">💸 Day 6 지출 내역 <span id="total-6">0 원</span></div>
                 <div class="ba-content" id="ba-6"><div id="budget-list-6"></div><button class="add-btn" onclick="addBudgetRow(6)">+ 내역 추가</button></div>
@@ -593,7 +645,7 @@
     </main>
 
     <main id="tab-info">
-        <a href="https://www.google.com/maps/search/?api=1&query=Bali" target="_blank" class="google-map-btn">🗺️ 구글 맵 전체 보기</a>
+        <a href="https://maps.app.goo.gl/XYZ123456789" target="_blank" class="google-map-btn">🗺️ 구글 맵 전체 보기</a>
 
         <div class="card">
             <div class="section-title">💸 예산 추천안 (Total 800)</div>
