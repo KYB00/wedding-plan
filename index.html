@@ -461,7 +461,7 @@
                         <a href="https://www.google.com/maps/search/?api=1&query=Padang+Padang+Beach" target="_blank" class="link-btn">파당파당 지도 보기</a>
                         <div class="web-link-box">
                             <strong>🔗 예약 공식 사이트</strong>
-                            <a href="https://www.baliswellsurfschool.com/#BookNow" target="_blank" class="web-link">Bali Swell Surf School (추천)</a>
+                            <a href="https://www.baliswellsurfschool.com/#BookNow" target="_blank" class="web-link">Bali Swell Surf School (추가)</a>
                             <a href="https://www.balistanduppaddle.com/" target="_blank" class="web-link">Bali Stand Up Paddle School (SUP전문)</a>
                         </div>
                     </div>
@@ -483,34 +483,68 @@
                     </div>
                 </div>
             </div>
-            <a href="https://www.google.com/maps/dir/The+Mulia+-+Nusa+Dua,+Bali/Beachwalk+Shopping+Center/Ngurah+Rai+International+Airport0" target="_blank" class="route-btn">Day 5 차량 이동경로 보기 (액티비티 투어)</a>
+            <a href="https://www.google.com/maps/dir/Alila+Villas+Uluwatu/Padang+Padang+Beach/Sundays+Beach+Club/YUKI+Uluwatu" target="_blank" class="route-btn">Day 5 차량 이동경로 보기 (액티비티 투어)</a>
+            <div class="budget-accordion">
+                <div class="ba-header" onclick="toggleBudget(5)">💸 Day 5 지출 내역 <span id="total-5">0 원</span></div>
+                <div class="ba-content" id="ba-5"><div id="budget-list-5"></div><button class="add-btn" onclick="addBudgetRow(5)">+ 내역 추가</button></div>
+            </div>
         </div>
 
         <div id="day-6" class="day-content" style="display:none;">
             <div class="card">
                 <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">13:30</span><div class="path-icon">🚗</div></div>
+                    <div class="time-col"><div class="dot"></div><span class="time-text">12:00</span><div class="path-icon">🚗</div></div>
                     <div class="event-content">
-                        <div class="event-title">Krisna Oleh Oleh <span class="tag">쇼핑</span></div>
-                        <div class="event-desc">발리 기념품 싹쓸이 (선셋로드점)</div>
+                        <div class="event-title">체크아웃 <span class="tag">숙소</span></div>
+                        <div class="event-desc">알릴라 출발 ➡ 공항 방향 (짐 싣고)</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">13:30</span><div class="path-icon">👣</div></div>
+                    <div class="event-content">
+                        <div class="event-title">Krisna Oleh Oleh (크리스나) <span class="tag">쇼핑</span></div>
+                        <div class="event-desc">
+                            발리 최대 기념품 샵 (Sunset Road)<br>
+                            과자, 비누, 기념품 원스톱 쇼핑<br>
+                        </div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Krisna+Oleh+Oleh+Sunset+Road" target="_blank" class="link-btn">크리스나(선셋) 지도</a>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="time-col"><div class="dot"></div><span class="time-text">15:30</span><div class="path-icon">👣</div></div>
                     <div class="event-content">
                         <div class="event-title">Beachwalk Shopping <span class="tag">쇼핑</span></div>
-                        <div class="event-desc">꾸따 비치 앞 몰에서 마지막 쇼핑 & 석식</div>
+                        <div class="event-desc">꾸따 비치 앞 대형 쇼핑몰 & 저녁 식사</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Beachwalk+Shopping+Center" target="_blank" class="link-btn">비치워크 지도</a>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">21:30</span></div>
+                    <div class="time-col"><div class="dot"></div><span class="time-text">21:30</span><div class="path-icon">🚗</div></div>
                     <div class="event-content">
-                        <div class="event-title">공항 이동 <span class="tag">출국</span></div>
-                        <div class="event-desc">체크인 및 면세구역 대기</div>
+                        <div class="event-title">공항으로 출발 <span class="tag">이동</span></div>
+                        <div class="event-desc">호텔 로비 차량 탑승 (비행기 3.5시간 전)<br>(꾸따→공항 20~30분 소요)</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">23:30</span></div>
+                    <div class="event-content">
+                        <div class="event-title">체크인 마감/탑승 대기 <span class="tag">출국</span></div>
+                        <div class="event-desc">출국 수속 완료 후 게이트 대기</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">01:10</span></div>
+                    <div class="event-content">
+                        <div class="event-title">인천행 출발 ✈️ <span class="tag">이동</span></div>
+                        <div class="event-desc">Day 7 (일) 09:25 인천 도착</div>
                     </div>
                 </div>
             </div>
-            <a href="https://www.google.com/maps/dir/?api=1&origin=Alila+Villas+Uluwatu&destination=Ngurah+Rai+International+Airport&waypoints=Krisna+Oleh+Oleh+Sunset+Road%7CBeachwalk+Shopping+Center" target="_blank" class="route-btn">Day 6 차량 이동경로 보기 (알릴라 → 공항)</a>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=Alila+Villas+Uluwatu&destination=Ngurah+Rai+International+Airport&waypoints=Krisna+Oleh+Oleh+Sunset+Road%7CBeachwalk+Shopping+Center" target="_blank" class="route-btn">Day 6 차량 이동경로 보기 (알릴라 → 쇼핑 → 공항)</a>
+            <div class="budget-accordion">
+                <div class="ba-header" onclick="toggleBudget(6)">💸 Day 6 지출 내역 <span id="total-6">0 원</span></div>
+                <div class="ba-content" id="ba-6"><div id="budget-list-6"></div><button class="add-btn" onclick="addBudgetRow(6)">+ 내역 추가</button></div>
+            </div>
         </div>
     </main>
 
@@ -521,84 +555,231 @@
                 <div class="section-title">Mulia Resort (Lagoon) <span class="badge-confirmed">확정</span></div>
                 <div class="info-row"><span class="info-val">10/19 - 10/22 (3박)</span></div>
                 <div class="info-row"><span class="info-val">Signature Lagoon Access</span></div>
+                <div class="info-row"><span class="info-val">IN 15:00 / OUT 12:00</span></div>
+
+                <div class="box-ui facility-box">
+                    <strong>🏰 주요 부대시설</strong>
+                    <div class="facility-list">
+                        <div class="facility-tag"><b>Ocean Pool</b><span class="facility-desc">메인 비치 풀장</span></div>
+                        <div class="facility-tag"><b>Lagoon Pool</b><span class="facility-desc">객실 바로 연결</span></div>
+                        <div class="facility-tag"><b>The Cafe</b><span class="facility-desc">조식 뷔페</span></div>
+                        <div class="facility-tag"><b>Mulia Spa</b><span class="facility-desc">럭셔리 스파</span></div>
+                    </div>
+                </div>
+                <div class="box-ui tip-box">
+                    <strong>💡 Honey Tip & Tipping</strong>
+                    • <b>라군 룸:</b> 베란다 문 열면 바로 수영장 연결 (튜브 챙기기)<br>
+                    • <b>주의:</b> 물가라 모기 유의 (방충망 닫기)<br>
+                    • <b>조식:</b> 'The Cafe' 뷔페 퀄리티 최상
+                </div>
             </div>
         </div>
+
         <div class="card" style="padding:0; overflow:hidden;">
             <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" class="hotel-img" alt="Alila">
             <div style="padding:20px;">
                 <div class="section-title">Alila Villas Uluwatu <span class="badge-confirmed">확정</span></div>
                 <div class="info-row"><span class="info-val">10/22 - 10/24 (2박)</span></div>
                 <div class="info-row"><span class="info-val">1 Bedroom Pool Villa</span></div>
+                <div class="info-row"><span class="info-val">IN 15:00 / OUT 12:00</span></div>
+                
+                <div class="box-ui facility-box">
+                    <strong>🏰 주요 부대시설</strong>
+                    <div class="facility-list">
+                        <div class="facility-tag"><b>CIRE</b><span class="facility-desc">조식/양식</span></div>
+                        <div class="facility-tag"><b>The Warung</b><span class="facility-desc">인도네시아식</span></div>
+                        <div class="facility-tag"><b>Main Pool</b><span class="facility-desc">공용 풀장</span></div>
+                        <div class="facility-tag"><b>Spa Alila</b><span class="facility-desc">스파/마사지</span></div>
+                    </div>
+                </div>
+                <div class="box-ui tip-box">
+                    <strong>💡 Honey Tip & Tipping</strong>
+                    • <b>버기 호출:</b> 객실 전화 '0'번 ➡ "Buggy please"<br>
+                    • <b>원숭이:</b> 발코니 문은 항상 잠궈두세요.<br>
+                    • <b>팁:</b> 벨보이(20~50k), 하우스키핑(20k) 매너 팁
+                </div>
             </div>
         </div>
     </main>
 
     <main id="tab-info">
         <a href="https://www.google.com/maps/search/Bali" target="_blank" class="route-btn">🗺️ 구글 맵 전체 보기</a>
+
         <div class="card">
             <div class="section-title">💸 예산 대시보드 (실시간)</div>
             <div class="budget-dashboard">
-                <div class="b-card total"><span class="b-label">총 예산</span><span class="b-value">800 만원</span></div>
-                <div class="b-card fixed"><span class="b-label">고정 지출</span><span class="b-value">645 만원</span><span class="b-sub">항공+숙박 (확정)</span></div>
-                <div class="b-card remain"><span class="b-label">가용 예산</span><span class="b-value" id="top-remain-display">155 만원</span><span class="b-sub">식비/쇼핑/기타</span></div>
+                <div class="b-card total">
+                    <span class="b-label">총 예산</span>
+                    <span class="b-value">800 만원</span>
+                </div>
+                <div class="b-card fixed">
+                    <span class="b-label">고정 지출</span>
+                    <span class="b-value">645 만원</span>
+                    <span class="b-sub">항공+숙박 (확정)</span>
+                </div>
+                <div class="b-card remain">
+                    <span class="b-label">가용 예산</span>
+                    <span class="b-value" id="top-remain-display">155 만원</span>
+                    <span class="b-sub">식비/쇼핑/기타</span>
+                </div>
+            </div>
+
+            <div class="fixed-cost-list">
+                <div class="fc-item">
+                    <span class="fc-icon">✈️</span>
+                    <span class="fc-title">항공권 <span class="badge-confirmed">확정</span></span>
+                    <span class="fc-price">240 만원</span>
+                </div>
+                <div class="fc-item">
+                    <span class="fc-icon">🏨</span>
+                    <span class="fc-title">숙박비 <span class="badge-confirmed">확정</span></span>
+                    <span class="fc-price">405 만원</span>
+                </div>
             </div>
         </div>
+
         <div class="card">
             <div class="section-title">📊 지출 내역 합계</div>
             <table class="pretty-table">
                 <thead><tr><th>일자</th><th style="text-align:right">금액</th></tr></thead>
                 <tbody>
+                    <tr><td>Day 1</td><td class="price-col" id="sum-day-1">0</td></tr>
+                    <tr><td>Day 2</td><td class="price-col" id="sum-day-2">0</td></tr>
+                    <tr><td>Day 3</td><td class="price-col" id="sum-day-3">0</td></tr>
+                    <tr><td>Day 4</td><td class="price-col" id="sum-day-4">0</td></tr>
+                    <tr><td>Day 5</td><td class="price-col" id="sum-day-5">0</td></tr>
+                    <tr><td>Day 6</td><td class="price-col" id="sum-day-6">0</td></tr>
                     <tr class="total-row"><td>지출 합계</td><td class="price-col" id="local-total-display">0 원</td></tr>
                     <tr class="remain-row" id="remain-row-el"><td>남은 예산 (잔액)</td><td class="price-col" id="remaining-budget-display">1,545,648 원</td></tr>
                 </tbody>
             </table>
         </div>
+
         <div class="card">
             <div class="section-title">💱 간단 환율 계산기 (x 0.087)</div>
-            <input type="number" id="calcInput" style="width:100%; padding:12px; border:1px solid #cbd5e1; border-radius:8px; font-size:16px;" placeholder="루피아 금액 입력" oninput="calculateSimple()">
-            <div id="calcResult" style="text-align:center; font-size:20px; font-weight:800; color:#1e3a8a; margin-top:10px;">0 원</div>
+            <input type="number" id="calcInput" style="width:100%; padding:12px; border:1px solid #cbd5e1; border-radius:8px; font-size:16px; margin-bottom:10px;" placeholder="루피아 금액 입력" oninput="calculateSimple()">
+            <div id="calcResult" style="text-align:center; font-size:20px; font-weight:800; color:#1e3a8a;">0 원</div>
         </div>
     </main>
 
     <nav class="bottom-nav">
         <div class="nav-item active" onclick="switchMainTab('schedule')"><span class="nav-icon">📅</span><span class="nav-label">일정표</span></div>
         <div class="nav-item" onclick="switchMainTab('hotels')"><span class="nav-icon">🏨</span><span class="nav-label">숙소</span></div>
-        <div class="nav-item" onclick="switchMainTab('info')"><span class="nav-icon">💰</span><span class="nav-label">정보&예산</span></div>
+        <div class="nav-item" onclick="switchMainTab('info')"><span class="nav-icon">💰</span><span class="nav-label">정보 & 예산</span></div>
     </nav>
 
     <script>
+        // --- DATA & LOGIC ---
         const TOTAL_BUDGET = 8000000;
-        const FIXED_TOTAL = 6454352;
-        let budgetData = { 1: [], 2: [], 3: [], 4: [], 5: [], 6: [] };
+        const FLIGHT_COST = 2400000;
+        const HOTEL_COST = 4054352;
+        const FIXED_TOTAL = FLIGHT_COST + HOTEL_COST; // 6,454,352
 
-        function init() { calculateTotals(); }
-        function calculateTotals() {
-            let localTotal = 0; 
-            let remain = (TOTAL_BUDGET - FIXED_TOTAL) - localTotal;
-            document.getElementById('remaining-budget-display').innerText = remain.toLocaleString() + " 원";
-            document.getElementById('top-remain-display').innerText = (remain/10000).toFixed(0) + " 만원";
+        let budgetData = { 1: [], 2: [], 3: [], 4: [], 5: [], 6: [] };
+        
+        function init() { loadData(); renderAllBudgets(); calculateTotals(); }
+        
+        function addBudgetRow(day) { 
+            budgetData[day].push({ cat: '식비', desc: '', cost: 0 }); 
+            saveData(); renderBudget(day); calculateTotals(); 
         }
+        function removeBudgetRow(day, index) { 
+            budgetData[day].splice(index, 1); 
+            saveData(); renderBudget(day); calculateTotals(); 
+        }
+        function updateBudgetRow(day, index, field, value) { 
+            budgetData[day][index][field] = value; 
+            saveData(); 
+            if (field === 'cost') { renderBudget(day); calculateTotals(); } 
+        }
+        
+        function renderBudget(day) {
+            const container = document.getElementById(`budget-list-${day}`); 
+            container.innerHTML = ''; 
+            let daySum = 0;
+            budgetData[day].forEach((item, index) => {
+                const cost = parseInt(item.cost) || 0; daySum += cost;
+                const div = document.createElement('div'); div.className = 'budget-list-item';
+                div.innerHTML = `
+                    <select class="budget-select" onchange="updateBudgetRow(${day}, ${index}, 'cat', this.value)">
+                        <option value="식비" ${item.cat === '식비' ? 'selected' : ''}>식비</option>
+                        <option value="쇼핑" ${item.cat === '쇼핑' ? 'selected' : ''}>쇼핑</option>
+                        <option value="이동" ${item.cat === '이동' ? 'selected' : ''}>이동</option>
+                        <option value="기타" ${item.cat === '기타' ? 'selected' : ''}>기타</option>
+                    </select>
+                    <input type="text" class="budget-input" placeholder="내용" value="${item.desc}" oninput="updateBudgetRow(${day}, ${index}, 'desc', this.value)">
+                    <input type="number" class="budget-num" placeholder="금액" value="${cost === 0 ? '' : cost}" onchange="updateBudgetRow(${day}, ${index}, 'cost', this.value)">
+                    <button class="del-btn" onclick="removeBudgetRow(${day}, ${index})">X</button>
+                `;
+                container.appendChild(div);
+            });
+            document.getElementById(`total-${day}`).innerText = formatNum(daySum) + " 원";
+        }
+        
+        function renderAllBudgets() { for(let i=1; i<=6; i++) renderBudget(i); }
+        
+        function calculateTotals() { 
+            let localTotal = 0; 
+            for (let i = 1; i <= 6; i++) { 
+                let daySum = budgetData[i].reduce((sum, item) => sum + (parseInt(item.cost) || 0), 0); 
+                document.getElementById(`sum-day-${i}`).innerText = formatNum(daySum); 
+                localTotal += daySum; 
+            } 
+            
+            document.getElementById('local-total-display').innerText = formatNum(localTotal) + " 원"; 
+            
+            // 155만원 - 사용금액 = 남은 돈
+            let remain = (TOTAL_BUDGET - FIXED_TOTAL) - localTotal;
+            document.getElementById('remaining-budget-display').innerText = formatNum(remain) + " 원";
+            
+            const remainRow = document.getElementById('remain-row-el');
+            if(remain < 0) remainRow.classList.add('negative');
+            else remainRow.classList.remove('negative');
+            
+            document.getElementById('top-remain-display').innerText = formatNum(remain / 10000).split('.')[0] + " 만원";
+        }
+        
+        function saveData() { localStorage.setItem('baliBudgetVFinal', JSON.stringify(budgetData)); }
+        function loadData() { const saved = localStorage.getItem('baliBudgetVFinal'); if (saved) budgetData = JSON.parse(saved); }
+        function formatNum(n) { return parseInt(n).toLocaleString(); }
         function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('show'); }
         function switchMainTab(tabName) {
             document.querySelectorAll('main').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
             const daySelector = document.getElementById('day-selector');
-            if (tabName === 'schedule') { document.getElementById('tab-schedule').classList.add('active'); daySelector.style.display = 'flex'; document.querySelectorAll('.nav-item')[0].classList.add('active'); }
-            else if (tabName === 'hotels') { document.getElementById('tab-hotels').classList.add('active'); daySelector.style.display = 'none'; document.querySelectorAll('.nav-item')[1].classList.add('active'); }
-            else if (tabName === 'info') { document.getElementById('tab-info').classList.add('active'); daySelector.style.display = 'none'; document.querySelectorAll('.nav-item')[2].classList.add('active'); calculateTotals(); }
+            if (tabName === 'schedule') { 
+                document.getElementById('tab-schedule').classList.add('active'); 
+                daySelector.style.display = 'flex'; 
+                document.querySelectorAll('.nav-item')[0].classList.add('active'); 
+            } else if (tabName === 'hotels') { 
+                document.getElementById('tab-hotels').classList.add('active'); 
+                daySelector.style.display = 'none'; 
+                document.querySelectorAll('.nav-item')[1].classList.add('active'); 
+            } else if (tabName === 'info') { 
+                document.getElementById('tab-info').classList.add('active'); 
+                daySelector.style.display = 'none'; 
+                document.querySelectorAll('.nav-item')[2].classList.add('active'); 
+                calculateTotals(); 
+            }
         }
-        function showDay(dayNum) {
-            document.querySelectorAll('.day-content').forEach(el => el.style.display = 'none');
-            document.querySelectorAll('.day-chip').forEach(el => el.classList.remove('active'));
-            document.getElementById('day-' + dayNum).style.display = 'block';
-            document.querySelectorAll('.day-chip')[dayNum - 1].classList.add('active');
+        function showDay(dayNum) { 
+            document.querySelectorAll('.day-content').forEach(el => el.style.display = 'none'); 
+            document.querySelectorAll('.day-chip').forEach(el => el.classList.remove('active')); 
+            document.getElementById('day-' + dayNum).style.display = 'block'; 
+            document.querySelectorAll('.day-chip')[dayNum - 1].classList.add('active'); 
         }
-        function toggleAccordion(id) { document.getElementById(id).classList.toggle('open'); }
-        function toggleShopList(id, el) { document.getElementById(id).classList.toggle('show'); }
-        function calculateSimple() {
-            const val = document.getElementById('calcInput').value;
-            document.getElementById('calcResult').innerText = Math.round(val * 0.087).toLocaleString() + " 원";
+        function toggleAccordion(id) { 
+            document.getElementById(id).classList.toggle('open'); 
+            const arrow = document.getElementById('arrow-' + id); 
+            if(arrow) arrow.classList.toggle('open'); 
         }
+        function toggleBudget(day) { document.getElementById('ba-' + day).classList.toggle('show'); }
+        function toggleShopList(id, headerElement) { document.getElementById(id).classList.toggle('show'); }
+        function calculateSimple() { 
+            const val = document.getElementById('calcInput').value; 
+            document.getElementById('calcResult').innerText = formatNum(Math.round(val * 0.087)) + " 원"; 
+        }
+        
         init(); showDay(1);
     </script>
 </body>
