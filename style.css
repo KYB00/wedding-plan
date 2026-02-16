@@ -10,20 +10,22 @@
 }
 
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-body { margin: 0; padding: 0; font-family: -apple-system, sans-serif; background-color: var(--gray-bg); color: var(--navy-dark); padding-bottom: 100px; }
+body { margin: 0; padding: 0; font-family: -apple-system, sans-serif; background-color: var(--gray-bg); color: var(--navy-dark); padding-bottom: 120px; }
 
 header { background: var(--white); padding: 15px 20px; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 1000; }
+.header-row { display: flex; justify-content: space-between; align-items: flex-start; }
 .trip-title { font-size: 20px; font-weight: 800; }
 
 main { display: none; padding: 20px; }
 main.active { display: block; }
 
-/* 항공권 E-Ticket: 네이비/너비 통일 */
+/* [수정] 항공권 E-Ticket: 네이비, 볼드, 너비 100% */
 .accordion-header {
     background: var(--navy-dark); color: var(--white);
     padding: 15px 20px; border-radius: 12px;
     display: flex; justify-content: space-between; align-items: center;
     font-weight: 800; cursor: pointer; margin-bottom: 15px;
+    width: 100%;
 }
 .accordion-content { display: none; margin-bottom: 20px; }
 .accordion-content.open { display: block; }
@@ -35,14 +37,14 @@ main.active { display: block; }
 .day-chip { padding: 10px 18px; background: #e2e8f0; border-radius: 12px; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap; }
 .day-chip.active { background: var(--navy-dark); color: white; }
 
-/* 타임라인 카드 */
+/* 카드 및 타임라인 */
 .card { background: white; border-radius: 16px; padding: 20px; border: 1px solid #e2e8f0; margin-bottom: 20px; }
 .timeline-item { display: flex; padding-bottom: 25px; }
 .time-col { flex: 0 0 60px; text-align: center; }
 .dot { width: 10px; height: 10px; background: var(--navy-dark); border-radius: 50%; margin: 5px auto; }
 .event-title { font-weight: 800; font-size: 16px; margin-bottom: 4px; }
 
-/* 지출내역 헤더 */
+/* 지출내역 헤더 볼드 */
 .ba-header { background: #f1f5f9; padding: 15px; border-radius: 10px; border: 1px solid var(--gray-line); display: flex; justify-content: space-between; font-weight: 800; cursor: pointer; margin-top: 15px; }
 .ba-sum { color: var(--blue-accent); font-weight: 900; }
 .ba-content { display: none; padding: 15px; background: white; border: 1px solid var(--gray-line); border-top: none; }
@@ -51,26 +53,35 @@ main.active { display: block; }
 .section-title { font-size: 18px; font-weight: 800; color: var(--navy-dark); margin-bottom: 15px; }
 .hotel-card { padding: 0 !important; overflow: hidden; }
 .hotel-info-body { padding: 20px; }
-.box-ui { padding: 12px; border-radius: 8px; margin-bottom: 10px; font-size: 13px; border: 1px solid #e2e8f0; background: #f8fafc; }
+.box-ui { padding: 12px; border-radius: 8px; margin-bottom: 10px; font-size: 13px; border: 1px solid #e2e8f0; }
 
 /* 쇼핑 리스트 박스화 */
 .shop-accordion { border: 1px solid #e2e8f0; border-radius: 10px; margin-top: 10px; overflow: hidden; }
 .shop-header { padding: 10px 15px; font-weight: 700; background: #f1f5f9; cursor: pointer; display: flex; justify-content: space-between; }
-.shop-body { display: none; padding: 12px 15px; background: white; border-top: 1px solid #e2e8f0; }
+.shop-body { display: none; padding: 12px 15px; background: white; border-top: 1px solid #e2e8f0; font-size: 12px; line-height: 1.6; }
 .shop-body.show { display: block; }
 
 /* 환율 계산기 스타일 */
-.exchange-calc { background: var(--white); border: 2px solid var(--blue-accent); border-radius: 12px; padding: 15px; margin-bottom: 20px; }
-.calc-header { font-weight: 800; color: var(--blue-accent); margin-bottom: 10px; }
+.exchange-calc { background: var(--gray-bg); border: 2px solid var(--blue-accent); border-radius: 12px; padding: 15px; margin-top: 25px; }
+.calc-header { font-weight: 800; color: var(--blue-accent); margin-bottom: 10px; text-align: center; }
 .calc-row { display: flex; flex-direction: column; gap: 5px; }
-.calc-row input { padding: 10px; border: 1px solid var(--gray-line); border-radius: 8px; font-size: 14px; }
-.calc-divider { text-align: center; font-size: 12px; color: var(--blue-accent); }
+.calc-row input { padding: 12px; border: 1px solid var(--gray-line); border-radius: 8px; font-size: 14px; width: 100%; }
+.calc-divider { text-align: center; font-size: 14px; color: var(--blue-accent); }
 .rate-info { font-size: 11px; color: #64748b; margin-top: 8px; text-align: right; }
 
-/* 하단바 */
-.bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: white; height: 80px; display: flex; justify-content: space-around; border-top: 1px solid #e2e8f0; padding-bottom: var(--safe-bottom); }
-.nav-item { flex: 1; text-align: center; color: #94a3b8; cursor: pointer; padding-top: 12px; font-weight: 800; }
+/* [수정] 하단 네비게이션: 고정 바 형태로 복구 */
+.bottom-nav { 
+    position: fixed; bottom: 0; left: 0; right: 0; 
+    background: white; height: 80px; 
+    display: flex; justify-content: space-around; 
+    border-top: 1px solid #e2e8f0; 
+    padding-bottom: var(--safe-bottom); 
+    z-index: 1000; 
+}
+.nav-item { flex: 1; text-align: center; color: #94a3b8; cursor: pointer; padding-top: 12px; font-weight: 800; font-size: 13px; }
 .nav-item.active { color: var(--navy-main); }
+.nav-icon { display: block; font-size: 20px; margin-bottom: 2px; }
 
 /* 이동경로 버튼 */
-.route-btn { display: block; width: 100%; text-align: center; background: var(--blue-soft); color: var(--blue-accent); padding: 14px; border-radius: 12px; text-decoration: none; font-weight: 800; border: 1px solid var(--blue-accent); margin: 10px 0 20px 0; }
+.route-btn { display: block; width: 100%; text-align: center; background: var(--blue-soft); color: var(--blue-accent); padding: 14px; border-radius: 12px; text-decoration: none; font-weight: 800; border: 1px solid var(--blue-accent); margin-bottom: 20px; }
+.link-btn { color: var(--blue-accent); font-weight: 700; text-decoration: underline; font-size: 14px; }
