@@ -1,6 +1,6 @@
 const TOTAL_BUDGET = 8000000;
 const FIXED_TOTAL = 6454352;
-let budgetData = JSON.parse(localStorage.getItem('baliBudgetDataV3') || '{"1":[],"2":[],"3":[],"4":[],"5":[],"6":[]}');
+let budgetData = JSON.parse(localStorage.getItem('baliBudgetDataV4') || '{"1":[],"2":[],"3":[],"4":[],"5":[],"6":[]}');
 
 function switchMainTab(tab) {
     document.querySelectorAll('main').forEach(m => m.classList.remove('active'));
@@ -45,7 +45,7 @@ function renderBudgetRows(day) {
 
 function editBudget(day, i, field, value) {
     budgetData[day][i][field] = field === 'val' ? (parseInt(value) || 0) : value;
-    localStorage.setItem('baliBudgetDataV3', JSON.stringify(budgetData));
+    localStorage.setItem('baliBudgetDataV4', JSON.stringify(budgetData));
     updateStats();
 }
 
