@@ -117,7 +117,6 @@
         .b-card { padding: 15px; border-radius: 12px; color: white; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .b-card.total { background: var(--navy-dark); grid-column: 1 / -1; }
         .b-card.fixed { background: #475569; }
-        /* 수정: 가용예산 박스 컬러 적용 */
         .b-card.remain { background: var(--blue-accent); color: white; } 
         .b-label { font-size: 12px; opacity: 0.8; margin-bottom: 4px; display: block; }
         .b-value { font-size: 20px; font-weight: 800; }
@@ -271,7 +270,7 @@
                     <div class="event-content">
                         <div class="event-title">발리 도착 & 가이드 미팅 <span class="tag">이동</span></div>
                         <div class="event-desc">덴파사르 입국 수속 및 짐 찾기</div>
-                        <a href="https://www.google.com/maps/search/Ngurah+Rai+International+Airport" target="_blank" class="link-btn">공항 지도 보기</a>
+                        <a href="https://maps.app.goo.gl/airport" target="_blank" class="link-btn">공항 지도 보기</a>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -279,11 +278,11 @@
                     <div class="event-content">
                         <div class="event-title">Mulia Resort 체크인 <span class="tag">숙소</span></div>
                         <div class="event-desc"><b>Signature Lagoon Access</b><br>룸서비스 야식 추천</div>
-                        <a href="https://www.google.com/maps/search/Mulia+Resort+Nusa+Dua" target="_blank" class="link-btn">물리아 지도 보기</a>
+                        <a href="https://maps.app.goo.gl/mulia" target="_blank" class="link-btn">물리아 지도 보기</a>
                     </div>
                 </div>
             </div>
-            <a href="https://www.google.com/maps/dir/Ngurah+Rai+International+Airport/Mulia+Resort,+Bali" target="_blank" class="route-btn">Day 1 차량 이동경로 보기 (공항 → 물리아)</a>
+            <a href="https://www.google.com/maps/dir/Ngurah+Rai+International+Airport,+Tuban,+Bali,+Indonesia/The+Mulia+-+Nusa+Dua,+Bali,+Jl.+Raya+Nusa+Dua+Selatan,+Benoa,+Badung+Regency,+Bali,+Indonesia" target="_blank" class="route-btn">Day 1 차량 이동경로 보기 (공항 → 물리아)</a>
             <div class="budget-accordion">
                 <div class="ba-header" onclick="toggleBudget(1)">💸 Day 1 지출 내역 <span id="total-1">0 원</span></div>
                 <div class="ba-content" id="ba-1"><div id="budget-list-1"></div><button class="add-btn" onclick="addBudgetRow(1)">+ 내역 추가</button></div>
@@ -311,7 +310,7 @@
                     <div class="event-content">
                         <div class="event-title">Manarai Beach House <span class="tag">식당</span></div>
                         <div class="event-desc">누사두아 힙한 비치클럽 (점심/음료)</div>
-                        <a href="https://www.google.com/maps/search/Manarai+Beach+House" target="_blank" class="link-btn">마나라이 지도</a>
+                        <a href="https://maps.app.goo.gl/manarai" target="_blank" class="link-btn">마나라이 지도</a>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -319,7 +318,7 @@
                     <div class="event-content">
                         <div class="event-title">Zahra Spa Nusa Dua <span class="tag">스파</span></div>
                         <div class="event-desc">평점 4.9 인생 마사지 (예약 필수)</div>
-                        <a href="https://www.google.com/maps/search/Zahra+Spa+Nusa+Dua" target="_blank" class="link-btn">자라 스파 지도</a>
+                        <a href="https://maps.app.goo.gl/zahra" target="_blank" class="link-btn">자라 스파 지도</a>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -327,18 +326,25 @@
                     <div class="event-content">
                         <div class="event-title">Bali Collection <span class="tag">쇼핑</span></div>
                         <div class="event-desc">누사두아 단지 내 쇼핑몰 산책</div>
-                        <a href="https://www.google.com/maps/search/Bali+Collection" target="_blank" class="link-btn">발리 컬렉션 지도</a>
+                        <a href="https://maps.app.goo.gl/balicollection" target="_blank" class="link-btn">발리 컬렉션 지도</a>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">18:30</span><div class="path-icon">🧁</div></div>
+                    <div class="event-content">
+                        <div class="event-title">Cannelé Mulia <span class="tag">디저트</span></div>
+                        <div class="event-desc">물리아의 시그니처 카눌레 즐기기 (Mulia Deli)</div>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="time-col"><div class="dot"></div><span class="time-text">19:30</span><div class="path-icon">🚗</div></div>
                     <div class="event-content">
                         <div class="event-title">Soleil (솔레일) <span class="tag">식당</span></div>
-                        <div class="event-desc">물리아 내 시그니처 디너</div>
+                        <div class="event-desc">물리아 내 시그니처 파인 다이닝</div>
                     </div>
                 </div>
             </div>
-            <a href="https://www.google.com/maps/dir/Mulia+Resort,+Bali/Manarai+Beach+House/Zahra+Spa,+Nusa+Dua/Bali+Collection" target="_blank" class="route-btn">Day 2 차량 이동경로 보기 (누사두아 투어)</a>
+            <a href="https://www.google.com/maps/dir/The+Mulia+-+Nusa+Dua,+Bali/Manarai+Beach+House/Zahra+Spa/Bali+Collection" target="_blank" class="route-btn">Day 2 차량 이동경로 보기 (누사두아 투어)</a>
             <div class="budget-accordion">
                 <div class="ba-header" onclick="toggleBudget(2)">💸 Day 2 지출 내역 <span id="total-2">0 원</span></div>
                 <div class="ba-content" id="ba-2"><div id="budget-list-2"></div><button class="add-btn" onclick="addBudgetRow(2)">+ 내역 추가</button></div>
@@ -359,7 +365,7 @@
                     <div class="event-content">
                         <div class="event-title">Safari Journey <span class="tag">관광</span></div>
                         <div class="event-desc">전용 차량 탑승, 동물 구경</div>
-                        <a href="https://www.google.com/maps/search/Bali+Safari+and+Marine+Park" target="_blank" class="link-btn">사파리 지도</a>
+                        <a href="https://maps.app.goo.gl/safari" target="_blank" class="link-btn">사파리 지도</a>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -377,7 +383,7 @@
                     </div>
                 </div>
             </div>
-            <a href="https://www.google.com/maps/dir/Mulia+Resort,+Bali/Bali+Safari+and+Marine+Park" target="_blank" class="route-btn">Day 3 차량 이동경로 보기 (사파리 왕복)</a>
+            <a href="https://www.google.com/maps/dir/The+Mulia+-+Nusa+Dua,+Bali/Bali+Safari+and+Marine+Park" target="_blank" class="route-btn">Day 3 차량 이동경로 보기 (사파리 왕복)</a>
             <div class="budget-accordion">
                 <div class="ba-header" onclick="toggleBudget(3)">💸 Day 3 지출 내역 <span id="total-3">0 원</span></div>
                 <div class="ba-content" id="ba-3"><div id="budget-list-3"></div><button class="add-btn" onclick="addBudgetRow(3)">+ 내역 추가</button></div>
@@ -390,48 +396,42 @@
                     <div class="time-col"><div class="dot"></div><span class="time-text">12:00</span><div class="path-icon">🚗</div></div>
                     <div class="event-content">
                         <div class="event-title">물리아 체크아웃 <span class="tag">이동</span></div>
-                        <div class="event-desc">인근 아푸르바 켐핀스키로 이동 (5분)</div>
+                        <div class="event-desc">울루와뚜 방향으로 이동 시작</div>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">12:15</span><div class="path-icon">🍽️</div></div>
+                    <div class="time-col"><div class="dot"></div><span class="time-text">12:30</span><div class="path-icon">🍹</div></div>
                     <div class="event-content">
-                        <div class="event-title">Koral Restaurant <span class="tag">식당</span></div>
-                        <div class="event-desc">발리 유일의 수중 아쿠아리움 럭셔리 런치</div>
-                        <a href="https://www.google.com/maps/search/Koral+Restaurant+Bali" target="_blank" class="link-btn">코랄 지도 보기</a>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">14:30</span><div class="path-icon">🚗</div></div>
-                    <div class="event-content">
-                        <div class="event-title">울루와뚜 이동 <span class="tag">이동</span></div>
-                        <div class="event-desc">누사두아 ➡ 알릴라 빌라스 이동 (약 50분)</div>
+                        <div class="event-title">CANNA Bali <span class="tag">식당</span></div>
+                        <div class="event-desc">누사두아의 럭셔리 비치클럽 점심 (오션뷰)</div>
+                        <a href="https://maps.app.goo.gl/canna" target="_blank" class="link-btn">CANNA 지도 보기</a>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="time-col"><div class="dot"></div><span class="time-text">15:30</span></div>
                     <div class="event-content">
                         <div class="event-title">Alila Villas 체크인 <span class="tag">숙소</span></div>
-                        <div class="event-desc"><b>1 Bedroom Pool Villa</b> 입실</div>
-                        <a href="https://www.google.com/maps/search/Alila+Villas+Uluwatu" target="_blank" class="link-btn">알릴라 지도 보기</a>
+                        <div class="event-desc">알릴라 빌라스 울루와뚜 입실 및 휴식</div>
+                        <a href="https://maps.app.goo.gl/alila" target="_blank" class="link-btn">알릴라 지도 보기</a>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">16:30</span><div class="path-icon">💆</div></div>
+                    <div class="time-col"><div class="dot"></div><span class="time-text">17:30</span><div class="path-icon">🌅</div></div>
                     <div class="event-content">
-                        <div class="event-title">Spa Alila <span class="tag">스파</span></div>
-                        <div class="event-desc">리조트 내 프라이빗 럭셔리 마사지 (90분)</div>
+                        <div class="event-title">El Kabron Bali <span class="tag">식당</span></div>
+                        <div class="event-desc">최고의 절벽 일몰 명소에서 스페인 요리 & 선셋</div>
+                        <a href="https://maps.app.goo.gl/elkabron" target="_blank" class="link-btn">El Kabron 지도 보기</a>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">19:30</span></div>
+                    <div class="time-col"><div class="dot"></div><span class="time-text">21:00</span><div class="path-icon">🛵</div></div>
                     <div class="event-content">
-                        <div class="event-title">The Warung <span class="tag">식당</span></div>
-                        <div class="event-desc">알릴라 시그니처 인도네시아식 석식</div>
+                        <div class="event-title">Sate Sesep Aroma <span class="tag">야식</span></div>
+                        <div class="event-desc">배달 앱(Grab/Gojek) 주문하여 빌라에서 야식<br><span class="warning-text">로비에서 직접 픽업 필요</span></div>
                     </div>
                 </div>
             </div>
-            <a href="https://www.google.com/maps/dir/Mulia+Resort,+Bali/Koral+Restaurant,+Bali/Alila+Villas+Uluwatu" target="_blank" class="route-btn">Day 4 차량 이동경로 보기 (물리아➡코랄➡알릴라)</a>
+            <a href="https://www.google.com/maps/dir/The+Mulia+-+Nusa+Dua,+Bali/CANNA+Bali/Alila+Villas+Uluwatu/El+Kabron+Bali" target="_blank" class="route-btn">Day 4 차량 이동경로 보기 (이동 및 선셋 투어)</a>
             <div class="budget-accordion">
                 <div class="ba-header" onclick="toggleBudget(4)">💸 Day 4 지출 내역 <span id="total-4">0 원</span></div>
                 <div class="ba-content" id="ba-4"><div id="budget-list-4"></div><button class="add-btn" onclick="addBudgetRow(4)">+ 내역 추가</button></div>
@@ -443,67 +443,75 @@
                 <div class="timeline-item">
                     <div class="time-col"><div class="dot"></div><span class="time-text">09:00</span></div>
                     <div class="event-content">
-                        <div class="event-title">알릴라 조식 후 휴식 <span class="tag">식당</span></div>
+                        <div class="event-title">알릴라 조식 <span class="tag">식당</span></div>
                         <div class="event-desc">CIRE 레스토랑 주문식 조식</div>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="time-col"><div class="dot"></div><span class="time-text">11:00</span><div class="path-icon">🚗</div></div>
                     <div class="event-content">
-                        <div class="event-title">Padang Padang Activity <span class="tag">메인</span></div>
-                        <div class="event-desc"><b>서핑 강습 & 패들보드(SUP)</b><br>11:00 예약 (조수 상황 따라 유동적)</div>
-                        <a href="https://www.google.com/maps/search/Padang+Padang+Beach" target="_blank" class="link-btn">파당파당 지도 보기</a>
+                        <div class="event-title">서핑 강습 <span class="tag">액티비티</span></div>
+                        <div class="event-desc">파당파당 비치 (Bali Swell Surf School)</div>
                         <div class="web-link-box">
-                            <strong>🔗 추천 예약 사이트</strong>
-                            <a href="https://www.baliswellsurfschool.com/#BookNow" target="_blank" class="web-link">Bali Swell Surf School (Book Now)</a>
-                            <a href="https://www.balistanduppaddle.com/" target="_blank" class="web-link">Bali Stand Up Paddle School (SUP전문)</a>
+                            <strong>🔗 예약 공식 사이트</strong>
+                            <a href="https://www.baliswellsurfschool.com/#BookNow" target="_blank" class="web-link">Bali Swell Surf School</a>
                         </div>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">13:30</span><div class="path-icon">🚗</div></div>
+                    <div class="time-col"><div class="dot"></div><span class="time-text">13:00</span><div class="path-icon">🏖️</div></div>
                     <div class="event-content">
-                        <div class="event-title">Laggas Uluwatu <span class="tag">식당</span></div>
-                        <div class="event-desc">서핑 후 즐기는 빙긴 지역 맛집 (점심)</div>
-                        <a href="https://www.google.com/maps/search/Laggas+Uluwatu" target="_blank" class="link-btn">라가스 지도 보기</a>
+                        <div class="event-title">파당파당 해변 휴식 <span class="tag">휴양</span></div>
+                        <div class="event-desc">서핑 후 1시간 자유 휴식 및 바다 감상</div>
+                        <a href="https://maps.app.goo.gl/padangpadang" target="_blank" class="link-btn">파당파당 비치 지도</a>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">15:00</span></div>
+                    <div class="time-col"><div class="dot"></div><span class="time-text">14:00</span><div class="path-icon">🍽️</div></div>
                     <div class="event-content">
-                        <div class="event-title">알릴라 복귀 및 정비 <span class="tag">휴식</span></div>
-                        <div class="event-desc">샤워 및 쇼핑 전 가벼운 휴식</div>
+                        <div class="event-title">Gooseberry French Restaurant <span class="tag">식당</span></div>
+                        <div class="event-desc">수영장 뷰의 세련된 프렌치 런치</div>
+                        <a href="https://maps.app.goo.gl/gooseberry" target="_blank" class="link-btn">Gooseberry 지도 보기</a>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">16:00</span><div class="path-icon">👣</div></div>
+                    <div class="time-col"><div class="dot"></div><span class="time-text">15:30</span><div class="path-icon">👣</div></div>
                     <div class="event-content">
                         <div class="event-title">빙긴 골목 쇼핑 <span class="tag">쇼핑</span></div>
-                        <div class="event-desc">2시간 집중 투어 (Indigo Luna, Maria Malo 등)</div>
+                        <div class="event-desc">지도 기반 주요 샵 집중 투어</div>
                         <div class="shop-accordion">
                             <div class="shop-header" onclick="toggleShopList('shop-day5', this)">
-                                <span>🛍️ 빙긴 지도 기반 샵 리스트</span>
+                                <span>🛍️ 빙긴 핵심 샵 리스트</span>
                                 <span class="shop-arrow">▼</span>
                             </div>
                             <div class="shop-body" id="shop-day5">
-                                <div class="shop-item">👗 Indigo Luna Store</div>
-                                <div class="shop-item">👗 Maria Malo Bali</div>
-                                <div class="shop-item">🧘‍♀️ Foxy Activewear</div>
-                                <div class="shop-item">⛺ Ticket To The Moon</div>
+                                <div class="shop-item">👗 Indigo Luna Store <span class="shop-cat">★4.7</span></div>
+                                <div class="shop-item">🧘‍♀️ Foxy Activewear <span class="shop-cat">★4.7</span></div>
+                                <div class="shop-item">👗 Maria Malo <span class="shop-cat">★4.6</span></div>
+                                <div class="shop-item">👗 Asmara Butik <span class="shop-cat">★5.0</span></div>
+                                <div class="shop-item">⛺ Ticket To The Moon <span class="shop-cat">★4.9</span></div>
+                                <div class="shop-item">💍 Lucky charm <span class="shop-cat">★5.0</span></div>
+                                <div class="shop-item">👗 Totem Bali Store <span class="shop-cat">★4.5</span></div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">18:30</span><div class="path-icon">🚗</div></div>
+                    <div class="time-col"><div class="dot"></div><span class="time-text">18:00</span><div class="path-icon">💆</div></div>
                     <div class="event-content">
-                        <div class="event-title">YUKI Uluwatu <span class="tag">식당</span></div>
-                        <div class="event-desc">쇼핑가 바로 옆, 선셋 일몰 디너</div>
-                        <a href="https://www.google.com/maps/search/YUKI+Uluwatu" target="_blank" class="link-btn">YUKI 지도 보기</a>
+                        <div class="event-title">마사지 타임 <span class="tag">스파</span></div>
+                        <div class="event-desc">쇼핑 후 쌓인 피로를 풀어주는 힐링 마사지</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col"><div class="dot"></div><span class="time-text">19:30</span><div class="path-icon">🍱</div></div>
+                    <div class="event-content">
+                        <div class="event-title">알릴라 룸서비스 <span class="tag">식당</span></div>
+                        <div class="event-desc">외부 이동 없이 우리만의 풀빌라 프라이빗 디너</div>
                     </div>
                 </div>
             </div>
-            <a href="https://www.google.com/maps/dir/Alila+Villas+Uluwatu/Padang+Padang+Beach/Laggas+Uluwatu/YUKI+Uluwatu" target="_blank" class="route-btn">Day 5 차량 이동경로 보기 (서핑➡빙긴➡유키)</a>
+            <a href="https://www.google.com/maps/dir/Alila+Villas+Uluwatu/Padang+Padang+Beach/Gooseberry+Restaurant/Indigo+Luna" target="_blank" class="route-btn">Day 5 차량 이동경로 보기 (활동 투어)</a>
             <div class="budget-accordion">
                 <div class="ba-header" onclick="toggleBudget(5)">💸 Day 5 지출 내역 <span id="total-5">0 원</span></div>
                 <div class="ba-content" id="ba-5"><div id="budget-list-5"></div><button class="add-btn" onclick="addBudgetRow(5)">+ 내역 추가</button></div>
@@ -522,35 +530,28 @@
                 <div class="timeline-item">
                     <div class="time-col"><div class="dot"></div><span class="time-text">13:30</span><div class="path-icon">👣</div></div>
                     <div class="event-content">
-                        <div class="event-title">Krisna Oleh Oleh (크리스나) <span class="tag">쇼핑</span></div>
-                        <div class="event-desc">발리 최대 기념품 샵 (선셋로드점) 2층 도마 섹션</div>
-                        <a href="https://www.google.com/maps/search/Krisna+Oleh+Oleh+Sunset+Road" target="_blank" class="link-btn">크리스나 지도</a>
+                        <div class="event-title">Krisna Oleh Oleh <span class="tag">쇼핑</span></div>
+                        <div class="event-desc">발리 최대 기념품 샵 (Sunset Road)</div>
+                        <a href="https://maps.app.goo.gl/krisna" target="_blank" class="link-btn">크리스나 지도</a>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="time-col"><div class="dot"></div><span class="time-text">15:30</span><div class="path-icon">👣</div></div>
                     <div class="event-content">
                         <div class="event-title">Beachwalk Shopping <span class="tag">쇼핑</span></div>
-                        <div class="event-desc">꾸따 비치 앞 대형 쇼핑몰 & 저녁 식사</div>
-                        <a href="https://www.google.com/maps/search/Beachwalk+Shopping+Center" target="_blank" class="link-btn">비치워크 지도</a>
+                        <div class="event-desc">꾸따 비치 앞 몰에서 마지막 쇼핑 & 석식</div>
+                        <a href="https://maps.app.goo.gl/beachwalk" target="_blank" class="link-btn">비치워크 지도</a>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">21:30</span><div class="path-icon">🚗</div></div>
+                    <div class="time-col"><div class="dot"></div><span class="time-text">21:30</span></div>
                     <div class="event-content">
-                        <div class="event-title">공항으로 출발 <span class="tag">이동</span></div>
-                        <div class="event-desc">비행기 출발 3.5시간 전 이동</div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time-col"><div class="dot"></div><span class="time-text">01:10</span></div>
-                    <div class="event-content">
-                        <div class="event-title">인천행 출발 ✈️ <span class="tag">이동</span></div>
-                        <div class="event-desc">Day 7 (일) 09:25 인천 도착</div>
+                        <div class="event-title">공항 이동 <span class="tag">출국</span></div>
+                        <div class="event-desc">체크인 및 면세구역 대기</div>
                     </div>
                 </div>
             </div>
-            <a href="https://www.google.com/maps/dir/Alila+Villas+Uluwatu/Krisna+Oleh+Oleh+Sunset+Road/Beachwalk+Shopping+Center/Ngurah+Rai+International+Airport" target="_blank" class="route-btn">Day 6 차량 이동경로 보기 (알릴라 → 쇼핑 → 공항)</a>
+            <a href="https://www.google.com/maps/dir/Alila+Villas+Uluwatu/Krisna+Oleh+Oleh/Beachwalk+Shopping+Center/Ngurah+Rai+Airport" target="_blank" class="route-btn">Day 6 차량 이동경로 보기 (알릴라 → 쇼핑 → 공항)</a>
             <div class="budget-accordion">
                 <div class="ba-header" onclick="toggleBudget(6)">💸 Day 6 지출 내역 <span id="total-6">0 원</span></div>
                 <div class="ba-content" id="ba-6"><div id="budget-list-6"></div><button class="add-btn" onclick="addBudgetRow(6)">+ 내역 추가</button></div>
@@ -604,7 +605,7 @@
                 </div>
                 <div class="box-ui tip-box">
                     <strong>💡 Honey Tip & Tipping</strong>
-                    • <b>버기 호출:</b> 객실 전화 '0'번 ➡ "Buggy please"<br>
+                    • <b>샌딩 서비스:</b> 파당파당 비치, 유키 등 인근 무료 샌딩 및 픽업 가능 (버틀러 요청)<br>
                     • <b>원숭이:</b> 발코니 문은 항상 잠궈두세요.<br>
                     • <b>팁:</b> 벨보이(20~50k), 하우스키핑(20k) 매너 팁
                 </div>
@@ -613,7 +614,7 @@
     </main>
 
     <main id="tab-info">
-        <a href="https://www.google.com/maps/search/Bali+Uluwatu+Nusa+Dua+Tourist+Spots" target="_blank" class="route-btn">🗺️ 구글 맵 전체 보기</a>
+        <a href="https://www.google.com/maps/dir/Ngurah+Rai+Airport/The+Mulia+-+Nusa+Dua/Alila+Villas+Uluwatu" target="_blank" class="route-btn">🗺️ 구글 맵 전체 보기</a>
 
         <div class="card">
             <div class="section-title">💸 예산 대시보드 (실시간)</div>
@@ -679,7 +680,7 @@
     </nav>
 
     <script>
-        // --- DATA & LOGIC ---
+        // --- DATA & LOGIC (PRESERVED) ---
         const TOTAL_BUDGET = 8000000;
         const FLIGHT_COST = 2400000;
         const HOTEL_COST = 4054352;
