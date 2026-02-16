@@ -16,62 +16,71 @@ function showDay(day) {
     document.querySelectorAll('.day-chip').forEach(h => h.classList.remove('active'));
     document.getElementById('day-' + day).style.display = 'block';
     document.querySelectorAll('.day-chip')[day - 1].classList.add('active');
-    document.getElementById('day-selector-budget').value = day;
-    renderBudgetRows();
+    renderBudgetRows(day);
 }
 
 function toggleAccordion(id) { document.getElementById(id).classList.toggle('open'); }
 function toggleShopList(id) { document.getElementById(id).classList.toggle('show'); }
-function toggleBudget() { document.getElementById('ba-section').classList.toggle('show'); }
 function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('show'); }
 
-function renderBudgetRows() {
-    const d = document.getElementById('day-selector-budget').value;
-    const container = document.getElementById('budget-rows-container');
+// 지출 내역 렌더링 (카테고리 포함)
+function renderBudgetRows(day) {
+    const container = document.getElementById(`budget-rows-${day}`);
+    if (!container) return;
     container.innerHTML = '';
-    budgetData[d].forEach((item, i) => {
-        const div = document.createElement('div'); div.className = 'budget-list-item';
+    
+    budgetData[day].forEach((item, i) => {
+        const div = document.createElement('div');
+        div.className = 'budget-list-item';
         div.innerHTML = `
-            <input type="text" class="budget-input" style="flex:1" value="${item.name}" placeholder="항목" oninput="editBudget(${d},${i},'name',this.value)">
-            <input type="number" class="budget-num" value="${item.val}" placeholder="금액" oninput="editBudget(${d},${i},'val',this.value)">
-            <button onclick="delBudget(${d},${i})" style="border:none; background:none; color:red; font-weight:bold">X</button>
+            <select class="budget-select" onchange="editBudget(${day},${i},'cat',this.value)">
+                <option value="식비" ${item.cat === '식비' ? 'selected' : ''}>식비</option>
+                <option value="쇼핑" ${item.cat === '쇼핑' ? 'selected' : ''}>쇼핑</option>
+                <option value="투어" ${item.cat === '투어' ? 'selected' : ''}>투어</option>
+                <option value="마사지" ${item.cat === '마사지' ? 'selected' : ''}>마사지</option>
+                <option value="기타" ${item.cat === '기타' ? 'selected' : ''}>기타</option>
+            </select>
+            <input type="text" class="budget-input" style="flex:1" value="${item.name}" placeholder="내용" oninput="editBudget(${day},${i},'name',this.value)">
+            <input type="number" class="budget-num" value="${item.val}" placeholder="금액" oninput="editBudget(${day},${i},'val',this.value)">
+            <button onclick="delBudget(${day},${i})" style="border:none; background:none; color:#dc2626; font-weight:bold; width:30px;">X</button>
         `;
         container.appendChild(div);
     });
     updateStats();
 }
 
-function addBudgetEntry() {
-    const d = document.getElementById('day-selector-budget').value;
-    budgetData[d].push({ name: '', val: 0 });
-    renderBudgetRows();
+function addBudgetEntry(day) {
+    budgetData[day].push({ cat: '식비', name: '', val: 0 });
+    renderBudgetRows(day);
 }
 
-function editBudget(d, i, field, value) {
-    budgetData[d][i][field] = field === 'val' ? (parseInt(value) || 0) : value;
-    updateStats();
+function editBudget(day, i, field, value) {
+    budgetData[day][i][field] = field === 'val' ? (parseInt(value) || 0) : value;
     localStorage.setItem('baliBudgetData', JSON.stringify(budgetData));
+    updateStats();
 }
 
-function delBudget(d, i) {
-    budgetData[d].splice(i, 1);
-    renderBudgetRows();
+function delBudget(day, i) {
+    budgetData[day].splice(i, 1);
+    renderBudgetRows(day);
 }
 
 function updateStats() {
     let localTotal = 0;
-    // 각 일자별 합계 계산 및 표 업데이트
     for (let i = 1; i <= 6; i++) {
         let daySum = 0;
         budgetData[i].forEach(it => daySum += it.val);
         const dayEl = document.getElementById('sum-day-' + i);
         if (dayEl) dayEl.innerText = daySum.toLocaleString();
+        
+        const dayHeaderSum = document.getElementById('day-sum-' + i);
+        if (dayHeaderSum) dayHeaderSum.innerText = daySum.toLocaleString() + " 원";
+        
         localTotal += daySum;
     }
     
     const rem = (TOTAL_BUDGET - FIXED_TOTAL) - localTotal;
     document.getElementById('sum-local').innerText = localTotal.toLocaleString() + " 원";
-    document.getElementById('local-total-summary').innerText = localTotal.toLocaleString() + " 원";
     document.getElementById('sum-final').innerText = rem.toLocaleString() + " 원";
     document.getElementById('top-remain').innerText = Math.floor(rem / 10000) + " 만원";
 }
@@ -81,4 +90,7 @@ function doCalc() {
     document.getElementById('calcOut').innerText = Math.round(v * 0.087).toLocaleString() + " 원";
 }
 
-window.onload = () => { renderBudgetRows(); updateStats(); };
+window.onload = () => { 
+    for(let i=1; i<=6; i++) renderBudgetRows(i);
+    updateStats(); 
+};
