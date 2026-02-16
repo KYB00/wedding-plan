@@ -3,39 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Bali Honeymoon</title>
+    <title>Bali Honeymoon 2026</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <div class="header-info">
+        <div class="header-container">
             <h1>Bali Honeymoon</h1>
             <p>2026.10.19 - 10.24 (5박 6일)</p>
         </div>
-        <div class="menu-icon">☰</div>
+        <div class="menu-btn">☰</div>
     </header>
 
     <main id="tab-schedule" class="active">
-        <section class="ticket-container">
+        <section class="ticket-section">
             <h3>✈️ 항공권 E-Ticket ▼</h3>
             <div class="ticket-card">
-                <div class="flight-route">
-                    <div class="airport-info">10.19<br><strong>16:10</strong><br><span class="code">ICN</span></div>
+                <div class="flight-row">
+                    <div class="airport">10.19<br><strong>16:10</strong><br><span class="code">ICN</span></div>
                     <div class="plane">✈️</div>
-                    <div class="airport-info">10.19<br><strong>22:10</strong><br><span class="code">DPS</span></div>
+                    <div class="airport">10.19<br><strong>22:10</strong><br><span class="code">DPS</span></div>
                 </div>
-                <div class="flight-meta">
+                <div class="flight-info">
                     <span>편명 <strong>KE 431</strong></span>
                     <span>좌석 <strong>37H, J</strong></span>
                     <span>수하물 <strong>1 PC</strong></span>
                 </div>
                 <div class="divider"></div>
-                <div class="flight-route">
-                    <div class="airport-info">10.24<br><strong>01:10</strong><br><span class="code">DPS</span></div>
+                <div class="flight-row">
+                    <div class="airport">10.24<br><strong>01:10</strong><br><span class="code">DPS</span></div>
                     <div class="plane">✈️</div>
-                    <div class="airport-info">10.24<br><strong>09:25</strong><br><span class="code">ICN</span></div>
+                    <div class="airport">10.24<br><strong>09:25</strong><br><span class="code">ICN</span></div>
                 </div>
-                <div class="flight-meta">
+                <div class="flight-info">
                     <span>편명 <strong>KE 434</strong></span>
                     <span>좌석 <strong>43A, B</strong></span>
                     <span>수하물 <strong>1 PC</strong></span>
@@ -43,55 +43,59 @@
             </div>
         </section>
 
-        <nav class="day-nav">
+        <div class="day-selector">
             <button class="day-btn active">Day 1</button>
             <button class="day-btn">Day 2</button>
             <button class="day-btn">Day 3</button>
             <button class="day-btn">Day 4</button>
             <button class="day-btn">Day 5</button>
             <button class="day-btn">Day 6</button>
-        </nav>
+        </div>
 
-        <section class="timeline">
+        <section class="itinerary">
             <div class="timeline-item">
                 <span class="time">13:00</span>
-                <div class="content"><strong>인천공항 도착</strong><p>체크인 및 면세점 구경</p></div>
+                <div class="desc"><strong>인천공항 도착</strong><p>체크인 및 면세점 구경</p></div>
             </div>
             <div class="timeline-item">
                 <span class="time">22:10</span>
-                <div class="content"><strong>발리 공항 도착 & 가이드 미팅 🚗</strong><p>이노바 차량 미팅 (이름표 확인)</p><button class="btn-map">공항 지도</button></div>
+                <div class="desc"><strong>발리 공항 도착 & 가이드 미팅 🚗</strong><p>이노바 차량 미팅 (이름표 확인)</p><button class="map-link">공항 지도</button></div>
             </div>
             <div class="timeline-item">
                 <span class="time">23:40</span>
-                <div class="content"><strong>물리아 입실 및 휴식</strong></div>
+                <div class="desc"><strong>물리아 입실 및 휴식</strong></div>
             </div>
         </section>
     </main>
 
-    <main id="tab-info">
-        <section class="budget-section">
-            <div class="budget-header">
-                <h3>💸 지출 내역 (26.10.19)</h3>
-                <span class="total">0 원</span>
-            </div>
-            
-            <div class="exchange-calc">
-                <h4>💱 실시간 환율 계산기</h4>
-                <div class="calc-row">
-                    <input type="number" id="input-idr" placeholder="IDR (루피아)">
-                    <span class="arrow">⬇️</span>
-                    <input type="text" id="output-krw" readonly placeholder="KRW (원)">
+    <main id="tab-budget">
+        <div class="budget-header">
+            <h3>💸 지출 내역 (26.10.19)</h3>
+            <span class="total-won">0 원</span>
+        </div>
+
+        <section class="exchange-card">
+            <h4>💱 환율 계산기</h4>
+            <div class="calc-inputs">
+                <div class="input-row">
+                    <input type="number" id="idr-val" placeholder="IDR (루피아)">
+                    <span>Rp</span>
                 </div>
-                <p class="rate-info">* 기준: 100 IDR ≒ 8.7 KRW</p>
+                <div class="calc-arrow">⬇️</div>
+                <div class="input-row">
+                    <input type="text" id="krw-val" readonly placeholder="KRW (원)">
+                    <span>₩</span>
+                </div>
             </div>
-            
-            <button class="btn-add">+ 내역 추가</button>
+            <p class="rate-notice">* 100 IDR ≒ 8.7 KRW 기준</p>
         </section>
+
+        <button class="add-btn">+ 내역 추가</button>
     </main>
 
-    <nav class="bottom-tabs">
-        <button class="tab-item active" data-target="tab-schedule">📅 일정</button>
-        <button class="tab-item" data-target="tab-info">💰 예산</button>
+    <nav class="bottom-nav">
+        <button class="nav-item active" data-tab="tab-schedule">📅 일정</button>
+        <button class="nav-item" data-tab="tab-budget">💰 예산</button>
     </nav>
 
     <script src="script.js"></script>
