@@ -1,5 +1,6 @@
 :root {
     --navy-dark: #0f172a;
+    --navy-main: #1e3a8a;
     --blue-accent: #2563eb;
     --blue-soft: #eff6ff;
     --gray-bg: #f8fafc;
@@ -11,27 +12,18 @@
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 body { margin: 0; padding: 0; font-family: -apple-system, sans-serif; background-color: var(--gray-bg); color: var(--navy-dark); padding-bottom: 120px; }
 
-/* 헤더 및 메뉴 (튀어나오는 버그 수정) */
 header { background: var(--white); padding: 15px 20px; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 1000; }
-.header-row { display: flex; justify-content: space-between; align-items: center; }
+.header-row { display: flex; justify-content: space-between; align-items: flex-start; }
 .trip-title { font-size: 20px; font-weight: 800; margin: 0; }
-.trip-date { font-size: 13px; color: #64748b; }
-.hamburger-btn { font-size: 24px; cursor: pointer; }
 
-.mobile-menu { 
-    display: none; 
-    position: absolute; top: 100%; left: 0; right: 0; 
-    background: white; border-top: 1px solid #eee; 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
-}
+.mobile-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; z-index: 999; border-top: 1px solid #eee; }
 .mobile-menu.show { display: block; }
-.menu-item { padding: 15px 20px; border-bottom: 1px solid #f5f5f5; font-weight: 600; cursor: pointer; }
+.menu-item { padding: 15px 20px; border-bottom: 1px solid #f5f5f5; font-weight: 600; }
 
-/* 탭 제어 */
 main { display: none; padding: 20px; }
 main.active { display: block; }
 
-/* E-Ticket (네이비 & 너비 통일) */
+/* 항공권 E-Ticket 네이비 및 너비 복구 */
 .accordion-header {
     background: var(--navy-dark); color: var(--white);
     padding: 15px 20px; border-radius: 12px;
@@ -40,25 +32,39 @@ main.active { display: block; }
 }
 .accordion-content { display: none; }
 .accordion-content.open { display: block; }
-.ticket-box { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px; margin-bottom: 20px; }
+.ticket-box { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px; }
 .f-code { font-size: 22px; font-weight: 900; color: var(--blue-accent); }
 .dashed-line { border: 0; border-top: 1px dashed #eee; margin: 15px 0; }
-.f-detail-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px; font-size: 11px; }
 
 /* Day Selector */
 .day-scroll-wrapper { display: flex; gap: 8px; overflow-x: auto; padding: 10px 0; position: sticky; top: 61px; background: var(--gray-bg); z-index: 900; }
 .day-chip { padding: 10px 18px; background: #e2e8f0; border-radius: 12px; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap; }
 .day-chip.active { background: var(--navy-dark); color: white; }
 
-/* 타임라인 & 상세 설명 복구 */
+/* 타임라인 카드 */
 .card { background: white; border-radius: 16px; padding: 20px; border: 1px solid #e2e8f0; margin-bottom: 20px; }
-.timeline-item { display: flex; position: relative; padding-bottom: 25px; }
+.timeline-item { display: flex; padding-bottom: 25px; }
 .time-col { flex: 0 0 60px; text-align: center; }
 .dot { width: 10px; height: 10px; background: var(--navy-dark); border-radius: 50%; margin: 5px auto; }
 .event-title { font-weight: 800; font-size: 16px; margin-bottom: 4px; }
 .event-desc { font-size: 13px; color: #475569; }
 
-/* 예산 대시보드 CSS 복구 */
+/* 지출내역 입력 디자인 복구 */
+.ba-header { 
+    background: #f1f5f9; padding: 15px; border-radius: 10px; border: 1px solid var(--gray-line); 
+    display: flex; justify-content: space-between; font-weight: 800; cursor: pointer; margin-top: 15px; 
+}
+.ba-sum { color: var(--blue-accent); font-weight: 900; }
+.ba-content { display: none; padding: 15px; background: white; border: 1px solid var(--gray-line); border-top: none; }
+
+/* 숙소 타이틀 볼드 및 여백 복구 */
+.section-title { font-size: 18px; font-weight: 800; color: var(--navy-dark); margin-bottom: 15px; }
+.hotel-card { padding: 0 !important; overflow: hidden; }
+.hotel-img { width: 100%; height: 200px; object-fit: cover; }
+.hotel-info-body { padding: 20px; }
+.box-ui { padding: 12px; border-radius: 8px; margin-bottom: 10px; font-size: 13px; border: 1px solid #e2e8f0; }
+
+/* 예산 대시보드 */
 .budget-dashboard { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
 .b-card { padding: 15px; border-radius: 12px; color: white; text-align: center; }
 .b-card.total { background: var(--navy-dark); grid-column: 1 / -1; }
@@ -66,40 +72,33 @@ main.active { display: block; }
 .b-card.remain { background: var(--blue-accent); }
 .b-value { font-size: 18px; font-weight: 800; display: block; }
 
-.pretty-table { width: 100%; border-collapse: collapse; margin-top: 10px; border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; }
-.pretty-table td, th { padding: 12px; border-bottom: 1px solid #eee; font-size: 13px; }
-.total-row { background: #f1f5f9; font-weight: 800; }
+/* 일자별 대시보드 박스 스타일 */
+.day-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 20px; }
+.stat-box { background: white; padding: 10px; border-radius: 8px; border: 1px solid #eee; text-align: center; font-size: 11px; font-weight: 600; color: #64748b; }
+.stat-box span { display: block; color: var(--navy-dark); font-size: 13px; font-weight: 800; margin-top: 4px; }
 
-/* 환율 계산기 (예산 탭 하단) */
+/* 쇼핑 리스트 박스화 복구 */
+.shop-accordion { border: 1px solid var(--gray-line); border-radius: 10px; margin-top: 10px; overflow: hidden; }
+.shop-header { padding: 10px 15px; font-weight: 800; background: #f1f5f9; cursor: pointer; display: flex; justify-content: space-between; }
+.shop-body { display: none; padding: 15px; background: white; border-top: 1px solid #eee; font-size: 12px; line-height: 1.8; }
+.shop-body.show { display: block; }
+
+/* 하단 네비 고정 복구 */
+.bottom-nav { 
+    position: fixed; bottom: 0; left: 0; right: 0; background: white; height: 80px; 
+    display: flex; justify-content: space-around; border-top: 1px solid #e2e8f0; 
+    z-index: 10000; padding-bottom: var(--safe-bottom); 
+}
+.nav-item { flex: 1; text-align: center; color: #94a3b8; cursor: pointer; padding-top: 12px; font-weight: 800; }
+.nav-item.active { color: var(--navy-dark); }
+.nav-icon { display: block; font-size: 20px; margin-bottom: 2px; }
+
+/* 환율 계산기 */
 .exchange-calc { background: #f8fafc; border: 2px solid var(--blue-accent); border-radius: 12px; padding: 15px; margin-top: 25px; }
 .calc-header { font-weight: 800; color: var(--blue-accent); margin-bottom: 10px; text-align: center; }
 .calc-row { display: flex; flex-direction: column; gap: 8px; }
 .calc-row input { padding: 12px; border: 1px solid var(--gray-line); border-radius: 8px; font-size: 14px; }
 
-/* 숙소 타이틀 (볼드 & 여백) */
-.section-title { font-size: 18px; font-weight: 800; color: var(--navy-dark); margin-bottom: 15px; }
-.hotel-card { padding: 0 !important; overflow: hidden; }
-.hotel-info-body { padding: 20px; }
-
-/* 쇼핑 리스트 (박스화) */
-.shop-accordion { border: 1px solid var(--gray-line); border-radius: 10px; margin-top: 10px; overflow: hidden; }
-.shop-header { padding: 10px 15px; font-weight: 800; background: #f1f5f9; cursor: pointer; display: flex; justify-content: space-between; font-size: 12px; }
-.shop-body { display: none; padding: 15px; background: white; border-top: 1px solid #eee; font-size: 12px; line-height: 1.8; }
-.shop-body.show { display: block; }
-
-/* 하단 네비게이션 고정 */
-.bottom-nav { 
-    position: fixed; bottom: 0; left: 0; right: 0; 
-    background: white; height: 80px; 
-    display: flex; justify-content: space-around; 
-    border-top: 1px solid #e2e8f0; 
-    z-index: 9999; 
-    padding-bottom: var(--safe-bottom); 
-}
-.nav-item { flex: 1; text-align: center; color: #94a3b8; cursor: pointer; padding-top: 12px; font-weight: 800; font-size: 12px; }
-.nav-item.active { color: var(--navy-dark); }
-.nav-icon { display: block; font-size: 20px; margin-bottom: 2px; }
-
-/* 공통 버튼 */
+/* 공용 버튼 */
 .route-btn { display: block; width: 100%; background: var(--blue-soft); color: var(--blue-accent); text-align: center; padding: 14px; border-radius: 12px; font-weight: 800; text-decoration: none; border: 1px solid var(--blue-accent); margin-bottom: 20px; }
-.link-btn { display: inline-block; color: var(--blue-accent); text-decoration: underline; font-weight: 700; margin-top: 5px; }
+.link-btn { display: inline-block; color: var(--blue-accent); font-weight: 800; text-decoration: underline; font-size: 12px; margin-top: 4px; }
