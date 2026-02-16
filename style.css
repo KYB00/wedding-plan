@@ -65,3 +65,42 @@ main.active { display: block; }
 .pretty-table td, .pretty-table th { padding: 12px 15px; font-size: 14px; border-bottom: 1px solid #f1f5f9; }
 .price-col { text-align: right; }
 .remain-row { background: var(--blue-soft); color: var(--blue-accent); font-weight: 800; }
+/* 1. 탭 전환 로직: active가 없는 main은 숨김 */
+main {
+    display: none; /* 기본적으로 모두 숨김 */
+    padding: 20px;
+    padding-bottom: 120px; /* 하단바 높이만큼 여백 */
+}
+
+main.active {
+    display: block; /* 선택된 탭만 표시 */
+}
+
+/* 2. 하단 네비게이션 스타일 복구 */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: #fff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid var(--gray-line);
+    z-index: 1000;
+    padding-bottom: var(--safe-bottom);
+}
+
+.bottom-nav button {
+    flex: 1;
+    border: none;
+    background: none;
+    color: var(--gray-line);
+    font-size: 12px;
+}
+
+.bottom-nav button.active {
+    color: var(--blue-accent);
+    font-weight: bold;
+}
