@@ -60,7 +60,15 @@ function delBudget(d, i) {
 
 function updateStats() {
     let localTotal = 0;
-    Object.values(budgetData).forEach(day => day.forEach(it => localTotal += it.val));
+    // 각 일자별 합계 계산 및 표 업데이트
+    for (let i = 1; i <= 6; i++) {
+        let daySum = 0;
+        budgetData[i].forEach(it => daySum += it.val);
+        const dayEl = document.getElementById('sum-day-' + i);
+        if (dayEl) dayEl.innerText = daySum.toLocaleString();
+        localTotal += daySum;
+    }
+    
     const rem = (TOTAL_BUDGET - FIXED_TOTAL) - localTotal;
     document.getElementById('sum-local').innerText = localTotal.toLocaleString() + " 원";
     document.getElementById('local-total-summary').innerText = localTotal.toLocaleString() + " 원";
