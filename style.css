@@ -13,59 +13,64 @@
 body { margin: 0; padding: 0; font-family: -apple-system, sans-serif; background-color: var(--gray-bg); color: var(--navy-dark); padding-bottom: 100px; }
 
 header { background: var(--white); padding: 15px 20px; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 1000; }
-.header-row { display: flex; justify-content: space-between; align-items: flex-start; }
-.trip-title { font-size: 20px; font-weight: 800; }
+.trip-title { font-size: 20px; font-weight: 800; margin: 0; }
 .trip-date { font-size: 13px; color: #64748b; }
+.hamburger-btn { font-size: 24px; cursor: pointer; }
 
 main { display: none; padding: 20px; }
 main.active { display: block; }
 
-/* 1. 항공권 E-Ticket 헤더 복구 */
-.accordion-header {
-    background: var(--white); padding: 15px 20px; border-radius: 12px; border: 1px solid var(--gray-line);
-    display: flex; justify-content: space-between; align-items: center; font-weight: 800; cursor: pointer; margin-bottom: 10px;
-}
+/* 항공권 */
+.accordion-header { background: white; padding: 15px; border-radius: 12px; border: 1px solid var(--gray-line); display: flex; justify-content: space-between; font-weight: 800; cursor: pointer; margin-bottom: 10px; }
 .accordion-content { display: none; margin-bottom: 20px; }
 .accordion-content.open { display: block; }
 .ticket-box { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px; }
+.flight-row { display: flex; justify-content: space-between; align-items: center; text-align: center; }
 .f-code { font-size: 22px; font-weight: 900; color: var(--blue-accent); }
+.f-detail-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; background: #f8fafc; padding: 10px; border-radius: 8px; margin-top: 10px; font-size: 12px; }
 .dashed-line { border: 0; border-top: 1px dashed #eee; margin: 15px 0; }
 
-/* 2. Day Selector */
+/* Day Chips */
 .day-scroll-wrapper { display: flex; gap: 8px; overflow-x: auto; padding: 10px 0; position: sticky; top: 61px; background: var(--gray-bg); z-index: 900; }
 .day-chip { padding: 10px 18px; background: #e2e8f0; border-radius: 12px; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap; }
 .day-chip.active { background: var(--navy-dark); color: white; }
 
-/* 3. 숙소 타이틀 복구 */
-.section-title { font-size: 18px; font-weight: 800; color: var(--navy-dark); margin-bottom: 15px; }
-.hotel-card { padding: 0 !important; overflow: hidden; border-radius: 16px; border: 1px solid #e2e8f0; margin-bottom: 20px; }
+/* 타임라인 */
+.card { background: white; border-radius: 16px; padding: 20px; border: 1px solid #e2e8f0; margin-bottom: 20px; }
+.timeline-item { display: flex; position: relative; padding-bottom: 25px; }
+.time-col { flex: 0 0 60px; text-align: center; }
+.dot { width: 10px; height: 10px; background: var(--navy-dark); border-radius: 50%; margin: 5px auto; }
+.time-text { font-size: 12px; font-weight: bold; }
+.event-title { font-weight: 800; font-size: 16px; margin-bottom: 4px; }
+.event-desc { font-size: 13px; color: #475569; }
+
+/* 지출내역 */
+.ba-header { background: #f1f5f9; padding: 15px; border-radius: 10px; border: 1px solid var(--gray-line); display: flex; justify-content: space-between; font-weight: 700; cursor: pointer; margin-top: 15px; }
+.ba-sum { color: var(--blue-accent); font-weight: 800; }
+.ba-content { display: none; padding: 15px; background: white; border: 1px solid var(--gray-line); border-top: none; }
+
+/* 숙소 타이틀 스타일 복구 */
+.section-title { font-size: 18px; font-weight: 800; color: var(--navy-dark); margin-bottom: 12px; }
+.hotel-card { padding: 0 !important; overflow: hidden; }
 .hotel-img { width: 100%; height: 180px; object-fit: cover; }
 .hotel-info-body { padding: 20px; }
 .box-ui { padding: 12px; border-radius: 8px; margin-bottom: 10px; font-size: 13px; }
 .facility-box { background: #f8fafc; border: 1px solid #e2e8f0; }
 .tip-box { background: #fffbe6; border: 1px solid #fcd34d; color: #92400e; }
 
-/* 4. 지출내역 입력 헤더 복구 */
-.ba-header {
-    background: #f1f5f9; padding: 15px 18px; border-radius: 10px; border: 1px solid var(--gray-line);
-    display: flex; justify-content: space-between; font-weight: 700; font-size: 13px; cursor: pointer; margin-top: 15px;
-}
-.ba-sum { color: var(--blue-accent); font-weight: 800; }
-.ba-content { display: none; padding: 15px; background: white; border: 1px solid var(--gray-line); border-top: none; }
-.ba-content.show { display: block; }
+/* 예산 대시보드 */
+.budget-dashboard { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+.b-card { padding: 15px; border-radius: 12px; color: white; text-align: center; }
+.b-card.total { background: var(--navy-dark); grid-column: 1 / -1; }
+.b-card.fixed { background: #475569; }
+.b-card.remain { background: var(--blue-accent); }
+.b-value { font-size: 20px; font-weight: 800; display: block; }
+.pretty-table { width: 100%; border-collapse: collapse; }
+.pretty-table td, .pretty-table th { padding: 12px; border-bottom: 1px solid #eee; }
+.total-row { background: #f1f5f9; font-weight: 800; }
+.remain-row { background: var(--blue-soft); color: var(--blue-accent); font-weight: 800; }
 
-/* 타임라인 & 공통 카드 */
-.card { background: var(--white); border-radius: 16px; padding: 20px; border: 1px solid #e2e8f0; margin-bottom: 20px; }
-.timeline-item { display: flex; padding-bottom: 25px; }
-.time-col { flex: 0 0 60px; text-align: center; }
-.dot { width: 10px; height: 10px; background: var(--navy-dark); border-radius: 50%; margin: 5px auto; border: 2px solid white; box-shadow: 0 0 0 1px #cbd5e1; }
-.time-text { font-size: 12px; font-weight: bold; }
-.event-title { font-weight: 800; font-size: 16px; margin-bottom: 4px; }
-.event-desc { font-size: 13px; color: #475569; }
-.link-btn, .route-btn { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 8px 15px; border-radius: 8px; font-size: 12px; margin-top: 10px; cursor: pointer; }
-.route-btn { width: 100%; background: var(--blue-soft); color: var(--blue-accent); border-color: var(--blue-accent); font-weight: 800; margin-bottom: 20px; }
-
-/* 하단 네비 */
-.bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: white; height: 80px; display: flex; justify-content: space-around; border-top: 1px solid #e2e8f0; padding-bottom: var(--safe-bottom); }
-.nav-item { flex: 1; text-align: center; color: #94a3b8; cursor: pointer; padding-top: 12px; }
-.nav-item.active { color: var(--navy-main); font-weight: bold; }
+/* 하단바 */
+.bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: white; height: 80px; display: flex; justify-content: space-around; align-items: center; border-top: 1px solid #e2e8f0; padding-bottom: var(--safe-bottom); z-index: 1000; }
+.nav-item { flex: 1; text-align: center; color: #94a3b8; font-weight: bold; cursor: pointer; }
+.nav-item.active { color: var(--navy-main); }
