@@ -1,77 +1,73 @@
 :root {
-    --navy-dark: #0f172a;       --navy-main: #1e3a8a;       --blue-accent: #2563eb;     
-    --blue-soft: #eff6ff;       --gray-bg: #f8fafc;         --gray-line: #cbd5e1;       
-    --white: #ffffff;           --danger: #dc2626;          --safe-bottom: env(safe-area-inset-bottom);
+    --navy-dark: #0f172a;
+    --navy-main: #1e3a8a;
+    --blue-accent: #2563eb;
+    --blue-soft: #eff6ff;
+    --gray-bg: #f8fafc;
+    --gray-line: #cbd5e1;
+    --white: #ffffff;
+    --danger: #dc2626;
+    --safe-bottom: env(safe-area-inset-bottom);
 }
+
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: var(--gray-bg); color: var(--navy-dark); padding-bottom: calc(100px + var(--safe-bottom)); }
-header { background-color: var(--white); padding: 15px 20px 10px 20px; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #e2e8f0; }
-.header-row { display: flex; justify-content: space-between; align-items: flex-start; }
-.trip-title { font-size: 22px; font-weight: 800; color: var(--navy-dark); margin: 0; letter-spacing: -0.5px; }
-.trip-date { font-size: 13px; color: #64748b; margin-top: 4px; font-weight: 500; }
-.hamburger-btn { font-size: 24px; color: var(--navy-dark); cursor: pointer; padding: 5px; }
-.mobile-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--white); box-shadow: 0 10px 20px rgba(0,0,0,0.1); padding: 10px 0; z-index: 999; border-top: 1px solid #eee; }
-.mobile-menu.show { display: block; animation: slideDown 0.3s ease; }
-@keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-.menu-item { padding: 15px 20px; font-size: 16px; font-weight: 600; color: var(--navy-dark); border-bottom: 1px solid #f5f5f5; display: flex; align-items: center; cursor: pointer; }
+body { margin: 0; padding: 0; font-family: -apple-system, sans-serif; background-color: var(--gray-bg); color: var(--navy-dark); padding-bottom: calc(100px + var(--safe-bottom)); }
+
+/* 헤더 & 네비 */
+header { background-color: var(--white); padding: 15px 20px; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #e2e8f0; }
+.trip-title { font-size: 20px; font-weight: 800; }
 .day-scroll-wrapper { display: flex; gap: 8px; overflow-x: auto; padding: 10px 20px; position: sticky; top: 61px; background: var(--gray-bg); z-index: 900; }
-.day-scroll-wrapper::-webkit-scrollbar { display: none; }
-.day-chip { flex: 0 0 auto; padding: 10px 18px; background: #e2e8f0; border-radius: 12px; font-size: 14px; font-weight: 600; color: #64748b; cursor: pointer; }
-.day-chip.active { background-color: var(--navy-dark); color: var(--white); box-shadow: 0 4px 6px rgba(15, 23, 42, 0.3); }
 
-/* E-Ticket 복구 */
-.ticket-box { background: white; border: 2px solid #e2e8f0; border-radius: 12px; padding: 15px; margin-bottom: 10px; }
-.flight-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
-.f-col { flex: 1; text-align: center; }
-.f-time { font-size: 18px; font-weight: 800; color: #0f172a; }
-.f-code { font-size: 24px; font-weight: 900; color: var(--blue-accent); }
-.f-detail-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5px; background: #f8fafc; padding: 10px; border-radius: 8px; text-align: center; margin-top: 10px; }
-.f-label { font-size: 10px; color: #94a3b8; display: block; }
-.f-val { font-size: 12px; font-weight: 700; }
+/* 1. 항공권 E-Ticket 헤더 복구 */
+.accordion-header {
+    background: var(--white);
+    padding: 15px 20px;
+    border-radius: 12px;
+    border: 1px solid var(--gray-line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 800;
+    cursor: pointer;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+}
+.accordion-content { display: none; margin-bottom: 20px; }
+.accordion-content.open { display: block; }
 
-main { display: none; padding: 20px; animation: fadeIn 0.3s ease; }
-main.active { display: block; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+/* 티켓 박스 디테일 */
+.ticket-box { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px; }
+.f-code { font-size: 22px; font-weight: 900; color: var(--blue-accent); }
 
-.card { background: var(--white); border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 1px solid #e2e8f0; }
-.timeline-item { display: flex; position: relative; padding-bottom: 35px; }
-.timeline-item::before { content: ''; position: absolute; left: 29px; top: 25px; bottom: 0; width: 2px; background: var(--gray-line); }
-.timeline-item:last-child::before { display: none; }
-.time-col { flex: 0 0 60px; display: flex; flex-direction: column; align-items: center; margin-right: 15px; position: relative; }
-.dot { width: 10px; height: 10px; background: var(--navy-dark); border-radius: 50%; z-index: 2; margin-top: 4px; border: 2px solid white; box-shadow: 0 0 0 1px #cbd5e1; }
-.path-icon { font-size: 18px; background: var(--white); width: 24px; text-align: center; z-index: 2; margin-top: 4px; }
-.event-title { font-size: 16px; font-weight: 700; color: var(--navy-dark); margin-bottom: 4px; }
-.event-desc { font-size: 13px; color: #475569; line-height: 1.5; }
-.tag { display: inline-block; font-size: 10px; padding: 2px 6px; border-radius: 4px; background: #f1f5f9; color: #64748b; border: 1px solid #cbd5e1; margin-left: 6px; }
+/* 2. 지출내역 입력 헤더 복구 */
+.ba-header {
+    background: #f1f5f9;
+    padding: 14px 18px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    border: 1px solid var(--gray-line);
+    margin-top: 15px;
+}
+.ba-sum { color: var(--blue-accent); font-weight: 800; }
+.ba-content { display: none; padding: 15px; background: white; border: 1px solid var(--gray-line); border-top: none; border-radius: 0 0 10px 10px; }
+.ba-content.show { display: block; }
 
-/* UI 겹침 해결을 위한 버튼 스타일 */
-.link-btn { display: block; width: fit-content; font-size: 11px; color: #475569; text-decoration: none; background: #f1f5f9; padding: 6px 12px; border-radius: 6px; border: 1px solid #cbd5e1; margin-top: 10px; }
-.route-btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 14px; background-color: var(--blue-soft); color: var(--blue-accent); border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 14px; margin: 15px 0 25px 0; border: 1px solid var(--blue-accent); }
+/* 3. 숙소 타이틀 복구 */
+.section-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--navy-dark);
+    margin-bottom: 15px;
+}
+.hotel-card { padding: 0 !important; overflow: hidden; }
+.hotel-info-body { padding: 20px; }
 
-.budget-dashboard { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
-.b-card { padding: 15px; border-radius: 12px; color: white; text-align: center; }
-.b-card.total { background: var(--navy-dark); grid-column: 1 / -1; }
-.b-card.fixed { background: #475569; }
-.b-card.remain { background: var(--blue-accent); }
-.b-value { font-size: 20px; font-weight: 800; display: block; }
-
-.pretty-table { width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; }
-.pretty-table td, .pretty-table th { padding: 12px 15px; font-size: 14px; border-bottom: 1px solid #f1f5f9; }
-.price-col { text-align: right; }
-.total-row { background: #f1f5f9; font-weight: 800; }
-.remain-row { background: var(--blue-soft); color: var(--blue-accent); font-weight: 800; }
-
-.bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: var(--white); height: 80px; display: flex; justify-content: space-around; padding-top: 12px; border-top: 1px solid #e2e8f0; z-index: 9999; padding-bottom: var(--safe-bottom); }
-.nav-item { text-align: center; flex: 1; color: #94a3b8; cursor: pointer; }
-.nav-item.active { color: var(--navy-main); }
-.nav-icon { font-size: 20px; display: block; }
-
-.hotel-img { width: 100%; height: 180px; object-fit: cover; }
-.box-ui { padding: 12px; border-radius: 8px; margin-bottom: 10px; font-size: 12px; line-height: 1.5; }
-.tip-box { background: #fffbe6; border: 1px solid #fcd34d; color: #92400e; }
-.facility-box { background: #f8fafc; border: 1px solid #e2e8f0; color: #475569; }
-
-.shop-accordion { border: 1px solid #e2e8f0; border-radius: 8px; margin-top: 10px; background: #f8fafc; }
-.shop-header { padding: 8px 12px; font-size: 12px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; }
-.shop-body { display: none; padding: 8px 12px; background: white; border-top: 1px solid #e2e8f0; }
-.shop-body.show { display: block; }
+/* 기타 UI */
+.card { background: var(--white); border-radius: 16px; padding: 20px; margin-bottom: 20px; border: 1px solid #e2e8f0; }
+.bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: var(--white); height: 80px; display: flex; justify-content: space-around; padding-top: 12px; border-top: 1px solid #e2e8f0; z-index: 9999; }
+.nav-item.active { color: var(--navy-main); font-weight: bold; }
