@@ -1,6 +1,6 @@
 const TOTAL_BUDGET = 8000000;
 const FIXED_TOTAL = 6454352;
-let budgetData = JSON.parse(localStorage.getItem('baliBudgetDataFinal') || '{"1":[],"2":[],"3":[],"4":[],"5":[],"6":[]}');
+let budgetData = JSON.parse(localStorage.getItem('baliBudgetDataFinalV5') || '{"1":[],"2":[],"3":[],"4":[],"5":[],"6":[]}');
 
 function switchMainTab(tab) {
     document.querySelectorAll('main').forEach(m => m.classList.remove('active'));
@@ -41,7 +41,7 @@ function renderBudgetRows(day) {
 
 function editBudget(day, i, field, value) {
     budgetData[day][i][field] = field === 'val' ? (parseInt(value) || 0) : value;
-    localStorage.setItem('baliBudgetDataFinal', JSON.stringify(budgetData));
+    localStorage.setItem('baliBudgetDataFinalV5', JSON.stringify(budgetData));
     updateStats();
 }
 
@@ -49,13 +49,8 @@ function updateStats() {
     let localTotal = 0;
     for (let i = 1; i <= 6; i++) {
         let daySum = budgetData[i].reduce((sum, it) => sum + it.val, 0);
-        const headerSum = document.getElementById('day-sum-' + i);
-        if (headerSum) headerSum.innerText = daySum.toLocaleString() + " 원";
-        
-        // 예산 탭의 일자별 박스 업데이트
-        const statSum = document.getElementById('sum-day-' + i);
-        if (statSum) statSum.innerText = daySum.toLocaleString();
-        
+        if (document.getElementById('day-sum-' + i)) document.getElementById('day-sum-' + i).innerText = daySum.toLocaleString() + " 원";
+        if (document.getElementById('sum-day-' + i)) document.getElementById('sum-day-' + i).innerText = daySum.toLocaleString() + " 원";
         localTotal += daySum;
     }
     const rem = (TOTAL_BUDGET - FIXED_TOTAL) - localTotal;
@@ -64,7 +59,6 @@ function updateStats() {
     if(document.getElementById('top-remain-display')) document.getElementById('top-remain-display').innerText = Math.floor(rem / 10000) + " 만원";
 }
 
-// 환율 계산기
 const idrIn = document.getElementById('idr-input');
 const krwOut = document.getElementById('krw-output');
 if(idrIn) {
