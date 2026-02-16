@@ -7,10 +7,10 @@ function switchMainTab(tab) {
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
     document.getElementById('tab-' + tab).classList.add('active');
     
-    const items = document.querySelectorAll('.nav-item');
-    if (tab === 'schedule') items[0].classList.add('active');
-    else if (tab === 'hotels') items[1].classList.add('active');
-    else { items[2].classList.add('active'); updateStats(); }
+    const navs = document.querySelectorAll('.nav-item');
+    if (tab === 'schedule') navs[0].classList.add('active');
+    else if (tab === 'hotels') navs[1].classList.add('active');
+    else { navs[2].classList.add('active'); updateStats(); }
 }
 
 function showDay(day) {
@@ -20,10 +20,23 @@ function showDay(day) {
     document.querySelectorAll('.day-chip')[day - 1].classList.add('active');
 }
 
-function toggleAccordion(id) { document.getElementById(id).classList.toggle('open'); }
-function toggleBudget(day) { document.getElementById('ba-' + day).classList.toggle('show'); }
-function toggleShopList(id) { document.getElementById(id).classList.toggle('show'); }
-function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('show'); }
+function toggleAccordion(id) {
+    document.getElementById(id).classList.toggle('open');
+}
+
+function toggleBudget(day) {
+    const el = document.getElementById('ba-' + day);
+    el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+}
+
+function toggleShopList(id) {
+    const el = document.getElementById(id);
+    el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+}
+
+function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('show');
+}
 
 function addBudgetEntry(day) {
     budgetData[day].push({ cat: '식비', name: '', val: 0 });
