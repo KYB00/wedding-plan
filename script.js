@@ -59,13 +59,13 @@ function updateStats() {
     if(document.getElementById('top-remain-display')) document.getElementById('top-remain-display').innerText = Math.floor(rem / 10000) + " 만원";
 }
 
-// 환율 계산기 기능 추가
-const idrInput = document.getElementById('idr-input');
-const krwOutput = document.getElementById('krw-output');
-if(idrInput) {
-    idrInput.addEventListener('input', () => {
-        const val = idrInput.value;
-        krwOutput.value = val ? Math.floor(val * 0.087).toLocaleString() + " 원" : "";
+// 환율 계산기 로직
+const idrIn = document.getElementById('idr-input');
+const krwOut = document.getElementById('krw-output');
+if(idrIn) {
+    idrIn.addEventListener('input', () => {
+        const val = idrIn.value;
+        krwOut.value = val ? Math.floor(val * 0.087).toLocaleString() + " 원" : "";
     });
 }
 
