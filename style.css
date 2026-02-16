@@ -15,16 +15,15 @@ header { background-color: var(--white); padding: 15px 20px 10px 20px; position:
 @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 .menu-item { padding: 15px 20px; font-size: 16px; font-weight: 600; color: var(--navy-dark); border-bottom: 1px solid #f5f5f5; display: flex; align-items: center; cursor: pointer; }
 
-/* ✈️ 항공권 티켓 디자인 복구 */
-.ticket-box { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; position: relative; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+/* ✈️ 항공권 디자인 복구 */
+.ticket-box { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; position: relative; }
 .flight-row { display: flex; justify-content: space-between; align-items: center; }
 .f-col { flex: 1; text-align: center; }
-.f-date { font-size: 11px; color: #64748b; display: block; margin-bottom: 2px; }
 .f-time { font-size: 18px; font-weight: 800; color: #0f172a; }
 .f-code { font-size: 24px; font-weight: 800; color: var(--blue-accent); line-height: 1.2; }
 .f-detail-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5px; background: #f8fafc; padding: 10px; border-radius: 8px; text-align: center; margin-top: 15px; }
 .f-label { font-size: 10px; color: #94a3b8; display: block; }
-.f-val { font-size: 12px; font-weight: 700; color: #334155; }
+.f-val { font-size: 12px; font-weight: 700; }
 
 .day-scroll-wrapper { display: flex; gap: 8px; overflow-x: auto; padding: 10px 20px; position: sticky; top: 61px; background: var(--gray-bg); z-index: 900; }
 .day-scroll-wrapper::-webkit-scrollbar { display: none; }
@@ -33,7 +32,6 @@ header { background-color: var(--white); padding: 15px 20px 10px 20px; position:
 
 main { display: none; padding: 20px; animation: fadeIn 0.3s ease; }
 main.active { display: block; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
 .card { background: var(--white); border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 1px solid #e2e8f0; }
 .timeline-item { display: flex; position: relative; padding-bottom: 35px; }
@@ -44,7 +42,6 @@ main.active { display: block; }
 .path-icon { font-size: 18px; background: var(--white); width: 24px; text-align: center; z-index: 2; margin-top: 4px; }
 .event-title { font-size: 16px; font-weight: 700; color: var(--navy-dark); margin-bottom: 4px; }
 .event-desc { font-size: 13px; color: #475569; line-height: 1.5; }
-.tag { display: inline-block; font-size: 10px; padding: 2px 6px; border-radius: 4px; background: #f1f5f9; color: #64748b; border: 1px solid #cbd5e1; margin-left: 6px; }
 
 /* 💸 지출 내역 디자인 복구 */
 .budget-accordion { border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; margin: 15px 0; background: white; }
@@ -53,15 +50,16 @@ main.active { display: block; }
 .ba-content.show { display: block; }
 .budget-list-item { display: flex; gap: 5px; margin-bottom: 8px; align-items: center; }
 .budget-input, .budget-select, .budget-num { padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 12px; }
-.add-btn { width: 100%; padding: 12px; background: #f1f5f9; border: 1px dashed #cbd5e1; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; }
 
 .link-btn { display: block; width: fit-content; font-size: 11px; color: #475569; text-decoration: none; background: #f1f5f9; padding: 8px 12px; border-radius: 6px; border: 1px solid #cbd5e1; margin-top: 10px; }
 .route-btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 14px; background-color: var(--blue-soft); color: var(--blue-accent); border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 14px; margin: 15px 0 25px 0; border: 1px solid var(--blue-accent); }
 
-.bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: var(--white); height: 80px; display: flex; justify-content: space-around; padding-top: 12px; border-top: 1px solid #e2e8f0; z-index: 9999; padding-bottom: var(--safe-bottom); }
-.nav-item { text-align: center; flex: 1; color: #94a3b8; cursor: pointer; }
-.nav-item.active { color: var(--navy-main); }
-.nav-icon { font-size: 20px; display: block; }
+.budget-dashboard { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+.b-card { padding: 15px; border-radius: 12px; color: white; text-align: center; }
+.b-card.total { background: var(--navy-dark); grid-column: 1 / -1; }
+.b-card.fixed { background: #475569; }
+.b-card.remain { background: var(--blue-accent); }
+.b-value { font-size: 20px; font-weight: 800; display: block; }
 
 .pretty-table { width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; }
 .pretty-table td, .pretty-table th { padding: 12px 15px; font-size: 14px; border-bottom: 1px solid #f1f5f9; }
