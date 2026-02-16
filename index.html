@@ -27,11 +27,11 @@
             <span>✈️ 항공권 E-Ticket</span>
             <span class="arrow-icon">▼</span>
         </div>
-        <div class="accordion-content" id="flight-info">
+        <div class="accordion-content open" id="flight-info">
             <div class="ticket-box">
                 <div class="flight-row">
                     <div class="f-col"><span>10.19</span><br><b>16:10</b><br><span class="f-code">ICN</span></div>
-                    <div class="f-col" style="font-size:20px; color:#cbd5e1;">✈</div>
+                    <div class="f-col plane-icon">✈</div>
                     <div class="f-col"><span>10.19</span><br><b>22:10</b><br><span class="f-code">DPS</span></div>
                 </div>
                 <div class="f-detail-grid">
@@ -39,10 +39,10 @@
                     <div><span class="f-label">좌석</span><span class="f-val">37H,J</span></div>
                     <div><span class="f-label">수하물</span><span class="f-val">1 PC</span></div>
                 </div>
-                <hr style="border:0; border-top:1px dashed #eee; margin:15px 0;">
+                <hr class="dashed-line">
                 <div class="flight-row">
                     <div class="f-col"><span>10.24</span><br><b>01:10</b><br><span class="f-code">DPS</span></div>
-                    <div class="f-col" style="font-size:20px; color:#cbd5e1;">✈</div>
+                    <div class="f-col plane-icon">✈</div>
                     <div class="f-col"><span>10.24</span><br><b>09:25</b><br><span class="f-code">ICN</span></div>
                 </div>
                 <div class="f-detail-grid">
@@ -63,12 +63,16 @@
         </div>
 
         <div id="day-1" class="day-content">
-            <div class="card">
+            <div class="card timeline-card">
                 <div class="timeline-item">
                     <div class="time-col"><div class="dot"></div><span class="time-text">13:00</span></div>
-                    <div class="event-content"><div class="event-title">인천공항 도착</div><div class="event-desc">여유로운 체크인 및 면세점 구경</div></div>
+                    <div class="event-content">
+                        <div class="event-title">인천공항 도착</div>
+                        <div class="event-desc">여유로운 체크인 및 면세점 구경</div>
+                    </div>
                 </div>
                 </div>
+            
             <div class="budget-accordion">
                 <div class="ba-header" onclick="toggleBudget(1)">
                     <span>💸 일자별 지출내역 입력(26.10.19)</span>
@@ -80,14 +84,13 @@
                 </div>
             </div>
         </div>
-        
         </main>
 
     <main id="tab-hotels">
         <div class="card hotel-card">
             <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1000" class="hotel-img">
             <div class="hotel-info-body">
-                <div class="section-title">The Mulia Resort (Lagoon)</div>
+                <div class="section-title">🏨 The Mulia Resort (Lagoon)</div>
                 <div class="box-ui facility-box">
                     • <b>조식(The Cafe):</b> 07:00 ~ 11:00 (10:30 입장 마감)<br>
                     • <b>석식(The Cafe):</b> 18:00 ~ 23:00 (21:00 입장 권장)
@@ -95,15 +98,22 @@
                 <div class="box-ui tip-box">• 버기 호출 생활화 필수<br>• 카눌레 Mulia Deli 구매</div>
             </div>
         </div>
-        </main>
+    </main>
 
     <main id="tab-info">
-        </main>
+        <div class="card">
+            <div class="section-title">💰 예산 대시보드</div>
+            <div class="budget-dashboard">
+                <div class="b-card total">총 예산<span id="sum-total">8,000,000 원</span></div>
+                <div class="b-card remain">잔액<span id="sum-final">0 원</span></div>
+            </div>
+        </div>
+    </main>
 
     <nav class="bottom-nav">
-        <div class="nav-item active" onclick="switchMainTab('schedule')"><span class="nav-icon">📅</span><span>일정</span></div>
-        <div class="nav-item" onclick="switchMainTab('hotels')"><span class="nav-icon">🏨</span><span>숙소</span></div>
-        <div class="nav-item" onclick="switchMainTab('info')"><span class="nav-icon">💰</span><span>예산</span></div>
+        <div class="nav-item active" onclick="switchMainTab('schedule')">📅 일정</div>
+        <div class="nav-item" onclick="switchMainTab('hotels')">🏨 숙소</div>
+        <div class="nav-item" onclick="switchMainTab('info')">💰 예산</div>
     </nav>
 
     <script src="script.js"></script>
