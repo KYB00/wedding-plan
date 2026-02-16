@@ -1,61 +1,66 @@
 :root {
-    --navy-dark: #0f172a;
-    --blue-accent: #2563eb;
-    --gray-bg: #f8fafc;
-    --gray-line: #cbd5e1;
+    --navy: #0f172a;
+    --blue: #2563eb;
+    --bg: #f8fafc;
+    --line: #cbd5e1;
     --white: #ffffff;
+    --gray: #64748b;
 }
 
-body {
-    margin: 0; background: var(--gray-bg); color: var(--navy-dark);
-    font-family: -apple-system, sans-serif; padding-bottom: 80px;
-}
+* { box-sizing: border-box; font-family: -apple-system, sans-serif; }
+body { margin: 0; background: var(--bg); color: var(--navy); padding-bottom: 80px; }
 
 header {
-    background: var(--white); padding: 15px 20px; border-bottom: 1px solid var(--gray-line);
+    background: var(--white); padding: 15px 20px;
     display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid var(--line);
 }
-header h1 { margin: 0; font-size: 18px; }
-header p { margin: 5px 0 0; font-size: 12px; color: #64748b; }
+header h1 { margin: 0; font-size: 1.2rem; }
+header p { margin: 5px 0 0; font-size: 0.8rem; color: var(--gray); }
 
-main { display: none; padding: 15px; }
+main { display: none; padding: 20px; }
 main.active { display: block; }
 
 /* E-Ticket 디자인 */
 .ticket-card {
-    background: var(--white); border-radius: 12px; padding: 20px;
-    border: 1px solid var(--gray-line); margin-top: 10px;
+    background: var(--white); border: 1px solid var(--line);
+    border-radius: 15px; padding: 20px; margin-top: 10px;
 }
-.flight-route { display: flex; justify-content: space-between; align-items: center; text-align: center; }
-.airport-info strong { font-size: 18px; display: block; margin: 4px 0; }
-.code { color: var(--blue-accent); font-weight: 800; font-size: 20px; }
-.flight-meta {
+.flight-row { display: flex; justify-content: space-between; align-items: center; text-align: center; }
+.airport { font-size: 0.8rem; flex: 1; }
+.airport strong { font-size: 1.2rem; display: block; margin: 3px 0; }
+.code { font-weight: 800; color: var(--blue); font-size: 1.3rem; }
+.flight-info {
     background: #f1f5f9; display: flex; justify-content: space-between;
-    padding: 8px 12px; border-radius: 6px; font-size: 11px; margin-top: 15px;
+    padding: 10px; border-radius: 8px; font-size: 0.7rem; margin-top: 15px;
 }
-.divider { border-top: 1px dashed var(--gray-line); margin: 20px 0; }
+.divider { border-top: 1px dashed var(--line); margin: 20px 0; }
 
 /* 타임라인 */
-.timeline { border-left: 2px solid var(--gray-line); margin-left: 10px; padding-left: 20px; }
-.timeline-item { position: relative; margin-bottom: 25px; }
+.itinerary { border-left: 2px solid var(--line); margin-left: 10px; padding-left: 20px; }
+.timeline-item { position: relative; margin-bottom: 30px; }
 .timeline-item::before {
     content: ''; position: absolute; left: -27px; top: 5px;
-    width: 12px; height: 12px; border-radius: 50%; background: var(--white); border: 2px solid var(--navy-dark);
+    width: 12px; height: 12px; background: var(--white);
+    border: 2px solid var(--navy); border-radius: 50%;
 }
+.time { font-weight: bold; font-size: 0.9rem; display: block; margin-bottom: 5px; }
 
 /* 환율 계산기 */
-.exchange-calc {
-    background: #eff6ff; border: 1px solid var(--blue-accent);
-    padding: 15px; border-radius: 10px; margin: 20px 0;
+.exchange-card {
+    background: var(--white); border: 2px solid var(--blue);
+    border-radius: 12px; padding: 20px; margin: 20px 0;
 }
-.calc-row { display: flex; flex-direction: column; gap: 8px; }
-.calc-row input { padding: 10px; border: 1px solid var(--gray-line); border-radius: 6px; }
+.input-row { display: flex; align-items: center; border: 1px solid var(--line); border-radius: 8px; padding: 10px; }
+.input-row input { border: none; outline: none; width: 100%; font-size: 1rem; }
+.calc-arrow { text-align: center; padding: 10px; color: var(--blue); }
+.rate-notice { font-size: 0.7rem; color: var(--gray); text-align: right; }
 
-/* 하단 네비 */
-.bottom-tabs {
-    position: fixed; bottom: 0; left: 0; right: 0; height: 65px;
-    background: var(--white); border-top: 1px solid var(--gray-line);
+/* 하단바 */
+.bottom-nav {
+    position: fixed; bottom: 0; width: 100%; height: 70px;
+    background: var(--white); border-top: 1px solid var(--line);
     display: flex; justify-content: space-around; align-items: center;
 }
-.tab-item { border: none; background: none; color: #94a3b8; font-size: 14px; }
-.tab-item.active { color: var(--blue-accent); font-weight: bold; }
+.nav-item { border: none; background: none; color: var(--gray); cursor: pointer; }
+.nav-item.active { color: var(--blue); font-weight: bold; }
