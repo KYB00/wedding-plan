@@ -1,73 +1,69 @@
-const TOTAL_BUDGET = 8000000;
-const FIXED_TOTAL = 6454352;
-let budgetData = JSON.parse(localStorage.getItem('baliBudgetDataV4') || '{"1":[],"2":[],"3":[],"4":[],"5":[],"6":[]}');
-
-function switchMainTab(tab) {
-    document.querySelectorAll('main').forEach(m => m.classList.remove('active'));
-    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-    document.getElementById('tab-' + tab).classList.add('active');
-    if (tab === 'schedule') document.querySelectorAll('.nav-item')[0].classList.add('active');
-    else if (tab === 'hotels') document.querySelectorAll('.nav-item')[1].classList.add('active');
-    else { document.querySelectorAll('.nav-item')[2].classList.add('active'); updateStats(); }
+:root {
+    --navy-dark: #0f172a;       --navy-main: #1e3a8a;       --blue-accent: #2563eb;     
+    --blue-soft: #eff6ff;       --gray-bg: #f8fafc;         --gray-line: #cbd5e1;       
+    --white: #ffffff;           --danger: #dc2626;          --safe-bottom: env(safe-area-inset-bottom);
 }
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: var(--gray-bg); color: var(--navy-dark); padding-bottom: calc(100px + var(--safe-bottom)); }
+header { background-color: var(--white); padding: 15px 20px 10px 20px; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #e2e8f0; }
+.header-row { display: flex; justify-content: space-between; align-items: flex-start; }
+.trip-title { font-size: 22px; font-weight: 800; color: var(--navy-dark); margin: 0; letter-spacing: -0.5px; }
+.trip-date { font-size: 13px; color: #64748b; margin-top: 4px; font-weight: 500; }
+.hamburger-btn { font-size: 24px; color: var(--navy-dark); cursor: pointer; padding: 5px; }
+.mobile-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--white); box-shadow: 0 10px 20px rgba(0,0,0,0.1); padding: 10px 0; z-index: 999; border-top: 1px solid #eee; }
+.mobile-menu.show { display: block; animation: slideDown 0.3s ease; }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+.menu-item { padding: 15px 20px; font-size: 16px; font-weight: 600; color: var(--navy-dark); border-bottom: 1px solid #f5f5f5; display: flex; align-items: center; cursor: pointer; }
 
-function showDay(day) {
-    document.querySelectorAll('.day-content').forEach(c => c.style.display = 'none');
-    document.querySelectorAll('.day-chip').forEach(h => h.classList.remove('active'));
-    document.getElementById('day-' + day).style.display = 'block';
-    document.querySelectorAll('.day-chip')[day - 1].classList.add('active');
-}
+/* ✈️ 항공권 티켓 디자인 복구 */
+.ticket-box { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; position: relative; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+.flight-row { display: flex; justify-content: space-between; align-items: center; }
+.f-col { flex: 1; text-align: center; }
+.f-date { font-size: 11px; color: #64748b; display: block; margin-bottom: 2px; }
+.f-time { font-size: 18px; font-weight: 800; color: #0f172a; }
+.f-code { font-size: 24px; font-weight: 800; color: var(--blue-accent); line-height: 1.2; }
+.f-detail-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5px; background: #f8fafc; padding: 10px; border-radius: 8px; text-align: center; margin-top: 15px; }
+.f-label { font-size: 10px; color: #94a3b8; display: block; }
+.f-val { font-size: 12px; font-weight: 700; color: #334155; }
 
-function addBudgetEntry(day) {
-    budgetData[day].push({ cat: '식비', name: '', val: 0 });
-    renderBudgetRows(day);
-}
+.day-scroll-wrapper { display: flex; gap: 8px; overflow-x: auto; padding: 10px 20px; position: sticky; top: 61px; background: var(--gray-bg); z-index: 900; }
+.day-scroll-wrapper::-webkit-scrollbar { display: none; }
+.day-chip { flex: 0 0 auto; padding: 10px 18px; background: #e2e8f0; border-radius: 12px; font-size: 14px; font-weight: 600; color: #64748b; cursor: pointer; }
+.day-chip.active { background-color: var(--navy-dark); color: var(--white); box-shadow: 0 4px 6px rgba(15, 23, 42, 0.3); }
 
-function renderBudgetRows(day) {
-    const container = document.getElementById(`budget-rows-${day}`);
-    if (!container) return;
-    container.innerHTML = '';
-    budgetData[day].forEach((item, i) => {
-        const div = document.createElement('div'); div.className = 'budget-list-item';
-        div.innerHTML = `
-            <select class="budget-select" onchange="editBudget(${day},${i},'cat',this.value)">
-                <option value="식비" ${item.cat==='식비'?'selected':''}>식비</option>
-                <option value="쇼핑" ${item.cat==='쇼핑'?'selected':''}>쇼핑</option>
-                <option value="기타" ${item.cat==='기타'?'selected':''}>기타</option>
-            </select>
-            <input type="text" class="budget-input" style="flex:1" value="${item.name}" placeholder="내용" oninput="editBudget(${day},${i},'name',this.value)">
-            <input type="number" class="budget-num" style="width:80px" value="${item.val}" placeholder="금액" oninput="editBudget(${day},${i},'val',this.value)">
-        `;
-        container.appendChild(div);
-    });
-    updateStats();
-}
+main { display: none; padding: 20px; animation: fadeIn 0.3s ease; }
+main.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-function editBudget(day, i, field, value) {
-    budgetData[day][i][field] = field === 'val' ? (parseInt(value) || 0) : value;
-    localStorage.setItem('baliBudgetDataV4', JSON.stringify(budgetData));
-    updateStats();
-}
+.card { background: var(--white); border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 1px solid #e2e8f0; }
+.timeline-item { display: flex; position: relative; padding-bottom: 35px; }
+.timeline-item::before { content: ''; position: absolute; left: 29px; top: 25px; bottom: 0; width: 2px; background: var(--gray-line); }
+.timeline-item:last-child::before { display: none; }
+.time-col { flex: 0 0 60px; display: flex; flex-direction: column; align-items: center; margin-right: 15px; position: relative; }
+.dot { width: 10px; height: 10px; background: var(--navy-dark); border-radius: 50%; z-index: 2; margin-top: 4px; border: 2px solid white; box-shadow: 0 0 0 1px #cbd5e1; }
+.path-icon { font-size: 18px; background: var(--white); width: 24px; text-align: center; z-index: 2; margin-top: 4px; }
+.event-title { font-size: 16px; font-weight: 700; color: var(--navy-dark); margin-bottom: 4px; }
+.event-desc { font-size: 13px; color: #475569; line-height: 1.5; }
+.tag { display: inline-block; font-size: 10px; padding: 2px 6px; border-radius: 4px; background: #f1f5f9; color: #64748b; border: 1px solid #cbd5e1; margin-left: 6px; }
 
-function updateStats() {
-    let localTotal = 0;
-    for (let i = 1; i <= 6; i++) {
-        let daySum = budgetData[i].reduce((sum, it) => sum + it.val, 0);
-        const sumEl = document.getElementById('sum-day-' + i);
-        if (sumEl) sumEl.innerText = daySum.toLocaleString();
-        const headerSum = document.getElementById('day-sum-' + i);
-        if (headerSum) headerSum.innerText = daySum.toLocaleString() + " 원";
-        localTotal += daySum;
-    }
-    const rem = (TOTAL_BUDGET - FIXED_TOTAL) - localTotal;
-    document.getElementById('sum-local').innerText = localTotal.toLocaleString() + " 원";
-    document.getElementById('sum-final').innerText = rem.toLocaleString() + " 원";
-    document.getElementById('top-remain-display').innerText = Math.floor(rem / 10000) + " 만원";
-}
+/* 💸 지출 내역 디자인 복구 */
+.budget-accordion { border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; margin: 15px 0; background: white; }
+.ba-header { background: #f8fafc; padding: 14px 15px; font-size: 13px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: var(--navy-dark); }
+.ba-content { display: none; padding: 15px; border-top: 1px solid #e2e8f0; }
+.ba-content.show { display: block; }
+.budget-list-item { display: flex; gap: 5px; margin-bottom: 8px; align-items: center; }
+.budget-input, .budget-select, .budget-num { padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 12px; }
+.add-btn { width: 100%; padding: 12px; background: #f1f5f9; border: 1px dashed #cbd5e1; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; }
 
-function toggleAccordion(id) { document.getElementById(id).classList.toggle('open'); }
-function toggleBudget(day) { document.getElementById('ba-' + day).classList.toggle('show'); }
-function toggleShopList(id) { document.getElementById(id).classList.toggle('show'); }
-function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('show'); }
+.link-btn { display: block; width: fit-content; font-size: 11px; color: #475569; text-decoration: none; background: #f1f5f9; padding: 8px 12px; border-radius: 6px; border: 1px solid #cbd5e1; margin-top: 10px; }
+.route-btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 14px; background-color: var(--blue-soft); color: var(--blue-accent); border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 14px; margin: 15px 0 25px 0; border: 1px solid var(--blue-accent); }
 
-window.onload = () => { for (let i = 1; i <= 6; i++) renderBudgetRows(i); updateStats(); };
+.bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: var(--white); height: 80px; display: flex; justify-content: space-around; padding-top: 12px; border-top: 1px solid #e2e8f0; z-index: 9999; padding-bottom: var(--safe-bottom); }
+.nav-item { text-align: center; flex: 1; color: #94a3b8; cursor: pointer; }
+.nav-item.active { color: var(--navy-main); }
+.nav-icon { font-size: 20px; display: block; }
+
+.pretty-table { width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; }
+.pretty-table td, .pretty-table th { padding: 12px 15px; font-size: 14px; border-bottom: 1px solid #f1f5f9; }
+.price-col { text-align: right; }
+.remain-row { background: var(--blue-soft); color: var(--blue-accent); font-weight: 800; }
