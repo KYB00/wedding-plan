@@ -16,14 +16,13 @@ function showDay(day) {
     document.querySelectorAll('.day-chip').forEach(h => h.classList.remove('active'));
     document.getElementById('day-' + day).style.display = 'block';
     document.querySelectorAll('.day-chip')[day - 1].classList.add('active');
-    renderBudgetRows(day);
 }
 
 function toggleAccordion(id) { document.getElementById(id).classList.toggle('open'); }
 function toggleShopList(id) { document.getElementById(id).classList.toggle('show'); }
 function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('show'); }
 
-// 지출 내역 렌더링 (카테고리 포함)
+// 지출 내역 렌더링 (세부 카테고리 포함)
 function renderBudgetRows(day) {
     const container = document.getElementById(`budget-rows-${day}`);
     if (!container) return;
@@ -81,6 +80,7 @@ function updateStats() {
     
     const rem = (TOTAL_BUDGET - FIXED_TOTAL) - localTotal;
     document.getElementById('sum-local').innerText = localTotal.toLocaleString() + " 원";
+    document.getElementById('local-total-summary').innerText = localTotal.toLocaleString() + " 원";
     document.getElementById('sum-final').innerText = rem.toLocaleString() + " 원";
     document.getElementById('top-remain').innerText = Math.floor(rem / 10000) + " 만원";
 }
