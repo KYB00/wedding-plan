@@ -38,8 +38,8 @@ main.active { display: block; }
 .path-icon { font-size: 18px; background: var(--white); width: 24px; height: 24px; line-height: 24px; text-align: center; z-index: 2; }
 .event-title { font-size: 16px; font-weight: 700; color: var(--navy-dark); margin-bottom: 4px; }
 .event-desc { font-size: 13px; color: #475569; line-height: 1.5; }
+.tag { display: inline-block; font-size: 10px; padding: 2px 6px; border-radius: 4px; background: #f1f5f9; color: #64748b; border: 1px solid #cbd5e1; margin-left: 6px; }
 .link-btn { display: inline-flex; align-items: center; font-size: 11px; color: #475569; text-decoration: none; background: #f1f5f9; padding: 4px 8px; border-radius: 4px; border: 1px solid #cbd5e1; margin-top: 4px; }
-/* 버튼 간격 수정됨 */
 .route-btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 14px; background-color: var(--blue-soft); color: var(--blue-accent); border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 14px; margin: 15px 0 25px 0; border: 1px solid var(--blue-accent); }
 .budget-dashboard { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
 .b-card { padding: 15px; border-radius: 12px; color: white; text-align: center; }
@@ -47,27 +47,32 @@ main.active { display: block; }
 .b-card.fixed { background: #475569; }
 .b-card.remain { background: var(--blue-accent); }
 .b-value { font-size: 20px; font-weight: 800; display: block; }
-.pretty-table { width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; }
+.b-sub { font-size: 10px; opacity: 0.7; display: block; margin-top: 2px; }
+.pretty-table { width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; margin-top: 10px; }
 .pretty-table td, .pretty-table th { padding: 12px 15px; font-size: 14px; border-bottom: 1px solid #f1f5f9; }
 .price-col { text-align: right; }
 .remain-row { background: var(--blue-soft); color: var(--blue-accent); font-weight: 800; }
+.total-row { background: #f1f5f9; font-weight: 800; }
 .budget-accordion { border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; margin: 15px 0; }
 .ba-header { background: #f8fafc; padding: 12px 15px; font-size: 13px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; }
 .ba-content { display: none; padding: 15px; border-top: 1px solid #e2e8f0; background: white; }
 .ba-content.show { display: block; }
 .budget-list-item { display: flex; gap: 5px; margin-bottom: 8px; align-items: center; }
 .budget-input, .budget-select, .budget-num { padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 12px; }
-.budget-select { width: 75px; background: #fff; }
+.budget-select { width: 80px; background: #fff; }
 .add-btn { width: 100%; padding: 10px; background: #f1f5f9; border: 1px dashed #cbd5e1; border-radius: 8px; font-size: 13px; cursor: pointer; }
 .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: var(--white); height: 80px; display: flex; justify-content: space-around; padding-top: 12px; border-top: 1px solid #e2e8f0; z-index: 9999; padding-bottom: var(--safe-bottom); }
 .nav-item { text-align: center; flex: 1; color: #94a3b8; cursor: pointer; }
 .nav-item.active { color: var(--navy-main); }
 .nav-icon { font-size: 20px; display: block; }
-.hotel-img { width: 100%; height: 180px; object-fit: cover; }
-.box-ui { padding: 12px; border-radius: 8px; margin-bottom: 10px; font-size: 12px; line-height: 1.5; }
+.hotel-img { width: 100%; height: 200px; object-fit: cover; }
+.box-ui { padding: 15px; border-radius: 8px; margin-bottom: 10px; font-size: 13px; line-height: 1.5; }
 .tip-box { background: #fffbe6; border: 1px solid #fcd34d; color: #92400e; }
 .facility-box { background: #f8fafc; border: 1px solid #e2e8f0; color: #475569; }
+.badge-confirmed { background: #334155; color: white; font-size: 10px; padding: 2px 6px; border-radius: 4px; margin-left: 5px; }
 .shop-accordion { border: 1px solid #e2e8f0; border-radius: 8px; margin-top: 8px; background: #f8fafc; }
-.shop-header { padding: 8px 12px; font-size: 12px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; }
-.shop-body { display: none; padding: 8px 12px; background: white; border-top: 1px solid #e2e8f0; font-size: 11px; }
+.shop-header { padding: 10px 15px; font-size: 13px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; }
+.shop-body { display: none; padding: 10px 15px; background: white; border-top: 1px solid #e2e8f0; }
 .shop-body.show { display: block; }
+.shop-item { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 12px; }
+.shop-cat { color: #d97706; font-weight: 700; }
